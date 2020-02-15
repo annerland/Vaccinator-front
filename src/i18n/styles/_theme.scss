@@ -1,0 +1,44 @@
+//default fonts and sizes
+$font-base: 'Roboto', sans-serif;
+
+$title-font-size: 20px;
+$subheader-font-size: 16px;
+$body-font-size: 14px;
+$caption-font-size: 12px;
+$base-line-height: 1.5;
+
+$spacing-unit: 30px;
+
+//default colors
+$primary-color: #00D0FF;
+$primary-color-light: lighten($primary-color, 20%);
+$primary-color-light-10: lighten($primary-color, 10%);
+$primary-color-dark:  darken($primary-color, 10%);
+
+$secondary-color: #F4E666;
+$secondary-color-light: lighten($secondary-color, 50%);
+$secondary-color-dark:  darken($secondary-color, 20%);
+
+$error-color: #d00d0d;
+$error-color-mid: lighten($error-color, 42%);
+$error-color-light: lighten($error-color, 50%);
+$error-color-dark: darken($error-color, 10%);
+
+$sucess-color: #70a707;
+$sucess-color-light: lighten($sucess-color, 50%);
+$sucess-color-dark: darken($sucess-color, 10%);
+
+$warning-color: #ffb72e;
+$warning-color-light: lighten($warning-color, 45%);
+$warning-color-dark: darken($warning-color, 10%);
+
+$black-color: #5c5c5f;
+$gray-color: #8e8e93;
+$mid-gray-color: #c7c7cc;
+$light-mid-gray-color: #d1d1d6;
+$light-gray-color: #e5e5ea;
+$extra-light-gray-color: #efeff4;
+$ultra-light-gray-color: #f8f8f8;
+
+// texts
+$text-color-inverse: #ffff;
