@@ -1,0 +1,63 @@
+@import '~Styles/theme';
+
+.login-template {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  form {
+    z-index: 1;
+    width: 300px;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+
+    h2 {
+      font-family: $font-base;
+      text-align: center;
+      font-size: $title-font-size;
+      color: $black-color;
+      margin-bottom: 32px;
+    }
+
+    h3 {
+      font-family: $font-base;
+      text-align: center;
+      font-size: $subheader-font-size;
+      color: $gray-color;
+      font-weight: 500;
+      margin-bottom: 48px;
+    }
+
+    .button {
+      margin-top: 16px;
+      align-self: center;
+    }
+  }
+
+  .extra-options {
+    margin: 16px 0;
+    display: flex;
+  }
+
+  .image-footer {
+    position: absolute;
+    z-index: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  a {
+    font-size: $body-font-size;
+    color: $primary-color;
+    margin-left: auto;
+
+    &:hover {
+      color: $primary-color-dark;
+    }
+  }
+}

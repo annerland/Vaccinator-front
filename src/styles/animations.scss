@@ -56,20 +56,11 @@
     height: auto;
     max-height: 0;
     overflow: hidden;
-/*    -webkit-transform: scaleY(0);
-            transform: scaleY(0);
-    -webkit-transform-origin: 50% 0%;
-            transform-origin: 50% 0%;
-    opacity: 1;*/
   }
+
   100% {
     overflow: none;
     max-height: 500px;
-    /*-webkit-transform: scaleY(1);
-            transform: scaleY(1);
-    -webkit-transform-origin: 50% 0%;
-            transform-origin: 50% 0%;
-    opacity: 1;*/
   }
 }
 
@@ -78,9 +69,10 @@
     -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0), 0 0 0 0 rgba(0, 0, 0, 0);
             box-shadow: 0 0 0 0 rgba(0, 0, 0, 0), 0 0 0 0 rgba(0, 0, 0, 0);
   }
+
   100% {
-    -webkit-box-shadow: 0 -12px 20px -12px #C7C7CC, 0 12px 20px -12px #C7C7CC;
-            box-shadow: 0 -12px 20px -12px #C7C7CC, 0 12px 20px -12px #C7C7CC ;
+    -webkit-box-shadow: 0 -12px 20px -12px #c7c7cc, 0 12px 20px -12px #c7c7cc;
+            box-shadow: 0 -12px 20px -12px #c7c7cc, 0 12px 20px -12px #c7c7cc ;
   }
 }
 

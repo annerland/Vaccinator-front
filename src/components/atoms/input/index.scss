@@ -1,0 +1,28 @@
+@import '~Styles/theme';
+
+.main-input {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    font-size: 16px;
+    color: $black-color;
+    margin: 8px 0;
+    font-weight: 500;
+  }
+
+  input {
+    border-radius: 16px;
+    box-sizing: border-box;
+    outline: none;
+    border: 1px solid $gray-color;
+    padding: 8px;
+    margin-bottom: 8px;
+  }
+
+  &--primary {
+    input {
+      border-color: $primary-color;
+    }
+  }
+}
