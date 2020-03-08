@@ -19,7 +19,18 @@
     background-color: $primary-color;
 
     &:hover {
-      background-color: $primary-color;
+      background-color: $primary-color-dark;
+      color: #fff;
+    }
+  }
+
+  &.button--secondary {
+    border: none;
+    color: #fff;
+    background-color: $secondary-color;
+
+    &:hover {
+      background-color: $secondary-color-dark;
       color: #fff;
     }
   }

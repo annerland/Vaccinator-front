@@ -10,14 +10,14 @@ $base-line-height: 1.5;
 $spacing-unit: 30px;
 
 //default colors
-$primary-color: #898ee8;
+$primary-color: #74b8d0;
 $primary-color-light: lighten($primary-color, 20%);
 $primary-color-light-10: lighten($primary-color, 10%);
 $primary-color-dark:  darken($primary-color, 10%);
 
-$secondary-color: #96b8ff;
+$secondary-color: #e1af60;
 $secondary-color-light: lighten($secondary-color, 50%);
-$secondary-color-dark:  darken($secondary-color, 20%);
+$secondary-color-dark:  darken($secondary-color, 10%);
 
 $error-color: #d00d0d;
 $error-color-mid: lighten($error-color, 42%);

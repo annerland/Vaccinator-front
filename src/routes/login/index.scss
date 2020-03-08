@@ -1,0 +1,43 @@
+@import '~Styles/theme';
+
+form {
+  .form-footer {
+    text-align: center;
+    margin-top: 32px;
+
+    span {
+      font-size: $subheader-font-size;
+      color: $black-color;
+    }
+
+    a, p {
+      font-size: $subheader-font-size;
+      color: $gray-color;
+      cursor: pointer;
+      text-decoration: underline;
+      margin-top: 8px;
+
+      &:hover {
+        color: $black-color;
+      }
+    }
+
+    .sign-up {
+      text-decoration: underline;
+      color: $gray-color;
+      cursor: pointer;
+
+      &:hover {
+        color: $black-color;
+      }
+    }
+  }
+
+  .login-buttons {
+    display: flex;
+
+    .button--secondary {
+      margin-left: auto;
+    }
+  }
+}

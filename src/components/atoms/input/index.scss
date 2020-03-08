@@ -5,19 +5,21 @@
   flex-direction: column;
 
   label {
-    font-size: 16px;
+    font-size: $body-font-size;
     color: $black-color;
     margin: 8px 0;
     font-weight: 500;
   }
 
   input {
-    border-radius: 16px;
+    border-radius: 20px;
     box-sizing: border-box;
     outline: none;
     border: 1px solid $gray-color;
-    padding: 8px;
+    padding: 12px;
     margin-bottom: 8px;
+    background-color: #f8f8f8;
+    color: $black-color;
   }
 
   &--primary {

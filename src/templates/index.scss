@@ -5,13 +5,25 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background: no-repeat url('../assets/background-template.jpg');
+  background-size: cover;
+
+  .vaccinator-logo {
+    position: absolute;
+    width: 120px;
+    transform: translateY(48%);
+    top: 0;
+  }
 
   form {
     z-index: 1;
-    width: 300px;
     display: inline-flex;
     flex-direction: column;
     justify-content: center;
+    border-radius: 16px;
+    padding: 30px 72px;
+    box-shadow: 0 10px 15px $mid-gray-color;
+    background-color: #f8f8f8;
 
     h2 {
       font-family: $font-base;
