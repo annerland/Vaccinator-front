@@ -4,7 +4,7 @@
   font-size: 14px;
   font-weight: 500;
   min-width: 110px;
-  padding: 9px 16px;
+  padding: 8px 20px;
   border-radius: 30px;
   text-align: center;
   line-height: 22px;
@@ -38,7 +38,6 @@
   &.button--decline {
     border: solid 1.5px $secondary-color;
     color: $secondary-color;
-    background-color: #fff;
 
     &:hover {
       background-color: $secondary-color;
@@ -46,8 +45,18 @@
     }
   }
 
+  &.button--decline-primary {
+    border: solid 1.5px $primary-color;
+    color: $primary-color;
+
+    &:hover {
+      background-color: $primary-color;
+      color: #fff;
+    }
+  }
+
   &.button--middle {
-    min-width: 150px;
+    min-width: 130px;
   }
 
   &.button--big {

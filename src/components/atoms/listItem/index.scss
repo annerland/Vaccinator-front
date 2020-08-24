@@ -1,0 +1,64 @@
+@import '~Styles/theme';
+
+.list-item {
+  display: flex;
+  width: 952px;
+  padding: 12px 24px;
+  margin: 32px auto;
+  background-color: #fff;
+  border: 1px solid $mid-gray-color;
+  align-items: center;
+  border-radius: 8px;
+
+  .flex-text-name {
+    .icon-vaccines {
+      font-size: 32px;
+      display: flex;
+      color: $primary-color;
+      background-color: $ultra-light-gray-color;
+      padding: 13px;
+      border-radius: 50%;
+    }
+  }
+
+  .flex-text {
+    flex: 1;
+  }
+
+  .flex-text-name,
+  .flex-text {
+    display: flex;
+    cursor: pointer;
+
+    .field-name {
+      width: 128px;
+    }
+
+    .field {
+      margin: 0 8px 0 16px;
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 500;
+      color: $black-color;
+    }
+
+    .field-name,
+    p {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      color: $gray-color;
+    }
+  }
+
+  .icon-close {
+    background-color: $error-color;
+    color: white;
+    display: flex;
+    padding: 6px 10px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+}

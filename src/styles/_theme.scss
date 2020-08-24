@@ -10,16 +10,16 @@ $base-line-height: 1.5;
 $spacing-unit: 30px;
 
 //default colors
-$primary-color: #74b8d0;
+$primary-color: #74B8D0;
 $primary-color-light: lighten($primary-color, 20%);
 $primary-color-light-10: lighten($primary-color, 10%);
-$primary-color-dark:  darken($primary-color, 10%);
+$primary-color-dark:  #6BABC6;
 
-$secondary-color: #e1af60;
+$secondary-color: #6746D3;
 $secondary-color-light: lighten($secondary-color, 50%);
 $secondary-color-dark:  darken($secondary-color, 10%);
 
-$error-color: #d00d0d;
+$error-color: #E25B5B;
 $error-color-mid: lighten($error-color, 42%);
 $error-color-light: lighten($error-color, 50%);
 $error-color-dark: darken($error-color, 10%);
@@ -32,7 +32,7 @@ $warning-color: #ffb72e;
 $warning-color-light: lighten($warning-color, 45%);
 $warning-color-dark: darken($warning-color, 10%);
 
-$black-color: #5c5c5f;
+$black-color: #333;
 $gray-color: #8e8e93;
 $mid-gray-color: #c7c7cc;
 $light-mid-gray-color: #d1d1d6;

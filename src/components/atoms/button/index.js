@@ -22,7 +22,7 @@ Button.propTypes = {
     PropTypes.element,
     PropTypes.string
   ]).isRequired,
-  type: PropTypes.oneOf(['primary', 'secondary', 'decline']),
+  type: PropTypes.oneOf(['primary', 'secondary', 'decline', 'decline-primary']),
   size: PropTypes.oneOf(['small', 'middle', 'big']),
   disabled: PropTypes.bool
 }

@@ -1,0 +1,14 @@
+@import '~Styles/theme';
+
+.error__invalid-msg {
+  font-size: $caption-font-size;
+  color: var(--error-color, $error-color);
+  margin-bottom: 8px;
+
+  &.bg {
+    background-color: var(--error-color, $error-color);
+    color: #fff;
+    border-radius: 16px;
+    padding: 8px 10px;
+  }
+}

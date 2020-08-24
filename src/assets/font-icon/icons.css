@@ -1,0 +1,41 @@
+@font-face {
+    font-family: "icons";
+    src: url("./icons.eot?5e11c3875512afb670ee58ce90f4e81f?#iefix") format("embedded-opentype"),
+url("./icons.woff2?5e11c3875512afb670ee58ce90f4e81f") format("woff2"),
+url("./icons.woff?5e11c3875512afb670ee58ce90f4e81f") format("woff"),
+url("./icons.ttf?5e11c3875512afb670ee58ce90f4e81f") format("truetype"),
+url("./icons.svg?5e11c3875512afb670ee58ce90f4e81f#icons") format("svg");
+}
+
+i[class^="icon-"]:before, i[class*=" icon-"]:before {
+    font-family: icons !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-card:before {
+    content: "\f101";
+}
+.icon-close:before {
+    content: "\f102";
+}
+.icon-home:before {
+    content: "\f103";
+}
+.icon-map:before {
+    content: "\f104";
+}
+.icon-search:before {
+    content: "\f105";
+}
+.icon-vaccine:before {
+    content: "\f106";
+}
+.icon-vaccines:before {
+    content: "\f107";
+}

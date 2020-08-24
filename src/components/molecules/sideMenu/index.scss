@@ -1,0 +1,87 @@
+@import '~Styles/theme';
+
+.side-menu {
+	height: 100%;
+	width: 232px;
+	background-color: $primary-color;
+
+	.top-menu {
+    padding: 16px;
+    display: flex;
+    height: 82px;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid white;
+		margin: 0 32px 32px;
+
+		img {
+			height: 62px;
+		}
+	}
+
+	ul {
+		list-style: none;
+		color: white;
+		font-size: 14px;
+		display: flex;
+    flex-direction: column;
+    padding: 0 24px;
+
+		li {
+			display: flex;
+			padding: 8px 16px;
+			margin-bottom: 8px;
+			cursor: pointer;
+
+			&:hover {
+				background-color: #ffffff47;
+				border-radius: 6px;
+			}
+
+			i {
+				font-size: 20px;
+				margin-right: 16px;
+				display: flex;
+				background-color: $primary-color-dark;
+				padding: 4px;
+				border-radius: 4px;
+			}
+
+			p {
+				display: flex;
+				align-items: center;
+			}
+
+			.icon-vaccine {
+				font-size: 28px;
+				height: 22px;
+			}
+		}
+	}
+
+	.user-profile {
+		position: fixed;
+		bottom: 0;
+		color: white;
+    padding: 8px;
+    background-color: #ffffff47;
+		border-radius: 6px;
+    margin: 28px 23px;
+		display: flex;
+		cursor: pointer;
+
+		img {
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+			margin-right: 8px;
+		}
+
+		p {
+			font-size: 14px;
+			display: flex;
+			align-items: center;
+		}
+	}
+
+}

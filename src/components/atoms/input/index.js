@@ -1,5 +1,6 @@
 import React from 'react'
 import ClassNames from 'classnames'
+import ErrorMessage from 'Components/atoms/errorMessage'
 import PropTypes from 'prop-types'
 import './index.scss'
 
@@ -14,20 +15,28 @@ const Input = (props) => {
       <input
         type={props.type}
         placeholder={props.placeholder}
-        onChange={props.onChange}
+        onChange={e => props.onChange(e.target.value)}
         value={props.value}
       />
+      <ErrorMessage validator={props.validator} />
     </div>
   )
 }
 
 Input.propTypes = {
   type: PropTypes.string,
-  label: PropTypes.label,
+  label: PropTypes.string,
   placeholder: PropTypes.string,
   primary: PropTypes.string,
   value: PropTypes.string,
+  validator: PropTypes.object,
   onChange: PropTypes.func
+}
+
+Input.defaultProps = {
+  type: 'text',
+  validator: {},
+  disabled: false
 }
 
 export default Input

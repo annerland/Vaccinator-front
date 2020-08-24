@@ -1,0 +1,17 @@
+@import '~Styles/theme';
+
+.vaccines-content {
+  min-height: 100%;
+  box-sizing: border-box;
+
+  .vaccines-header {
+    display: flex;
+    padding: 0 56px;
+    margin-bottom: 62px;
+
+    .search-container {
+      flex: 1;
+      display: flex;
+    }
+  }
+}
