@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --progress --mode development",
-    "build": "webpack",
+    "build": "webpack && npm run bucket && npm run deploy",
+    "bucket": "aws s3 rm s3://vaccinator.com.br --recursive",
     "deploy": "aws s3 sync dist/ s3://vaccinator.com.br --acl public-read",
     "build:icons": "icon-font-generator src/assets/icons/*.svg -o  src/assets/font-icon --htmlpath src/assets/font-icon/index.html",
     "test-cypress": "cypress open",

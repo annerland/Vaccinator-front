@@ -46,7 +46,7 @@ const keys = {
     login: 'Login',
     title: 'Vaccinator',
     register: 'Registre-se',
-    resume: 'Vaccinator é um aplicativo que visa facilitar a organização e manutenção da carteira de vacinação do usuário e seus dependentes, agregando agilidade e eficiência a técnica atualmente realizada de forma manual, permitindo consultas rápidas as informações e um prático manuseio do sistema. Com ele, fica mais fácil manter sua caderneta de vacinação e a das pessoas importantes para você em dia'
+    resume: 'Vaccinator é um aplicativo que visa facilitar a organização e manutenção da carteira de vacinação do usuário e seus dependentes, agregando agilidade e eficiência a técnica atualmente realizada de forma manual, permitindo consultas rápidas as informações e um prático manuseio do sistema.'
   },
   Login: {
     password: 'Senha',
