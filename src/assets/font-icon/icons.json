@@ -3,7 +3,8 @@
     "close": "\\f102",
     "home": "\\f103",
     "map": "\\f104",
-    "search": "\\f105",
-    "vaccine": "\\f106",
-    "vaccines": "\\f107"
+    "news": "\\f105",
+    "search": "\\f106",
+    "vaccine": "\\f107",
+    "vaccines": "\\f108"
 }

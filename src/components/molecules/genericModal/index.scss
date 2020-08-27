@@ -1,0 +1,71 @@
+@import '~Styles/theme';
+
+.generic-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba($primary-color, 0.3);
+  z-index: 100;
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  animation: fadein 0.5s ease-in-out;
+
+  .loading-spin {
+    background-color: #fff;
+  }
+
+  .generic-body {
+    position: relative;
+    background-color: #fff;
+    border-radius: 6px;
+    border: 1px solid $mid-gray-color;
+    box-sizing: border-box;
+    animation: scale-jump 0.5s ease;
+
+    .icon-close {
+      position: absolute;
+      color: $gray-color;
+      cursor: pointer;
+			top: 8px;
+			right: 8px;
+      z-index: 1;
+    }
+
+    .loading-spin {
+      border-radius: 14px;
+    }
+
+    h1,
+    .title {
+      color: $black-color;
+      margin-bottom: 16px;
+    }
+
+    p,
+    label {
+      color: $gray-color;
+    }
+
+    .text {
+      color: $gray-color;
+    }
+
+    .modal-content {
+      padding: 20px;
+    }
+
+    .modal-actions {
+    	padding: 32px 20px 20px;
+      display: flex;
+      border-bottom-right-radius: 14px;
+      border-bottom-left-radius: 14px;
+      flex-direction: row;
+      box-sizing: border-box;
+      justify-content: space-between;
+    }
+  }
+}

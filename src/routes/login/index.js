@@ -13,31 +13,30 @@ import path from 'ramda'
 
 import './index.scss'
 
-const formValidator = new FormValidator([
-  {
-    field: 'login',
-    method: validator.isEmpty,
-    validWhen: false,
-    message: 'usuário inválido'
-  },
-  {
-    field: 'password',
-    method: validator.isEmpty,
-    validWhen: false,
-    message: 'senha inválida'
-  }
-])
-
 export default function LoginRoute () {
-  const [login, setLogin] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState({})
   const [loginError, setLoginError] = useState('')
   const dispatch = useDispatch()
-  const [loading, setLoading] = useState(false)
   const history = useHistory()
 
-  const { t } = useTranslation('login')
+  const { t } = useTranslation('Login')
+
+  const formValidator = new FormValidator([
+    {
+      field: 'email',
+      method: validator.isEmpty,
+      validWhen: false,
+      message: `${t('invalidUser')}`
+    },
+    {
+      field: 'password',
+      method: validator.isEmpty,
+      validWhen: false,
+      message: `${t('invalidPass')}`
+    }
+  ])
 
   useEffect(() => {
     getUserLogged(history)
@@ -45,10 +44,10 @@ export default function LoginRoute () {
 
   const submit = (e) => {
     e.preventDefault()
-    const validation = formValidator.validate({ login, password })
+    const validation = formValidator.validate({ email, password })
     setErrors(validation)
     if (validation.isValid) {
-      Api.Auth.signIn({ login, password })
+      Api.Auth.signIn({ email, password })
         .then(res => {
           dispatch(signIn(res))
           history.push('/user/home')
@@ -67,14 +66,14 @@ export default function LoginRoute () {
         type='text'
         label='E-mail'
         placeholder='E-mail'
-        value={login}
-        onChange={setLogin}
-        validator={errors.login}
+        value={email}
+        onChange={setEmail}
+        validator={errors.email}
       />
 
       <Input
-        label='Password'
-        placeholder='Password'
+        label={t('password')}
+        placeholder={t('password')}
         password={password}
         onChange={setPassword}
         type='password'
@@ -83,8 +82,8 @@ export default function LoginRoute () {
 
       <Button onClick={submit}>Login</Button>
       <div className='form-footer'>
-        <span>Don't have an account?</span> <span className='sign-up'><Link to='/sign-up'>Sign up</Link></span>
-        <p><Link to='/forgot-password'>Forgot your password?</Link></p>
+        <span>{t('text')}</span> <span className='sign-up'><Link to='/sign-up'>{t('sign')}</Link></span>
+        <p><Link to='/forgot-password'>{t('forgot')}</Link></p>
       </div>
 
       {loginError && console.log(loginError)}

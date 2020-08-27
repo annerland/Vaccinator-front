@@ -15,7 +15,7 @@
     border-radius: 4px;
     box-sizing: border-box;
     outline: none;
-    border: 1px solid $gray-color;
+    border: 1px solid $mid-gray-color;
     padding: 12px;
     margin-bottom: 8px;
     background-color: #f8f8f8;
@@ -30,13 +30,13 @@
 
   &--invalid {
     input {
-      border: 1px solid var(--error-color, $error-color);
+      border: 1px solid $error-color;
     }
   }
 
   .input-field__invalid-msg {
     font-size: $caption-font-size;
-    color: var(--error-color, $error-color);
+    color: $error-color;
     margin-bottom: 8px;
   }
 }

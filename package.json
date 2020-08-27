@@ -6,6 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --progress --mode development",
     "build": "webpack",
+    "deploy": "aws s3 sync dist/ s3://vaccinator.com.br --acl public-read",
     "build:icons": "icon-font-generator src/assets/icons/*.svg -o  src/assets/font-icon --htmlpath src/assets/font-icon/index.html",
     "test-cypress": "cypress open",
     "test": "mocha",

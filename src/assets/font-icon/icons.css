@@ -1,10 +1,10 @@
 @font-face {
     font-family: "icons";
-    src: url("./icons.eot?5e11c3875512afb670ee58ce90f4e81f?#iefix") format("embedded-opentype"),
-url("./icons.woff2?5e11c3875512afb670ee58ce90f4e81f") format("woff2"),
-url("./icons.woff?5e11c3875512afb670ee58ce90f4e81f") format("woff"),
-url("./icons.ttf?5e11c3875512afb670ee58ce90f4e81f") format("truetype"),
-url("./icons.svg?5e11c3875512afb670ee58ce90f4e81f#icons") format("svg");
+    src: url("./icons.eot?a64210e23cf91ac7306346f11fccc3a2?#iefix") format("embedded-opentype"),
+url("./icons.woff2?a64210e23cf91ac7306346f11fccc3a2") format("woff2"),
+url("./icons.woff?a64210e23cf91ac7306346f11fccc3a2") format("woff"),
+url("./icons.ttf?a64210e23cf91ac7306346f11fccc3a2") format("truetype"),
+url("./icons.svg?a64210e23cf91ac7306346f11fccc3a2#icons") format("svg");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -30,12 +30,15 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 .icon-map:before {
     content: "\f104";
 }
-.icon-search:before {
+.icon-news:before {
     content: "\f105";
 }
-.icon-vaccine:before {
+.icon-search:before {
     content: "\f106";
 }
-.icon-vaccines:before {
+.icon-vaccine:before {
     content: "\f107";
+}
+.icon-vaccines:before {
+    content: "\f108";
 }

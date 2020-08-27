@@ -4,6 +4,14 @@
   min-height: 100%;
   box-sizing: border-box;
 
+  h1 {
+    padding: 0 24px 18px;
+    border-bottom: 1px solid $mid-gray-color;
+    margin: 0 32px 24px;
+    font-size: 36px;
+    color: #333;
+  }
+
   .vaccines-header {
     display: flex;
     padding: 0 56px;

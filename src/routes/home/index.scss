@@ -16,6 +16,7 @@
     position: fixed;
     bottom: -52px;
     left: -52px;
+    z-index: -1;
   }
 
   img.undraw-vector {
@@ -28,14 +29,27 @@
   .call-to-action {
     width: 482px;
     position: absolute;
-    transform: translate(51%, 78%);
+    transform: translate(51%, 32%);
 
-    h1 {
-      margin-bottom: 16px;
-      color: #333;
-      font-size: 42px;
-      font-weight: 400;
-      letter-spacing: 4px;
+    .flex-div {
+      display: flex;
+      align-items: center;
+  
+      h1 {
+        margin-bottom: 16px;
+        color: #333;
+        font-size: 42px;
+        font-weight: 400;
+        letter-spacing: 4px;
+        margin-right: 16px;
+      }
+
+      img {
+        display: flex;
+        margin-right: 16px;
+        margin-bottom: 8px;
+        cursor: pointer;
+      }
     }
 
     p {
@@ -70,6 +84,11 @@
       display: flex;
       justify-content: space-evenly;
       width: 30%;
+
+      .select {
+        margin-top: -4px;
+        width: 120px;
+      }
 
       p {
         font-size: 24px;

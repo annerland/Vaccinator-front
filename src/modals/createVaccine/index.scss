@@ -1,0 +1,18 @@
+@import '~Styles/theme';
+
+.modal-container {
+  padding: 32px;
+
+  .title {
+    font-size: 16px;
+    color: $primary-color;
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+
+  .button {
+    display: flex;
+    justify-content: center;
+    margin: 16px auto 0;
+  }
+}

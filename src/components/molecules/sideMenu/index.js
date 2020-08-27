@@ -1,12 +1,14 @@
 import React from 'react'
 import Logo from 'Assets/reverse-logo.svg'
 import Neo from 'Assets/neo.jpg'
-import { useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 import './index.scss'
 
 const SideMenu = () => {
-  const auth = useSelector((state) => state.auth)
+  const history = useHistory()
+  const { t } = useTranslation('SideMenu')
 
   return (
     <div className='side-menu'>
@@ -15,24 +17,29 @@ const SideMenu = () => {
       </div>
 
       <ul>
-        <li>
+        <li onClick={() => history.push('/user/home')}>
           <i className='icon-home' />
-          <p>Home</p>
+          <p>{t('home')}</p>
         </li>
 
-        <li>
+        <li onClick={() => history.push('/user/vaccines')}>
           <i className='icon-vaccine' />
-          <p>Vacinas</p>
+          <p>{t('vaccines')}</p>
         </li>
 
-        <li>
+        <li onClick={() => history.push('/user/wallet')}>
           <i className='icon-card' />
-          <p>Carteiras</p>
+          <p>{t('wallets')}</p>
         </li>
 
-        <li>
+        <li onClick={() => history.push('/user/news')}>
+          <i className='icon-news' />
+          <p>{t('news')}</p>
+        </li>
+
+        <li onClick={() => history.push('/user/establishments')}>
           <i className='icon-map' />
-          <p>Estabelecimentos</p>
+          <p>{t('establish')}</p>
         </li>
       </ul>
 
