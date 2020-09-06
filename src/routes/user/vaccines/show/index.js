@@ -20,13 +20,12 @@ export default function ShowVaccine () {
 
   const fetchVaccine = async () => {
     const res = await Api.Vaccine.getOne(params.id)
-    res.vacinas.map((elm) => {
-      setName(elm.strNome)
-      setDescription(elm.strSobre)
-      setRestricted(elm.strRestricoes)
-      setDose(elm.intQtdDoses)
-      setInterval(elm.intDiasIntervaloDose)
-    })
+    console.log(res.vacinas.strNome)
+    setName(res.vacinas.strNome)
+    setDescription(res.vacinas.strSobre)
+    setRestricted(res.vacinas.strRestricoes)
+    setDose(res.vacinas.intQtdDoses)
+    setInterval(res.vacinas.intDiasIntervaloDose)
   }
 
   const submitEdit = () => {

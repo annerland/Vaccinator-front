@@ -7,6 +7,7 @@ import LoginTemplate from 'Templates'
 import { Link, useHistory } from 'react-router-dom'
 import { signIn } from 'Redux/auth/actions'
 import Button from '../../components/atoms/button'
+import Loading from 'Components/atoms/loading'
 import { getUserLogged } from 'Util/helpers'
 import { useDispatch } from 'react-redux'
 import path from 'ramda'
@@ -16,6 +17,7 @@ import './index.scss'
 export default function LoginRoute () {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [loading, setLoading] = useState(false)
   const [errors, setErrors] = useState({})
   const [loginError, setLoginError] = useState('')
   const dispatch = useDispatch()
@@ -47,13 +49,16 @@ export default function LoginRoute () {
     const validation = formValidator.validate({ email, password })
     setErrors(validation)
     if (validation.isValid) {
+      setLoading(true)
       Api.Auth.signIn({ email, password })
         .then(res => {
+          setLoading(false)
           dispatch(signIn(res))
           history.push('/user/home')
         })
         .catch(err => {
-          setLoginError(path(['response', 'data', 'errors', 0, 'details'], err))
+          setLoading(false)
+          setLoginError(path(['error', 'message'], err))
         })
     }
   }
@@ -61,6 +66,8 @@ export default function LoginRoute () {
   return (
     <LoginTemplate>
       <h2>Welcome</h2>
+
+      <Loading show={loading} />
 
       <Input
         type='text'

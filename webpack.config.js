@@ -4,7 +4,7 @@ const HtmlWebPackPlugin = require('html-webpack-plugin')
 
 const htmlPlugin = new HtmlWebPackPlugin({
   template: './public/index.html',
-  // favicon: './public/favicon.png',
+  favicon: './public/favicon.png',
   filename: './index.html'
 })
 

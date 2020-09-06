@@ -27,7 +27,7 @@ const SideMenu = () => {
           <p>{t('vaccines')}</p>
         </li>
 
-        <li onClick={() => history.push('/user/wallet')}>
+        <li onClick={() => history.push('/user/wallets')}>
           <i className='icon-card' />
           <p>{t('wallets')}</p>
         </li>

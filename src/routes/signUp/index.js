@@ -7,7 +7,6 @@ import Button from '../../components/atoms/button'
 import './index.scss'
 
 export default function SignUpRoute () {
-  const { t } = useTranslation('test')
   const history = useHistory()
   const redirect = () => {
     history.push('/')
@@ -35,16 +34,8 @@ export default function SignUpRoute () {
             placeholder='*****'
           />
           <Input
-            label='CPF'
-            placeholder='000.000.000-00'
-          />
-          <Input
             label='date of birth'
             placeholder='13/11/1999'
-          />
-          <Input
-            label='Endereço'
-            placeholder='rua qualquer, 23'
           />
           <Input
             label='CEP'

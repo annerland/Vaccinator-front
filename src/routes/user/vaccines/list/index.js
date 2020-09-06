@@ -5,6 +5,7 @@ import ListItem from 'Components/atoms/listItem'
 import CreateVaccineModal from 'Modals/createVaccine'
 import { useHistory } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import Loading from 'Components/atoms/loading'
 import Modals from 'Util/modals'
 import Api from 'Util/api'
 
@@ -12,12 +13,15 @@ import './index.scss'
 
 export default function Vaccines () {
   const [vaccine, setVaccine] = useState([])
+  const [loading, setLoading] = useState(false)
   const { t } = useTranslation('Vaccines')
   const history = useHistory()
 
   const fetchVaccine = async () => {
+    setLoading(true)
     const res = await Api.Vaccine.list('pt')
     setVaccine(res.vacinas.data)
+    setLoading(false)
   }
 
   useEffect(() => {
@@ -32,19 +36,21 @@ export default function Vaccines () {
     Modals.Generic.show('create-vaccine')
   }
 
-  const deleteVaccine = () => {
+  const deleteVaccine = (elm) => {
     Modals.Generic.sucess({
       title: `${t('delete')}`,
       text: `${t('text')}`,
       cancel: `${t('cancel')}`,
       continue: `${t('continue')}`,
       handleAction: async () => {
+        setLoading(true)
         try {
-          await Api.Vaccine.delete(vaccine[0].id)
+          await Api.Vaccine.delete(elm)
         } catch (err) {
           console.log(err)
         }
         fetchVaccine()
+        setLoading(false)
       }
     })
   }
@@ -62,16 +68,17 @@ export default function Vaccines () {
         <Button onClick={() => createVaccine()} type='primary'>{t('add')}</Button>
       </div>
 
+      <Loading show={loading} />
       {vaccine.map(elm =>
         <ListItem
           key={elm.id}
           onClick={() => redirect(elm)}
           name={elm.strNome}
           description={elm.strSobre}
-          delete={() => deleteVaccine()}
+          delete={() => deleteVaccine(elm.id)}
         />
       )}
-      <CreateVaccineModal />
+      <CreateVaccineModal onChange={fetchVaccine} />
     </div>
   )
 }

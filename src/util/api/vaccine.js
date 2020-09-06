@@ -10,7 +10,7 @@ export default class Vaccine {
   }
 
   async getOne (id) {
-    const url = `/vaccines/${id}`
+    const url = `/vaccines/id/${id}`
     const res = await this.httpWrapper.get(url)
     return res.data
   }

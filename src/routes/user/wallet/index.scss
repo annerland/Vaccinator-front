@@ -1,7 +1,34 @@
-.title {
-  padding: 0 24px 18px;
-  border-bottom: 1px solid $mid-gray-color;
-  margin: 0 32px 24px;
-  font-size: 36px;
-  color: #333;
+@import '~Styles/theme';
+
+.wallet-user-route {
+  min-height: 100%;
+  box-sizing: border-box;
+
+  h1.title {
+    padding: 0 24px 18px;
+    border-bottom: 1px solid $mid-gray-color;
+    margin: 0 32px 52px;
+    font-size: 36px;
+    font-weight: 500;
+    color: #333;
+  }
+
+  h2.wallet-title {
+    font-weight: 500;
+    padding: 0 24px 18px;
+    margin: 0 32px 24px;
+    font-size: 20px;
+    color: $primary-color;
+  }
+
+  .other-wallets {
+    display: inline-block;
+    padding: 0 24px 18px;
+    margin: 0 32px 24px;
+
+    h2 {
+      margin: 24px 0 0;
+      padding: 18px 0 0;
+    }
+  }
 }
