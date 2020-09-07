@@ -1,39 +1,31 @@
+@import '~Styles/theme';
+
 .vaccines-content {
   .vaccines-header-show {
     display: flex;
     padding: 0 56px;
-    margin-bottom: 62px;
+    margin-bottom: 42px;
     justify-content: flex-end;
   }
 
   .show-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    width: 632px;
+    margin-left: 52px;
 
-    .grid-inputs {
-      display: grid;
-      width: 632px;
-      margin: 0 48px;
-      grid-template-columns: 1fr 1fr;
-
-      .main-input {
-        margin: 0 16px;
+    .content {
+      h1 {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: $primary-color;
       }
 
-      .description {
-        grid-row: 3;
-        grid-column: 1 / 3;
-
-        input {
-          height: 100px;
-        }
+      p {
+        font-size: 16px;
+        color: $gray-color;
+        line-height: 2;
+        margin-bottom: 32px;
       }
-    }
-
-    .button-show {
-      margin: 32px 0;
     }
   }
 }

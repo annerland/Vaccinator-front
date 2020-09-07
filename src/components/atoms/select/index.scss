@@ -12,7 +12,7 @@
     label {
       margin: 8px 0;
       display: inline-block;
-      color: var(--black-color, $black-color);
+      color: $black-color;
       vertical-align: middle;
     }
   }
@@ -20,13 +20,13 @@
   .select-container {
     &__control {
       border-radius: 4px;
-      border: 1px solid var(--mid-gray-color, $mid-gray-color);
+      border: 1px solid $mid-gray-color;
       outline: none;
       box-shadow: none;
 
       &:hover {
         box-shadow: none;
-        border: 1px solid var(--mid-gray-color, $mid-gray-color);
+        border: 1px solid $mid-gray-color;
       }
     }
 
@@ -34,17 +34,17 @@
       margin: 0;
       padding: 5px;
       font-size: 14px;
-      color: var(--gray-color, $gray-color);
+      color: $gray-color;
     }
 
     &__single-value {
       font-size: 12px;
-      color: var(--gray-color, #79797d);
+      color: #79797d;
     }
 
     &__value-container {
-      font-size: var(--subheader-font-size, $subheader-font-size);
-      color: var(--black-color, $black-color);
+      font-size: $subheader-font-size;
+      color: $black-color;
       padding: 5px;
       margin-left: 6px;
     }
@@ -54,27 +54,27 @@
     }
 
     &__menu {
-      font-size: var(--subheader-font-size, $subheader-font-size);
-      color: var(--black-color, $black-color);
+      font-size: $subheader-font-size;
+      color: $black-color;
     }
 
     &__option {
-      color: var(--black-color, #79797d);
+      color: #79797d;
       font-size: 12px;
 
       &:hover {
-        background-color: var(--extra-light-gray-color, $extra-light-gray-color);
-        color: var(--black-color, $black-color);
+        background-color: $extra-light-gray-color;
+        color: $black-color;
       }
 
       &--is-selected {
-        background-color: var(--extra-light-gray-color, $extra-light-gray-color);
-        color: var(--black-color, $black-color);
-        font-weight: bold;
+        background-color: $extra-light-gray-color;
+        color: $black-color;
+        font-weight: 600;
       }
 
       &--is-focused {
-        background-color: var(--light-gray-color, $light-gray-color);
+        background-color: $light-gray-color;
       }
     }
   }
@@ -82,10 +82,10 @@
   &--primary {
     .select-container {
       &__control {
-        border: 1px solid var(--primary-color, $primary-color);
+        border: 1px solid $primary-color;
 
         &:hover {
-          border: 1px solid var(--primary-color, $primary-color);
+          border: 1px solid $primary-color;
         }
       }
     }

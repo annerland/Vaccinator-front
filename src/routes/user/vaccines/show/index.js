@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react'
 import Api from 'Util/api'
 import { useParams } from 'react-router-dom'
 import Button from 'Components/atoms/button'
-import Input from 'Components/atoms/input'
+import Loading from 'Components/atoms/loading'
 import Modals from 'Util/modals'
+import EditVaccineModal from 'Modals/editVaccine'
 import { useTranslation } from 'react-i18next'
 
 import './index.scss'
@@ -14,100 +15,89 @@ export default function ShowVaccine () {
   const [restricted, setRestricted] = useState('')
   const [dose, setDose] = useState('')
   const [interval, setInterval] = useState('')
-  const [show, setShow] = useState(true)
   const params = useParams()
+  const [indication, setIndication] = useState('')
+  const [application, setApplication] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [effects, setEffects] = useState('')
+  const [care, setCare] = useState('')
+
   const { t } = useTranslation('CreateVaccineModal')
 
   const fetchVaccine = async () => {
+    setLoading(true)
     const res = await Api.Vaccine.getOne(params.id)
-    console.log(res.vacinas.strNome)
     setName(res.vacinas.strNome)
     setDescription(res.vacinas.strSobre)
     setRestricted(res.vacinas.strRestricoes)
     setDose(res.vacinas.intQtdDoses)
     setInterval(res.vacinas.intDiasIntervaloDose)
-  }
-
-  const submitEdit = () => {
-    const payload = {}
-    if (name) payload.strNome = name
-    if (description) payload.strSobre = description
-    if (dose) payload.intQtdDoses = dose
-    if (restricted) payload.strRestricoes = restricted
-    if (interval) payload.intDiasIntervaloDose = interval
-
-    Modals.Generic.sucess({
-      title: 'Editar Vacina',
-      text: 'Os dados serão alterados, você tem certeza?',
-      cancel: 'Cancelar',
-      continue: 'Continuar',
-      handleAction: async () => {
-        try {
-          await Api.Vaccine.update(payload, params.id)
-        } catch (err) {
-          console.log(err)
-        }
-        fetchVaccine()
-      }
-    })
+    setIndication(res.vacinas.strIndicacao)
+    setApplication(res.vacinas.strViaAplicacao)
+    setEffects(res.vacinas.strEfeitos)
+    setCare(res.vacinas.strCuidados)
+    setLoading(false)
   }
 
   useEffect(() => {
     fetchVaccine()
   }, [])
 
+  const editVaccine = () => {
+    Modals.Generic.show('edit-vaccine')
+  }
+
   return (
     <div className='vaccines-content'>
-      <h1>{name}</h1>
+      <Loading show={loading} />
+      <h1 className='title'>{name}</h1>
 
       <div className='vaccines-header-show'>
-        <Button onClick={() => setShow(false)} type='primary'>Editar</Button>
+        <Button onClick={() => editVaccine()} type='primary'>Editar</Button>
       </div>
 
       <div className='show-content'>
-        <div className='grid-inputs'>
-          <Input
-            label={t('name')}
-            onChange={setName}
-            value={name}
-            disabled={show}
-          />
-
-          <div className='description'>
-            <Input
-              label={t('description')}
-              onChange={setDescription}
-              value={description}
-              disabled={show}
-            />
-          </div>
-          <Input
-            label={t('restricted')}
-            onChange={setRestricted}
-            value={restricted}
-            disabled={show}
-          />
-          <Input
-            type='number'
-            label={t('doses')}
-            onChange={setDose}
-            value={dose}
-            disabled={show}
-          />
-          <Input
-            type='number'
-            label={t('interval')}
-            onChange={setInterval}
-            value={interval}
-            disabled={show}
-          />
+        <div className='content'>
+          <h1>Descrição</h1>
+          <p>{description}</p>
         </div>
 
-        {!show &&
-          <div className='button-show'>
-            <Button className='button-show' onClick={() => submitEdit()}>Enviar</Button>
-          </div>}
+        <div className='content'>
+          <h1>Restrições</h1>
+          <p>{restricted}</p>
+        </div>
+
+        <div className='content'>
+          <h1>Quantidade de doses</h1>
+          <p>{dose}</p>
+        </div>
+
+        <div className='content'>
+          <h1>Intervalos entre doses</h1>
+          <p>{interval}</p>
+        </div>
+
+        <div className='content'>
+          <h1>Indicações</h1>
+          <p>{indication}</p>
+        </div>
+
+        <div className='content'>
+          <h1>Via de aplicação</h1>
+          <p>{application}</p>
+        </div>
+
+        <div className='content'>
+          <h1>Efeitos</h1>
+          <p>{effects}</p>
+        </div>
+
+        <div className='content'>
+          <h1>Cuidados</h1>
+          <p>{care}</p>
+        </div>
       </div>
+      <EditVaccineModal onChange={fetchVaccine} />
     </div>
   )
 }

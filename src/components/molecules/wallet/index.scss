@@ -1,34 +1,47 @@
 @import '~Styles/theme';
 
-
 .wallet-component-container {
-  width: 208px;
-  padding: 16px;
+  width: 305px;
+  padding: 20px;
+  border: 1px solid $primary-color;
+  border-radius: 4px;
+  margin: 0 56px 32px;
+
+  .flex-content {
+    display: flex;
+    font-size: 16px;
+    margin-bottom: 8px;
+
+    p {
+      color: $mid-gray-color;
+    }
+
+    .bold-text {
+      font-weight: 600;
+      color: $black-color;
+      margin-right: 8px;
+    }
+  }
 
   .header {
+    border-bottom: 1px solid $primary-color;
+    margin-bottom: 16px;
     display: flex;
+    padding-bottom: 16px;
+
+    .content {
+      margin-left: 16px;
+    }
 
     img {
       border-radius: 50%;
-      width: 45px;
+      width: 62px;
+      height: 62px;
+      margin: auto 16px;
     }
+  }
 
-    .content {
-
-      .flex-content {
-        display: flex;
-        font-size: 14px;
-
-        p {
-          color: $mid-gray-color;
-        }
-
-        .bold-text {
-          font-weight: 500;
-          color: $black-color;
-          margin-right: 8px;
-        }
-      }
-    }
+  .footer {
+    padding: 0 16px;
   }
 }

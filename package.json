@@ -25,6 +25,7 @@
     "classnames": "^2.2.6",
     "cypress": "^3.8.3",
     "dotenv-webpack": "^1.7.0",
+    "fast-fuzzy": "^1.10.7",
     "file-loader": "^5.1.0",
     "i18n": "^0.8.5",
     "i18next": "^17.0.11",

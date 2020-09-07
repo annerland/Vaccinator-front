@@ -5,6 +5,7 @@ import ListItem from 'Components/atoms/listItem'
 import CreateVaccineModal from 'Modals/createVaccine'
 import { useHistory } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { search } from 'fast-fuzzy'
 import Loading from 'Components/atoms/loading'
 import Modals from 'Util/modals'
 import Api from 'Util/api'
@@ -15,12 +16,26 @@ export default function Vaccines () {
   const [vaccine, setVaccine] = useState([])
   const [loading, setLoading] = useState(false)
   const { t } = useTranslation('Vaccines')
+  const [originalData, setOriginalData] = useState([])
   const history = useHistory()
+
+  const handleOnSearch = (query) => {
+    if (!query) return setVaccine(originalData)
+    if (query === null) return ''
+
+    const res = search(query || '', originalData, { keySelector: (obj) => obj.strNome || '' })
+    setVaccine(res)
+  }
+
+  useEffect((query) => {
+    handleOnSearch(query)
+  }, [])
 
   const fetchVaccine = async () => {
     setLoading(true)
     const res = await Api.Vaccine.list('pt')
     setVaccine(res.vacinas.data)
+    setOriginalData(res.vacinas.data)
     setLoading(false)
   }
 
@@ -57,12 +72,13 @@ export default function Vaccines () {
 
   return (
     <div className='vaccines-content'>
-      <h1>{t('title')}</h1>
+      <h1 className='title'>{t('title')}</h1>
 
       <div className='vaccines-header'>
         <div className='search-container'>
           <Search
             placeholder={t('search')}
+            onChange={handleOnSearch}
           />
         </div>
         <Button onClick={() => createVaccine()} type='primary'>{t('add')}</Button>

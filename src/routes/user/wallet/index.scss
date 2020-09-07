@@ -7,14 +7,25 @@
   h1.title {
     padding: 0 24px 18px;
     border-bottom: 1px solid $mid-gray-color;
-    margin: 0 32px 52px;
+    margin: 0 32px 24px;
     font-size: 36px;
-    font-weight: 500;
+    font-weight: 600;
     color: #333;
   }
 
+  .wallet-header {
+    display: flex;
+    padding: 0 56px;
+    margin-bottom: 62px;
+
+    .search-container {
+      flex: 1;
+      display: flex;
+    }
+  }
+
   h2.wallet-title {
-    font-weight: 500;
+    font-weight: 600;
     padding: 0 24px 18px;
     margin: 0 32px 24px;
     font-size: 20px;

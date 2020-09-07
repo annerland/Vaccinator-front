@@ -11,18 +11,17 @@
     left: 0;
   }
 
-  .user {
+  .user_body {
     flex: 1;
     display: flex;
+    background-color: $ultra-light-gray-color;
     flex-direction: row;
   }
 
   .user-routes__container {
     z-index: 1;
     flex: 1;
-    height: 100vh;
     margin-left: 232px;
-    background-color: var(--ultra-light-gray-color, $ultra-light-gray-color);
     box-sizing: border-box;
     padding: 40px 20px;
   }

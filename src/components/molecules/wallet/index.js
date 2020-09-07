@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import './index.scss'
+
 const Wallet = (props) => {
   return (
     <div className='wallet-component-container'>
@@ -20,15 +22,15 @@ const Wallet = (props) => {
             <p>{props.gender}</p>
           </div>
         </div>
-        <div className='footer'>
-          <div className='flex-content'>
-            <p className='bold-text'>Alergias:</p>
-            <p>{props.name}</p>
-          </div>
-          <div className='flex-content'>
-            <p className='bold-text'>Grau de parentesco:</p>
-            <p>{props.name}</p>
-          </div>
+      </div>
+      <div className='footer'>
+        <div className='flex-content'>
+          <p className='bold-text'>Alergias:</p>
+          <p>{props.field}</p>
+        </div>
+        <div className='flex-content'>
+          <p className='bold-text'>Grau de parentesco:</p>
+          <p>{props.sfield}</p>
         </div>
       </div>
     </div>
@@ -39,7 +41,9 @@ Wallet.propTypes = {
   src: PropTypes.string,
   name: PropTypes.string,
   age: PropTypes.string,
-  gender: PropTypes.string
+  gender: PropTypes.string,
+  field: PropTypes.string,
+  sfield: PropTypes.string
 }
 
 export default Wallet

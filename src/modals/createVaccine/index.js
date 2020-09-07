@@ -55,6 +55,31 @@ const CreateVaccineModal = (props) => {
       method: validator.isEmpty,
       validWhen: false,
       message: `${t('empty-inter')}`
+    },
+
+    {
+      field: 'indication',
+      method: validator.isEmpty,
+      validWhen: false,
+      message: `${t('empty-inter')}`
+    },
+    {
+      field: 'application',
+      method: validator.isEmpty,
+      validWhen: false,
+      message: `${t('empty-inter')}`
+    },
+    {
+      field: 'effects',
+      method: validator.isEmpty,
+      validWhen: false,
+      message: `${t('empty-inter')}`
+    },
+    {
+      field: 'care',
+      method: validator.isEmpty,
+      validWhen: false,
+      message: `${t('empty-inter')}`
     }
   ])
 
@@ -64,7 +89,11 @@ const CreateVaccineModal = (props) => {
       description,
       dose,
       restricted,
-      interval
+      interval,
+      indication,
+      application,
+      effects,
+      care
     })
     setErrors(validation)
 
