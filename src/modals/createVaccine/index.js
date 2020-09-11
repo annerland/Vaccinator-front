@@ -108,7 +108,6 @@ const CreateVaccineModal = (props) => {
       payload.strViaAplicacao = application
       payload.strEfeitos = effects
       payload.strCuidados = care
-
       setLoading(true)
       try {
         await Api.Vaccine.post(payload)

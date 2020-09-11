@@ -31,7 +31,6 @@
     "i18next": "^17.0.11",
     "i18next-browser-languagedetector": "^3.0.3",
     "install": "^0.13.0",
-    "mocha": "^6.2.2",
     "npm": "^6.13.6",
     "postcss-loader": "^3.0.0",
     "prop-types": "^15.7.2",

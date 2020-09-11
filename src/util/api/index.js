@@ -3,6 +3,7 @@ import Auth from './auth'
 import { logOut } from 'Redux/auth/actions'
 import StoreRedux from 'Redux/'
 import Vaccine from './vaccine'
+import Persona from './persona'
 
 const httpWrapper = axios.create({
   baseURL: process.env.BASE_URL,
@@ -34,5 +35,6 @@ httpWrapper.interceptors.response.use(res => res, handleError)
 
 export default {
   Auth: new Auth(httpWrapper),
-  Vaccine: new Vaccine(httpWrapper)
+  Vaccine: new Vaccine(httpWrapper),
+  Persona: new Persona(httpWrapper)
 }

@@ -14,8 +14,8 @@ const Wallet = (props) => {
             <p>{props.name}</p>
           </div>
           <div className='flex-content'>
-            <p className='bold-text'>Idade:</p>
-            <p>{props.age}</p>
+            <p className='bold-text'>Nascimento:</p>
+            <p>{props.date}</p>
           </div>
           <div className='flex-content'>
             <p className='bold-text'>Gênero:</p>
@@ -25,11 +25,11 @@ const Wallet = (props) => {
       </div>
       <div className='footer'>
         <div className='flex-content'>
-          <p className='bold-text'>Alergias:</p>
+          <p className='bold-text'>CPF:</p>
           <p>{props.field}</p>
         </div>
         <div className='flex-content'>
-          <p className='bold-text'>Grau de parentesco:</p>
+          <p className='bold-text'>Endereço:</p>
           <p>{props.sfield}</p>
         </div>
       </div>
@@ -40,7 +40,7 @@ const Wallet = (props) => {
 Wallet.propTypes = {
   src: PropTypes.string,
   name: PropTypes.string,
-  age: PropTypes.string,
+  date: PropTypes.string,
   gender: PropTypes.string,
   field: PropTypes.string,
   sfield: PropTypes.string
