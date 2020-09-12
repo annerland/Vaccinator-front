@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route } from 'react-router-dom'
 import { QueryParamProvider } from 'use-query-params'
+import SucessModal from 'Modals/success'
 import { Provider } from 'react-redux'
 import App from './App'
 import store from 'Redux/'
@@ -16,6 +17,7 @@ const main = (
   <Provider store={store}>
     <BrowserRouter>
       <QueryParamProvider ReactRouterRoute={Route}>
+        <SucessModal />
         <App />
       </QueryParamProvider>
     </BrowserRouter>

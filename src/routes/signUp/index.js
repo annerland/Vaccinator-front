@@ -1,51 +1,116 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Input from 'Components/atoms/input'
-import { useTranslation } from 'react-i18next'
 import LoginTemplate from 'Templates'
 import { useHistory } from 'react-router-dom'
+import { FormValidator, validator } from 'Util/validator'
+import Modals from 'Util/modals'
+import Loading from 'Components/atoms/loading'
 import Button from '../../components/atoms/button'
+import { useDispatch } from 'react-redux'
+import Api from 'Util/api'
+
 import './index.scss'
 
 export default function SignUpRoute () {
+  const [email, setEmail] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [errors, setErrors] = useState('')
   const history = useHistory()
+  const dispatch = useDispatch()
   const redirect = () => {
     history.push('/')
   }
 
+  const formValidator = new FormValidator([
+    {
+      field: 'email',
+      method: validator.isEmpty,
+      validWhen: false,
+      message: 'Email inválido'
+    },
+    {
+      field: 'password',
+      method: validator.isEmpty,
+      validWhen: false,
+      message: 'Senha inválida'
+    },
+    {
+      field: 'confirmPassword',
+      method: validator.isEmpty,
+      validWhen: false,
+      message: 'Senha inválida'
+    }
+  ])
+
+  const submit = (e) => {
+    e.preventDefault()
+    const validation = formValidator.validate({ email, password, confirmPassword })
+    setErrors(validation)
+
+    if (validation.isValid) {
+      setLoading(true)
+      const payload = {}
+      payload.email = email
+      payload.password = password
+      payload.language = 'pt'
+      payload.password_confirmation = confirmPassword
+
+      setLoading(false)
+      Api.Auth.signUp(payload)
+        .then(res => {
+          setLoading(false)
+          Modals.Generic.sucess({
+            title: 'Registre-se',
+            text: 'Seu registro foi criado com sucesso! Acesse a plataforma agora.',
+            cancel: 'Cancelar',
+            continue: 'Ir',
+            handleAction: () => history.push('/login')
+          })
+        })
+        .catch(err => {
+          setLoading(false)
+          console.log(err)
+        })
+    }
+  }
+
   return (
     <div className='sign-up-route'>
+      <Loading show={loading} />
       <LoginTemplate>
         <h2>Sign up</h2>
         <div className='sign-up-grid'>
           <Input
-            label='Name'
-            placeholder='Name'
-          />
-          <Input
-            label='Surname'
-            placeholder='Surname'
-          />
-          <Input
             label='E-mail'
-            placeholder='teste@teste.com'
+            value={email}
+            onChange={setEmail}
+            placeholder='teste@gmail.com'
+            validator={errors.email}
           />
           <Input
+            type='password'
             label='Password'
-            placeholder='*****'
+            value={password}
+            onChange={setPassword}
+            placeholder='******'
+            validator={errors.password}
           />
+
           <Input
-            label='date of birth'
-            placeholder='13/11/1999'
-          />
-          <Input
-            label='CEP'
-            placeholder='8888-888'
+            type='password'
+            label='Confirm Password'
+            value={confirmPassword}
+            onChange={setConfirmPassword}
+            placeholder='******'
+            validator={errors.confirmPassword}
           />
         </div>
 
         <div className='sign-button'>
-          <Button type='decline' onClick={redirect}>Back</Button>
-          <Button>Register</Button>
+          <Button type='decline' onClick={() => redirect()}>Back</Button>
+          <Button onClick={submit}>Register</Button>
         </div>
 
       </LoginTemplate>

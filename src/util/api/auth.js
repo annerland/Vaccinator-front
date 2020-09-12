@@ -9,6 +9,12 @@ export default class Auth {
     return res.data
   }
 
+  async signUp (data) {
+    const url = '/auth/register'
+    const res = await this.httpWrapper.post(url, data)
+    return res.data
+  }
+
   logOut () {
     // Store.dispatch(logOut())
   }

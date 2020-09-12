@@ -1,20 +1,14 @@
 .sign-up-route {
   form {
-    margin-top: 64px;
-
-    .sign-up-grid {
-      box-sizing: border-box;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-
-      .main-input {
-        margin: 0 20px;
-      }
-    }
+    margin-top: 32px;
 
     .sign-button {
       display: flex;
       margin: 0 16px;
+
+      .button--decline {
+        margin-right: 16px;
+      }
 
       .button--primary {
         margin-left: auto;
