@@ -1,0 +1,45 @@
+@import '~Styles/theme';
+
+.establishments-route {
+  h1.title {
+    padding: 0 24px 18px;
+    border-bottom: 1px solid $mid-gray-color;
+    margin: 0 32px 24px;
+    font-size: 36px;
+    color: #333;
+  }
+
+  .establishments-header {
+    display: flex;
+    padding: 0 56px;
+    margin-bottom: 62px;
+
+    p {
+      margin-top: 11px;
+      font-size: 14px;
+      text-decoration: underline;
+      cursor: pointer;
+      color: $primary-color;
+
+      &:hover {
+        color: $primary-color-dark;
+      }
+    }
+
+    .search-container {
+      margin-right: 32px;
+
+      .css-2b097c-container {
+        min-width: 216px;
+
+        .css-1hwfws3 {
+          font-size: 12px;
+        }
+      }
+    }
+
+    .select {
+      display: flex;
+    }
+  }
+}

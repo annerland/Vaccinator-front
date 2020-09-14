@@ -1,0 +1,108 @@
+@import '~Styles/theme';
+
+.drop-down {
+  display: flex;
+  width: 91%;
+  padding: 12px 24px;
+  margin: 32px auto;
+  background-color: #fff;
+  border: 1px solid $light-gray-color;
+  align-items: center;
+  border-radius: 8px;
+  position: relative;
+
+  .info {
+    position: absolute;
+    top: 63px;
+    left: 0;
+    width: 96.8%;
+    height: 175px;
+    padding: 12px 24px;
+    margin: 32px auto;
+    background-color: #fff;
+    border: 1px solid $light-gray-color;
+    border-radius: 8px;
+
+    p.information {
+      font-size: 14px;
+      color: #333;
+
+      span {
+        text-decoration: underline;
+        color: $primary-color;
+        cursor: pointer;
+
+        &:hover {
+          color: $primary-color-dark;
+        }
+      }
+    }
+
+    .flex-text {
+      .field {
+        margin-left: 0;
+        margin-bottom: 16px;
+      }
+    }
+
+    p.title {
+      font-size: 16px;
+      margin: 8px 0 24px;
+      font-weight: 600;
+      color: $primary-color;
+    }
+  }
+
+  .flex-text-name {
+    .icon-hospital {
+      font-size: 32px;
+      display: flex;
+      color: $primary-color;
+      background-color: $ultra-light-gray-color;
+      padding: 13px;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .flex-text {
+    flex: 1;
+  }
+
+  .flex-text-name,
+  .flex-text {
+    display: flex;
+
+    .field-name {
+      width: 128px;
+    }
+
+    .field {
+      margin: 0 8px 0 16px;
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 600;
+      color: $black-color;
+    }
+
+    .field-name,
+    p {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      color: $gray-color;
+    }
+  }
+
+  .icon-arrow-up,
+  .icon-arrow-down {
+    color: $black-color;
+    display: flex;
+    font-size: 32px;
+    cursor: pointer;
+  }
+}

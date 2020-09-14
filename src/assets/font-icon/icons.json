@@ -1,10 +1,13 @@
 {
-    "card": "\\f101",
-    "close": "\\f102",
-    "home": "\\f103",
-    "map": "\\f104",
-    "news": "\\f105",
-    "search": "\\f106",
-    "vaccine": "\\f107",
-    "vaccines": "\\f108"
+    "arrow-down": "\\f101",
+    "arrow-up": "\\f102",
+    "card": "\\f103",
+    "close": "\\f104",
+    "home": "\\f105",
+    "hospital": "\\f106",
+    "map": "\\f107",
+    "news": "\\f108",
+    "search": "\\f109",
+    "vaccine": "\\f10a",
+    "vaccines": "\\f10b"
 }
