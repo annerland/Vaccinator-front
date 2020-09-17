@@ -33,8 +33,8 @@ export default function Vaccines () {
 
   const fetchVaccine = async () => {
     setLoading(true)
-    const res = await Api.Vaccine.list('pt')
-    setVaccine(res.vacinas.data)
+    const res = await Api.Vaccine.list()
+    setVaccine(res.vacinas)
     setOriginalData(res.vacinas.data)
     setLoading(false)
   }

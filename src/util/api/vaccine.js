@@ -3,8 +3,8 @@ export default class Vaccine {
     this.httpWrapper = httpWrapper
   }
 
-  async list (lang) {
-    const url = `/vaccines/${lang}`
+  async list () {
+    const url = '/vaccines'
     const res = await this.httpWrapper.get(url)
     return res.data
   }

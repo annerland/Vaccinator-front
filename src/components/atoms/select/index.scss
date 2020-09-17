@@ -2,6 +2,7 @@
 
 .select {
   margin-bottom: 8px;
+  display: block;
 
   .title-section {
     display: flex;
@@ -10,10 +11,10 @@
     position: relative;
 
     label {
-      margin: 8px 0;
-      display: inline-block;
+      font-size: $body-font-size;
       color: $black-color;
-      vertical-align: middle;
+      margin: 8px 0;
+      font-weight: 600;
     }
   }
 

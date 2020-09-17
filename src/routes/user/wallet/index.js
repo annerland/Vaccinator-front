@@ -23,7 +23,7 @@ export default function WalletUser () {
   const fetchPersons = async () => {
     await Api.Persona.list()
       .then((res) => {
-        setPersons(res.pessoas.data)
+        setPersons(res.pessoas)
       })
   }
 

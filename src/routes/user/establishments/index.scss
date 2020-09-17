@@ -38,8 +38,10 @@
       }
     }
 
-    .select {
+    .button-container {
       display: flex;
+      align-items: center;
+      margin-top: 18px;
     }
   }
 }

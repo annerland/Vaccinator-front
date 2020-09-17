@@ -12,18 +12,20 @@ const DropDown = (props) => {
 
   return (
     <div className='drop-down'>
-      <div onClick={props.onClick} className='flex-text-name'>
-        <i className='icon-hospital' />
-        <p className='field'>Unidade:</p>
-        <p className='field-name'>{props.name}</p>
-      </div>
+      <div className='list-drop'>
+        <div onClick={props.onClick} className='flex-text-name'>
+          <i className='icon-hospital' />
+          <p className='field'>Unidade:</p>
+          <p className='field-name'>{props.name}</p>
+        </div>
 
-      <div onClick={props.onClick} className='flex-text'>
-        <p className='field'>Endereço:</p>
-        <p>{props.adress}</p>
-      </div>
+        <div onClick={props.onClick} className='flex-text'>
+          <p className='field'>Endereço:</p>
+          <p>{props.adress}</p>
+        </div>
 
-      <i onClick={() => showInfo()} className={show ? 'icon-arrow-up' : 'icon-arrow-down'} />
+        <i onClick={() => showInfo()} className={show ? 'icon-arrow-up' : 'icon-arrow-down'} />
+      </div>
 
       {show &&
         <div className='info'>
