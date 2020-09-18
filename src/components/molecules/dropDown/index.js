@@ -13,13 +13,13 @@ const DropDown = (props) => {
   return (
     <div className='drop-down'>
       <div className='list-drop'>
-        <div onClick={props.onClick} className='flex-text-name'>
+        <div className='flex-text-name'>
           <i className='icon-hospital' />
           <p className='field'>Unidade:</p>
           <p className='field-name'>{props.name}</p>
         </div>
 
-        <div onClick={props.onClick} className='flex-text'>
+        <div className='flex-text'>
           <p className='field'>Endereço:</p>
           <p>{props.adress}</p>
         </div>
@@ -46,7 +46,7 @@ const DropDown = (props) => {
             <p>{props.cep}</p>
           </div>
 
-          <p className='information'>Informe aos usuários que há outras vacinas disponíveis <span>aqui</span></p>
+          <p className='information'>Informe aos usuários que há outras vacinas disponíveis <span onClick={props.onClick}>aqui</span></p>
         </div>}
     </div>
   )

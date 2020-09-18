@@ -120,6 +120,7 @@ const CreateVaccineModal = (props) => {
           handleAction: () => Modals.Generic.hide()
         })
       } catch (err) {
+        setLoading(false)
         console.log(err)
       }
       setLoading(false)

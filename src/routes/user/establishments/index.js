@@ -1,8 +1,9 @@
 import Select from 'Components/atoms/select'
-import Search from 'Components/atoms/search'
 import Button from 'Components/atoms/button'
 import Input from 'Components/atoms/input'
 import DropDown from 'Components/molecules/dropDown'
+import AddVaccineEstablishment from 'Modals/addVaccineEstablishment'
+import Modals from 'Util/modals'
 import React, { useState, useEffect } from 'react'
 import Api from 'Util/api'
 
@@ -20,19 +21,25 @@ export default function EstablishmentsUser () {
   const fetchEstablishments = () => {
     Api.Establishment.list()
       .then((res) => {
-        setEstablishments(res[0].data)
-        setOriginalData(res[0].data)
+        setEstablishments(res.establishments)
+        setOriginalData(res.establishments)
       })
       .catch(err => console.log(err))
   }
 
   const fetchVaccines = async () => {
     const res = await Api.Vaccine.list()
+    // eslint-disable-next-line prefer-const
     let array = res.vacinas.map(elm => {
       return { value: elm.id, label: elm.strNome }
     })
 
     setOptions(array)
+  }
+
+  const addVaccine = (elm) => {
+    console.log(elm)
+    Modals.Generic.show('add-vaccine-establishment', { unity: elm })
   }
 
   const search = async () => {
@@ -104,9 +111,12 @@ export default function EstablishmentsUser () {
             name={elm.strNomeUnidade}
             adress={elm.strEndereco}
             cep={elm.strCep}
+            vaccine={elm.vaccines.map(elm => elm.strNome).join(', ')}
+            onClick={() => addVaccine(elm)}
             district={elm.strBairro}
           />)
       })}
+      <AddVaccineEstablishment onChange={fetchEstablishments} />
     </div>
   )
 }

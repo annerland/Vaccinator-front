@@ -4,6 +4,7 @@ import { logOut } from 'Redux/auth/actions'
 import StoreRedux from 'Redux/'
 import Vaccine from './vaccine'
 import Persona from './persona'
+import News from './news.js'
 import Establishment from './establishment'
 
 const httpWrapper = axios.create({
@@ -38,5 +39,6 @@ export default {
   Auth: new Auth(httpWrapper),
   Vaccine: new Vaccine(httpWrapper),
   Persona: new Persona(httpWrapper),
-  Establishment: new Establishment(httpWrapper)
+  Establishment: new Establishment(httpWrapper),
+  News: new News(httpWrapper)
 }

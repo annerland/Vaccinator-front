@@ -9,7 +9,7 @@ export default class Establishment {
     return res.data
   }
 
-  async createVaccine (data) {
+  async addVaccine (data) {
     const url = '/establishment/vaccine'
     const res = await this.httpWrapper.post(url, data)
     return res.data
