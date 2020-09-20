@@ -5,26 +5,35 @@ import ListItem from 'Components/atoms/listItem'
 import CreateVaccineModal from 'Modals/createVaccine'
 import { useHistory } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { truncate } from 'Util/helpers'
 import { search } from 'fast-fuzzy'
 import Loading from 'Components/atoms/loading'
 import Modals from 'Util/modals'
+import pagination from 'Util/hooks/pagination'
+import PaginationComponent from 'Components/atoms/paginationComponent'
 import Api from 'Util/api'
 
 import './index.scss'
 
 export default function Vaccines () {
-  const [vaccine, setVaccine] = useState([])
   const [loading, setLoading] = useState(false)
   const { t } = useTranslation('Vaccines')
   const [originalData, setOriginalData] = useState([])
   const history = useHistory()
+  const [
+    page,
+    pages,
+    list,
+    setPage,
+    setContent
+  ] = pagination(5)
 
   const handleOnSearch = (query) => {
-    if (!query) return setVaccine(originalData)
+    if (!query) return setContent(originalData)
     if (query === null) return ''
 
     const res = search(query || '', originalData, { keySelector: (obj) => obj.strNome || '' })
-    setVaccine(res)
+    setContent(res)
   }
 
   useEffect((query) => {
@@ -34,8 +43,8 @@ export default function Vaccines () {
   const fetchVaccine = async () => {
     setLoading(true)
     const res = await Api.Vaccine.list()
-    setVaccine(res.vacinas)
-    setOriginalData(res.vacinas.data)
+    setContent(res.vacinas)
+    setOriginalData(res.vacinas)
     setLoading(false)
   }
 
@@ -85,15 +94,20 @@ export default function Vaccines () {
       </div>
 
       <Loading show={loading} />
-      {vaccine.map(elm =>
+      {list.map(elm =>
         <ListItem
           key={elm.id}
           onClick={() => redirect(elm)}
           name={elm.strNome}
-          description={elm.strSobre}
+          description={truncate(elm.strSobre, 70)}
           delete={() => deleteVaccine(elm.id)}
         />
       )}
+      <PaginationComponent
+        total={pages}
+        current={page}
+        onChange={setPage}
+      />
       <CreateVaccineModal onChange={fetchVaccine} />
     </div>
   )

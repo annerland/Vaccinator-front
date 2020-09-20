@@ -1,10 +1,10 @@
 @font-face {
     font-family: "icons";
-    src: url("./icons.eot?e4623aafc7ca3a00ebac77e375ba178f?#iefix") format("embedded-opentype"),
-url("./icons.woff2?e4623aafc7ca3a00ebac77e375ba178f") format("woff2"),
-url("./icons.woff?e4623aafc7ca3a00ebac77e375ba178f") format("woff"),
-url("./icons.ttf?e4623aafc7ca3a00ebac77e375ba178f") format("truetype"),
-url("./icons.svg?e4623aafc7ca3a00ebac77e375ba178f#icons") format("svg");
+    src: url("./icons.eot?f1c5b176004b604e8b9bc9468745f6fb?#iefix") format("embedded-opentype"),
+url("./icons.woff2?f1c5b176004b604e8b9bc9468745f6fb") format("woff2"),
+url("./icons.woff?f1c5b176004b604e8b9bc9468745f6fb") format("woff"),
+url("./icons.ttf?f1c5b176004b604e8b9bc9468745f6fb") format("truetype"),
+url("./icons.svg?f1c5b176004b604e8b9bc9468745f6fb#icons") format("svg");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -30,24 +30,30 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 .icon-close:before {
     content: "\f104";
 }
-.icon-home:before {
+.icon-double-arrow-left:before {
     content: "\f105";
 }
-.icon-hospital:before {
+.icon-double-arrow-right:before {
     content: "\f106";
 }
-.icon-map:before {
+.icon-home:before {
     content: "\f107";
 }
-.icon-news:before {
+.icon-hospital:before {
     content: "\f108";
 }
-.icon-search:before {
+.icon-map:before {
     content: "\f109";
 }
-.icon-vaccine:before {
+.icon-news:before {
     content: "\f10a";
 }
-.icon-vaccines:before {
+.icon-search:before {
     content: "\f10b";
+}
+.icon-vaccine:before {
+    content: "\f10c";
+}
+.icon-vaccines:before {
+    content: "\f10d";
 }

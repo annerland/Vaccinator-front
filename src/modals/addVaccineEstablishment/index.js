@@ -20,7 +20,7 @@ const AddVaccineEstablishment = (props) => {
   const [loading, setLoading] = useState(false)
   const [options, setOptions] = useState({})
   const [unity, setUnity] = useState()
-  const [vaccine, setVaccine] = useState('')
+  const [vaccine, setVaccine] = useState()
   const modal = useSelector(({ modals }) => modals.generic)
 
   const fetchVaccines = async () => {
@@ -65,7 +65,7 @@ const AddVaccineEstablishment = (props) => {
     if (validation.isValid) {
       const data = {}
       data.fkUnidade = unity
-      data.fkVacina = vaccine.value
+      data.fkVacina = vaccine.value.toString()
       data.dtAplicacao = application
       data.boolStatus = '1'
       data.boolAtivo = '1'

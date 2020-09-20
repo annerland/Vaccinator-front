@@ -1,22 +1,33 @@
 import React, { useState } from 'react'
 import Search from 'Components/atoms/search'
+import { truncate } from 'Util/helpers'
+import pagination from 'Util/hooks/pagination'
+import PaginationComponent from 'Components/atoms/paginationComponent'
 import Api from 'Util/api'
+import Loading from 'Components/atoms/loading'
 
 import './index.scss'
 
 export default function NewsUser () {
-  const [news, setNews] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [
+    page,
+    pages,
+    list,
+    setPage,
+    setContent
+  ] = pagination(5)
 
   const fetchNews = async () => {
+    setLoading(true)
     const res = await Api.News.list()
-    setNews(res[0])
+    setContent(res[0])
+    setLoading(false)
   }
 
   useState(() => {
     fetchNews()
   }, [])
-
-  console.log(news)
 
   return (
     <div className='news-content'>
@@ -31,18 +42,25 @@ export default function NewsUser () {
       </div>
 
       <div className='news'>
-        {news.map(elm => {
+        <Loading show={loading} />
+        {list.map(elm => {
           return (
             <div key={elm.id} className='content'>
               <h1>{elm.strTitulo}</h1>
               <div
                 className='item'
-                dangerouslySetInnerHTML={{ __html: elm.strDescricao }}
+                dangerouslySetInnerHTML={{ __html: truncate(elm.strDescricao, 1200) }}
               />
             </div>
           )
         })}
       </div>
+
+      <PaginationComponent
+        total={pages}
+        current={page}
+        onChange={setPage}
+      />
     </div>
   )
 }

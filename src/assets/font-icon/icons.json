@@ -3,11 +3,13 @@
     "arrow-up": "\\f102",
     "card": "\\f103",
     "close": "\\f104",
-    "home": "\\f105",
-    "hospital": "\\f106",
-    "map": "\\f107",
-    "news": "\\f108",
-    "search": "\\f109",
-    "vaccine": "\\f10a",
-    "vaccines": "\\f10b"
+    "double-arrow-left": "\\f105",
+    "double-arrow-right": "\\f106",
+    "home": "\\f107",
+    "hospital": "\\f108",
+    "map": "\\f109",
+    "news": "\\f10a",
+    "search": "\\f10b",
+    "vaccine": "\\f10c",
+    "vaccines": "\\f10d"
 }

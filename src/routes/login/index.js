@@ -54,7 +54,7 @@ export default function LoginRoute () {
         .then(res => {
           setLoading(false)
           dispatch(signIn(res))
-          history.push('/user/home')
+          history.push('/user/wallets')
         })
         .catch(err => {
           setLoading(false)

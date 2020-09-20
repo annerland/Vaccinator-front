@@ -4,25 +4,35 @@ import Input from 'Components/atoms/input'
 import DropDown from 'Components/molecules/dropDown'
 import AddVaccineEstablishment from 'Modals/addVaccineEstablishment'
 import Modals from 'Util/modals'
+import pagination from 'Util/hooks/pagination'
+import PaginationComponent from 'Components/atoms/paginationComponent'
 import React, { useState, useEffect } from 'react'
+import Loading from 'Components/atoms/loading'
 import Api from 'Util/api'
 
 import './index.scss'
 
 export default function EstablishmentsUser () {
-  const [establishments, setEstablishments] = useState([])
-  const [originalData, setOriginalData] = useState([])
   const [cep, setCep] = useState('')
   const [options, setOptions] = useState({})
-  const [vaccine, setVaccine] = useState('')
+  const [vaccine, setVaccine] = useState()
   const [adress, setAdress] = useState('')
+  const [loading, setLoading] = useState(false)
   const [milles, setMilles] = useState('')
+  const [
+    page,
+    pages,
+    list,
+    setPage,
+    setContent
+  ] = pagination(5)
 
   const fetchEstablishments = () => {
+    setLoading(true)
     Api.Establishment.list()
       .then((res) => {
-        setEstablishments(res.establishments)
-        setOriginalData(res.establishments)
+        setContent(res.establishments)
+        setLoading(false)
       })
       .catch(err => console.log(err))
   }
@@ -38,16 +48,12 @@ export default function EstablishmentsUser () {
   }
 
   const addVaccine = (elm) => {
-    console.log(elm)
     Modals.Generic.show('add-vaccine-establishment', { unity: elm })
   }
 
   const search = async () => {
-    if (vaccine !== null) {
-      setEstablishments(originalData.filter(elm => elm.id === vaccine.value))
-    } else fetchEstablishments()
     const res = await Api.Establishment.getAll(cep, vaccine.value, milles, adress)
-    setEstablishments(res)
+    setContent(res)
   }
 
   useEffect(() => {
@@ -103,19 +109,24 @@ export default function EstablishmentsUser () {
           <Button onClick={() => search()}>Enviar</Button>
         </div>
       </div>
-
-      {establishments.map(elm => {
+      <Loading show={loading} />
+      {list.map(elm => {
         return (
           <DropDown
             key={elm.id}
             name={elm.strNomeUnidade}
             adress={elm.strEndereco}
             cep={elm.strCep}
-            vaccine={elm.vaccines.map(elm => elm.strNome).join(', ')}
+            vaccine={(elm.vaccines || []).map(elm => elm.strNome).join(', ') || <i>Sem informação</i>}
             onClick={() => addVaccine(elm)}
             district={elm.strBairro}
           />)
       })}
+      <PaginationComponent
+        total={pages}
+        current={page}
+        onChange={setPage}
+      />
       <AddVaccineEstablishment onChange={fetchEstablishments} />
     </div>
   )

@@ -23,10 +23,8 @@ const handleRequest = config => {
 }
 
 const handleError = error => {
-  if (error.response.status === 401) {
-    // window.location.replace('/')
-    console.log('401')
-    // StoreRedux.dispatch(logOut())
+  if (error.response.status === 401 && !/login/.test(error.config.url)) {
+    window.location.replace('/login')
   }
 
   return Promise.reject(error)
