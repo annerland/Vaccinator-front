@@ -1,10 +1,10 @@
 @font-face {
     font-family: "icons";
-    src: url("./icons.eot?f1c5b176004b604e8b9bc9468745f6fb?#iefix") format("embedded-opentype"),
-url("./icons.woff2?f1c5b176004b604e8b9bc9468745f6fb") format("woff2"),
-url("./icons.woff?f1c5b176004b604e8b9bc9468745f6fb") format("woff"),
-url("./icons.ttf?f1c5b176004b604e8b9bc9468745f6fb") format("truetype"),
-url("./icons.svg?f1c5b176004b604e8b9bc9468745f6fb#icons") format("svg");
+    src: url("./icons.eot?c6f24905ac4d95bb69ce2144dce601c5?#iefix") format("embedded-opentype"),
+url("./icons.woff2?c6f24905ac4d95bb69ce2144dce601c5") format("woff2"),
+url("./icons.woff?c6f24905ac4d95bb69ce2144dce601c5") format("woff"),
+url("./icons.ttf?c6f24905ac4d95bb69ce2144dce601c5") format("truetype"),
+url("./icons.svg?c6f24905ac4d95bb69ce2144dce601c5#icons") format("svg");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -36,24 +36,27 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 .icon-double-arrow-right:before {
     content: "\f106";
 }
-.icon-home:before {
+.icon-edit:before {
     content: "\f107";
 }
-.icon-hospital:before {
+.icon-home:before {
     content: "\f108";
 }
-.icon-map:before {
+.icon-hospital:before {
     content: "\f109";
 }
-.icon-news:before {
+.icon-map:before {
     content: "\f10a";
 }
-.icon-search:before {
+.icon-news:before {
     content: "\f10b";
 }
-.icon-vaccine:before {
+.icon-search:before {
     content: "\f10c";
 }
-.icon-vaccines:before {
+.icon-vaccine:before {
     content: "\f10d";
+}
+.icon-vaccines:before {
+    content: "\f10e";
 }

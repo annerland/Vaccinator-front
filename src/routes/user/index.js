@@ -7,7 +7,8 @@ import VaccinesUser from 'Routes/user/vaccines/list'
 import ShowVaccine from 'Routes/user/vaccines/show'
 import EstablishmentsUser from 'Routes/user/establishments'
 import WalletUser from 'Routes/user/wallet'
-import NewsUser from 'Routes/user/news'
+import NewsUser from 'Routes/user/news/list'
+import ShowNews from 'Routes/user/news/show'
 
 import './index.scss'
 
@@ -24,7 +25,8 @@ export default function UserRoutes () {
             <Route path='/user/vaccines/:id' component={ShowVaccine} />
             <Route path='/user/establishments' component={EstablishmentsUser} />
             <Route path='/user/wallets' component={WalletUser} />
-            <Route path='/user/news' component={NewsUser} />
+            <Route exact path='/user/news' component={NewsUser} />
+            <Route path='/user/news/:id' component={ShowNews} />
           </Switch>
         </div>
       </div>

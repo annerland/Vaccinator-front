@@ -6,6 +6,7 @@ import './index.scss'
 const Wallet = (props) => {
   return (
     <div className='wallet-component-container'>
+      <i className='icon-edit' onClick={props.edit} />
       <div className='header'>
         <img src={props.src} />
         <div className='content'>
@@ -28,9 +29,9 @@ const Wallet = (props) => {
           <p className='bold-text'>CPF:</p>
           <p>{props.field}</p>
         </div>
-        <div className='flex-content'>
-          <p className='bold-text'>Endereço:</p>
-          <p>{props.sfield}</p>
+        <div className='flex-content-buttons'>
+          <p onClick={props.watch}>Visualizar carteira</p>
+          <p onClick={props.add}>Inserir vacina</p>
         </div>
       </div>
     </div>
@@ -43,7 +44,9 @@ Wallet.propTypes = {
   date: PropTypes.string,
   gender: PropTypes.string,
   field: PropTypes.string,
-  sfield: PropTypes.string
+  edit: PropTypes.func,
+  add: PropTypes.func,
+  watch: PropTypes.func
 }
 
 export default Wallet

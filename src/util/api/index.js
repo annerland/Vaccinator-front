@@ -6,6 +6,8 @@ import Vaccine from './vaccine'
 import Persona from './persona'
 import News from './news.js'
 import Establishment from './establishment'
+import Wallet from './wallet'
+import Schedule from './schedules'
 
 const httpWrapper = axios.create({
   baseURL: process.env.BASE_URL,
@@ -38,5 +40,7 @@ export default {
   Vaccine: new Vaccine(httpWrapper),
   Persona: new Persona(httpWrapper),
   Establishment: new Establishment(httpWrapper),
-  News: new News(httpWrapper)
+  News: new News(httpWrapper),
+  Wallet: new Wallet(httpWrapper),
+  Schedule: new Schedule(httpWrapper)
 }

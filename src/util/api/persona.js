@@ -14,4 +14,10 @@ export default class Persona {
     const res = await this.httpWrapper.post(url, data)
     return res.data
   }
+
+  async getOne (id) {
+    const url = `/api/persons/id/${id}`
+    const res = await this.httpWrapper.get(url)
+    return res.data
+  }
 }

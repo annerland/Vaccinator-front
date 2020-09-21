@@ -8,20 +8,23 @@ import { useTranslation } from 'react-i18next'
 import Loading from 'Components/atoms/loading'
 import Modals from 'Util/modals'
 import Api from 'Util/api'
+import StoreRedux from 'Redux/'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 
 import { useSelector } from 'react-redux'
-import { path } from 'ramda'
+import { path, set } from 'ramda'
 
-const AddVaccineEstablishment = (props) => {
+const AddVaccineWallet = (props) => {
   const [application, setApplication] = useState('')
   const [errors, setErrors] = useState('')
+  const [schedule, setSchedule] = useState('')
   const [loading, setLoading] = useState(false)
   const [options, setOptions] = useState({})
-  const [unity, setUnity] = useState()
+  const [data, setData] = useState()
   const [vaccine, setVaccine] = useState()
   const modal = useSelector(({ modals }) => modals.generic)
+  const { user } = StoreRedux.getState()
 
   const fetchVaccines = async () => {
     const res = await Api.Vaccine.list()
@@ -54,7 +57,7 @@ const AddVaccineEstablishment = (props) => {
   ])
 
   useEffect(() => {
-    setUnity(path(['body', 'unity', 'id'], modal))
+    setData(path(['body', 'data', 'id'], modal))
     resetFields()
   }, [modal])
 
@@ -63,19 +66,20 @@ const AddVaccineEstablishment = (props) => {
     setErrors(validation)
 
     if (validation.isValid) {
-      const data = {}
-      data.fkUnidade = unity
-      data.fkVacina = vaccine.value
-      data.dtAplicacao = application
-      data.boolStatus = '1'
-      data.boolAtivo = '1'
+      const payload = {}
+      payload.fkPessoa = path(['id'], data)
+      payload.fkVacina = vaccine.value
+      payload.fkUser = user.id
+      payload.dtAgendamento = schedule
+      payload.dtAplicacao = application
+      payload.boolAtivo = '1'
       moment(application).format('YYYY-MM-DD')
       console.log(application)
 
       try {
-        await Api.Establishment.addVaccine(data)
-        props.onChange()
         setLoading(true)
+        await Api.Wallet.post(payload)
+        props.onChange()
         resetFields()
 
         Modals.Generic.sucess({
@@ -97,7 +101,7 @@ const AddVaccineEstablishment = (props) => {
   }, [])
 
   return (
-    <Modal id='add-vaccine-establishment' width={532}>
+    <Modal id='add-vaccine-wallet' width={432}>
       <Loading show={loading} />
       <div className='modal-container'>
         <h2 className='title'>Adicionar vacina</h2>
@@ -117,14 +121,22 @@ const AddVaccineEstablishment = (props) => {
           validator={errors.application}
         />
 
+        <Input
+          label='Data de agêndamento'
+          onChange={setSchedule}
+          value={schedule}
+          placeholder='Ex. 13/11/2020'
+          validator={errors.application}
+        />
+
         <Button onClick={() => submit()}>Enviar</Button>
       </div>
     </Modal>
   )
 }
 
-AddVaccineEstablishment.propTypes = {
+AddVaccineWallet.propTypes = {
   onChange: PropTypes.func
 }
 
-export default AddVaccineEstablishment
+export default AddVaccineWallet

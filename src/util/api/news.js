@@ -8,4 +8,10 @@ export default class News {
     const res = await this.httpWrapper.get(url)
     return res.data
   }
+
+  async getOne (id) {
+    const url = `/news/${id}`
+    const res = await this.httpWrapper.get(url)
+    return res.data
+  }
 }

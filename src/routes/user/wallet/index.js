@@ -5,7 +5,10 @@ import Wallet from 'Components/molecules/wallet'
 import Button from 'Components/atoms/button'
 import moment from 'moment'
 import Modals from 'Util/modals'
+import ShowWalletModal from 'Modals/showWallet'
 import CreateWalletModal from 'Modals/createWallet'
+import AddVaccineWallet from 'Modals/addVaccineWallet'
+import EditWalletModal from 'Modals/editWallet'
 import Api from 'Util/api'
 import './index.scss'
 
@@ -14,6 +17,18 @@ export default function WalletUser () {
 
   const createWallet = () => {
     Modals.Generic.show('create-wallet')
+  }
+
+  const showWallet = (elm) => {
+    Modals.Generic.show('show-wallet', { data: elm })
+  }
+
+  const addVaccine = (elm) => {
+    Modals.Generic.show('add-vaccine-wallet', { data: elm })
+  }
+
+  const editWallet = (elm) => {
+    Modals.Generic.show('edit-wallet', { data: elm })
   }
 
   useEffect(() => {
@@ -45,15 +60,20 @@ export default function WalletUser () {
             <Wallet
               key={person.id}
               src={Neo}
+              edit={() => editWallet(person)}
+              watch={() => showWallet(person)}
+              add={() => addVaccine(person)}
               name={person.strNome}
               date={moment(person.dtNascimento).format('DD/MM/YYYY')}
               gender={(person.charGenero).toUpperCase()}
               field={person.strCpf}
-              sfield={person.strEndereco}
             />
           )
         })}
       </div>
+      <EditWalletModal />
+      <ShowWalletModal />
+      <AddVaccineWallet />
       <CreateWalletModal onChange={fetchPersons} />
     </div>
   )

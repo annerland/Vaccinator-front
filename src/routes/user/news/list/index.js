@@ -5,11 +5,14 @@ import pagination from 'Util/hooks/pagination'
 import PaginationComponent from 'Components/atoms/paginationComponent'
 import Api from 'Util/api'
 import Loading from 'Components/atoms/loading'
+import { useHistory } from 'react-router-dom'
 
-import './index.scss'
+// eslint-disable-next-line import/no-absolute-path
+import '../index.scss'
 
 export default function NewsUser () {
   const [loading, setLoading] = useState(false)
+  const history = useHistory()
   const [
     page,
     pages,
@@ -29,6 +32,10 @@ export default function NewsUser () {
     fetchNews()
   }, [])
 
+  const redirect = (elm) => {
+    history.push(`/user/news/${elm.id}`)
+  }
+
   return (
     <div className='news-content'>
       <h1 className='title'>Notícias</h1>
@@ -46,10 +53,10 @@ export default function NewsUser () {
         {list.map(elm => {
           return (
             <div key={elm.id} className='content'>
-              <h1>{elm.strTitulo}</h1>
+              <h1 onClick={() => redirect(elm)}>{elm.strTitulo}</h1>
               <div
                 className='item'
-                dangerouslySetInnerHTML={{ __html: truncate(elm.strDescricao, 1200) }}
+                dangerouslySetInnerHTML={{ __html: truncate(elm.strDescricao, 1000) }}
               />
             </div>
           )
