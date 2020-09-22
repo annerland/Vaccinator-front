@@ -44,8 +44,8 @@ export default function HomePage () {
       <div className='call-to-action'>
         <div className='flex-div'>
           <h1>{t('title')}</h1>
-          <img src={BR} onClick={() => changeLanguage('pt')} />
-          <img src={US} onClick={() => changeLanguage('en')} />
+          <img src={BR} onClick={() => changeLanguage('pt')} alt='br-flag' />
+          <img src={US} onClick={() => changeLanguage('en')} alt='us-flag' />
         </div>
 
         <p>{t('resume')}</p>

@@ -24,7 +24,7 @@ const AddVaccineWallet = (props) => {
   const [data, setData] = useState()
   const [vaccine, setVaccine] = useState()
   const modal = useSelector(({ modals }) => modals.generic)
-  const { user } = StoreRedux.getState()
+  const { auth } = StoreRedux.getState()
 
   const fetchVaccines = async () => {
     const res = await Api.Vaccine.list()
@@ -57,7 +57,7 @@ const AddVaccineWallet = (props) => {
   ])
 
   useEffect(() => {
-    setData(path(['body', 'data', 'id'], modal))
+    setData(path(['body', 'data'], modal))
     resetFields()
   }, [modal])
 
@@ -69,7 +69,7 @@ const AddVaccineWallet = (props) => {
       const payload = {}
       payload.fkPessoa = path(['id'], data)
       payload.fkVacina = vaccine.value
-      payload.fkUser = user.id
+      payload.fkUser = auth.id
       payload.dtAgendamento = schedule
       payload.dtAplicacao = application
       payload.boolAtivo = '1'
