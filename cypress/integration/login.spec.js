@@ -81,5 +81,9 @@ describe('Primeira visita', () => {
     it('Enviando dados', () => {
       cy.get('.modal-container > .button').click()
     })
+
+    it('OK', () => {
+      cy.get('.user-routes > .generic-modal > .generic-body > .modal-actions > .button').click()
+    })
   })
 })
