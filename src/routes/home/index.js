@@ -8,13 +8,17 @@ import { useHistory } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import BR from 'Assets/brflag.png'
 import US from 'Assets/usflag.png'
+import StoreRedux from 'Redux/'
 import i18next from 'i18next'
 
 import './index.scss'
 
 export default function HomePage () {
+  const { auth } = StoreRedux.getState()
   const { t } = useTranslation('Home')
   const history = useHistory()
+
+  if (auth.token) return window.location.replace('/user/wallets')
 
   const redirectLogin = () => {
     history.push('/login')

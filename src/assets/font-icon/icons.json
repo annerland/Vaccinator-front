@@ -6,11 +6,12 @@
     "double-arrow-left": "\\f105",
     "double-arrow-right": "\\f106",
     "edit": "\\f107",
-    "home": "\\f108",
-    "hospital": "\\f109",
-    "map": "\\f10a",
-    "news": "\\f10b",
-    "search": "\\f10c",
-    "vaccine": "\\f10d",
-    "vaccines": "\\f10e"
+    "exit": "\\f108",
+    "home": "\\f109",
+    "hospital": "\\f10a",
+    "map": "\\f10b",
+    "news": "\\f10c",
+    "search": "\\f10d",
+    "vaccine": "\\f10e",
+    "vaccines": "\\f10f"
 }

@@ -1,6 +1,5 @@
 import axios from 'axios'
 import Auth from './auth'
-import { logOut } from 'Redux/auth/actions'
 import StoreRedux from 'Redux/'
 import Vaccine from './vaccine'
 import Persona from './persona'
