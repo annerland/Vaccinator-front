@@ -4,6 +4,7 @@ import { truncate } from 'Util/helpers'
 import pagination from 'Util/hooks/pagination'
 import PaginationComponent from 'Components/atoms/paginationComponent'
 import Api from 'Util/api'
+import { useTranslation } from 'react-i18next'
 import Loading from 'Components/atoms/loading'
 import { useHistory } from 'react-router-dom'
 
@@ -12,6 +13,7 @@ import '../index.scss'
 
 export default function NewsUser () {
   const [loading, setLoading] = useState(false)
+  const { t } = useTranslation('News')
   const history = useHistory()
   const [
     page,
@@ -38,12 +40,12 @@ export default function NewsUser () {
 
   return (
     <div className='news-content'>
-      <h1 className='title'>Notícias</h1>
+      <h1 className='title'>{t('title')}</h1>
 
       <div className='news-header'>
         <div className='search-container'>
           <Search
-            placeholder='Pesquisar notícia'
+            placeholder={t('search')}
           />
         </div>
       </div>

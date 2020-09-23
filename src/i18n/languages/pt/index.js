@@ -11,7 +11,8 @@ const keys = {
     vaccines: 'Vacinas',
     wallets: 'Carteiras',
     establish: 'Estabelecimentos',
-    news: 'Notícias'
+    news: 'Notícias',
+    exit: 'Sair'
   },
   CreateVaccineModal: {
     title: 'Criar Vacina',
@@ -30,7 +31,15 @@ const keys = {
     'empty-desc': 'Descrição vazia',
     'empty-dose': 'Dose vazia',
     'empty-rest': 'Restrição vazia',
-    'empty-inter': 'Intervalos entre doses vazio'
+    'empty-inter': 'Intervalos entre doses vazio',
+    indications: 'Indicações',
+    effects: 'Efeitos',
+    care: 'Cuidados',
+    application: 'Via de aplicação',
+    'edit-vaccine': 'Editar Vacina',
+    'edit-vaccine-text': 'Você tem certeza? Os dados serão alterados',
+    continue: 'Continuar',
+    cancel: 'Cancelar'
   },
   ResetPassword: {
     title: 'Resetar sua senha',
@@ -54,7 +63,14 @@ const keys = {
     sign: 'Registre-se',
     forgot: 'Esqueci minha senha',
     invalidPass: 'Senha inválida',
-    invalidUser: 'Usuário inválido'
+    invalidUser: 'Usuário inválido',
+    welcome: 'Bem-vindo!',
+    'confirm-password': 'Confirmar senha',
+    back: 'Voltar',
+    send: 'Enviar',
+    'text-sign-up': 'Seu registro foi criado com sucesso! Verifique seu email para ativar seu registro',
+    cancel: 'Cancelar',
+    continue: 'Continuar'
   },
   Vaccines: {
     title: 'Vacinas',
@@ -64,6 +80,77 @@ const keys = {
     text: 'Deseja realmente deletar essa vacina?',
     cancel: 'Cancelar',
     continue: 'Continuar'
+  },
+  Establishments: {
+    title: 'Estabelecimentos',
+    'label-cep': 'Digite seu CEP',
+    'label-address': 'Digite seu Endereço',
+    'label-distance': 'Digite a distância em km',
+    'label-vaccine': 'Selecione a vacina',
+    send: 'Enviar',
+    name: 'Nome do estabelecimento',
+    address: 'Endereço',
+    info: 'Informações adicionais',
+    vaccines: 'Vacinas disponíveis',
+    district: 'Bairro',
+    cep: 'CEP',
+    'info-text': 'Avise outros usuários que há vacinas disponíveis',
+    here: 'aqui',
+    'add-vaccine': 'Adicionar vacina',
+    'add-vaccine-text': 'Sua vacina foi adicionada com sucesso!',
+    application: 'Data da aplicação',
+    'application-invalid': 'Data da aplicação inválida',
+    'vaccine-invalid': 'Vacina inválida'
+  },
+
+  Wallets: {
+    name: 'Nome',
+    birthday: 'Nascimento',
+    gender: 'Gênero',
+    cpf: 'CPF',
+    cep: 'CEP',
+    address: 'Endereço',
+    infos: 'Informações adicionais',
+    view: 'Visualizar carteira',
+    add: 'Adicionar vacina',
+    date: 'Data de nascimento',
+    'application-invalid': 'Data da aplicação inválida',
+    'vaccine-invalid': 'Vacina inválida',
+    'add-vaccine': 'Adicionar vacina',
+    'add-vaccine-text': 'Sua vacina foi adicionada com sucesso!',
+    send: 'Enviar',
+    'label-vaccine': 'Selecione a vacina',
+    application: 'Data da aplicação',
+    scheduling: 'Data de agendamento',
+    info: 'Insira a data de agendamento para programar a segunda dose da sua vacina',
+    'empty-name': 'Nome inválido',
+    'empty-surname': 'Sobrenome inválido',
+    'empty-date': 'Data de nascimento inválida',
+    'empty-gender': 'Gênero vazio',
+    'empty-cpf': 'CPF inválido',
+    'empty-address': 'Endereço inválido',
+    'empty-cep': 'CEP inválido',
+    'create-wallet': 'Criar carteira',
+    'create-wallet-text': 'Sua Carteira foi criada com sucesso!',
+    'type-name': 'Digite seu nome',
+    'type-surname': 'Digite seu sobrenome',
+    'type-date': 'Digite sua data de nascimento',
+    'type-gender': 'Selecione seu gênero',
+    'type-cpf': 'Digite seu cpf',
+    'type-address': 'Digite seu endereço',
+    'type-cep': 'Digite seu cep',
+    'edit-wallet': 'Editar carteira',
+    'edit-wallet-text': 'Você tem certeza? Esses dados serão alterados',
+    cancel: 'Cancelar',
+    continue: 'Continuar',
+    female: 'Feminino',
+    male: 'Masculino',
+    'add-button': 'Adicionar +'
+  },
+
+  News: {
+    title: 'Notícias',
+    search: 'Pesquisar notícias'
   }
 }
 

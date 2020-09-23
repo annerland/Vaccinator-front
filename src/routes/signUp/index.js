@@ -3,6 +3,7 @@ import Input from 'Components/atoms/input'
 import LoginTemplate from 'Templates'
 import { useHistory } from 'react-router-dom'
 import { FormValidator, validator } from 'Util/validator'
+import { useTranslation } from 'react-i18next'
 import Modals from 'Util/modals'
 import Loading from 'Components/atoms/loading'
 import Button from '../../components/atoms/button'
@@ -17,6 +18,7 @@ export default function SignUpRoute () {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [errors, setErrors] = useState('')
+  const { t } = useTranslation('Login')
   const history = useHistory()
   const dispatch = useDispatch()
   const redirect = () => {
@@ -28,19 +30,19 @@ export default function SignUpRoute () {
       field: 'email',
       method: validator.isEmpty,
       validWhen: false,
-      message: 'Email inválido'
+      message: t('invalidUser')
     },
     {
       field: 'password',
       method: validator.isEmpty,
       validWhen: false,
-      message: 'Senha inválida'
+      message: t('invalidPass')
     },
     {
       field: 'confirmPassword',
       method: validator.isEmpty,
       validWhen: false,
-      message: 'Senha inválida'
+      message: t('invalidPass')
     }
   ])
 
@@ -62,10 +64,10 @@ export default function SignUpRoute () {
         .then(res => {
           setLoading(false)
           Modals.Generic.sucess({
-            title: 'Registre-se',
-            text: 'Seu registro foi criado com sucesso! Acesse a plataforma agora.',
-            cancel: 'Cancelar',
-            continue: 'Ir',
+            title: t('sign-up'),
+            text: t('text-sign-up'),
+            cancel: t('cancel'),
+            continue: t('continue'),
             handleAction: () => history.push('/login')
           })
         })
@@ -91,7 +93,7 @@ export default function SignUpRoute () {
           />
           <Input
             type='password'
-            label='Password'
+            label={t('password')}
             value={password}
             onChange={setPassword}
             placeholder='******'
@@ -100,7 +102,7 @@ export default function SignUpRoute () {
 
           <Input
             type='password'
-            label='Confirm Password'
+            label={t('confirm-password')}
             value={confirmPassword}
             onChange={setConfirmPassword}
             placeholder='******'
@@ -109,8 +111,8 @@ export default function SignUpRoute () {
         </div>
 
         <div className='sign-button'>
-          <Button type='decline' onClick={() => redirect()}>Back</Button>
-          <Button onClick={submit}>Register</Button>
+          <Button type='decline' onClick={() => redirect()}>{t('back')}</Button>
+          <Button onClick={submit}>{t('send')}</Button>
         </div>
 
       </LoginTemplate>

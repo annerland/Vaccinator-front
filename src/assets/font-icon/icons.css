@@ -1,10 +1,10 @@
 @font-face {
     font-family: "icons";
-    src: url("./icons.eot?bc1c7acfc48d06facf227822b490c9ff?#iefix") format("embedded-opentype"),
-url("./icons.woff2?bc1c7acfc48d06facf227822b490c9ff") format("woff2"),
-url("./icons.woff?bc1c7acfc48d06facf227822b490c9ff") format("woff"),
-url("./icons.ttf?bc1c7acfc48d06facf227822b490c9ff") format("truetype"),
-url("./icons.svg?bc1c7acfc48d06facf227822b490c9ff#icons") format("svg");
+    src: url("./icons.eot?8e2a16a2b8730003dc0947db1d3d550e?#iefix") format("embedded-opentype"),
+url("./icons.woff2?8e2a16a2b8730003dc0947db1d3d550e") format("woff2"),
+url("./icons.woff?8e2a16a2b8730003dc0947db1d3d550e") format("woff"),
+url("./icons.ttf?8e2a16a2b8730003dc0947db1d3d550e") format("truetype"),
+url("./icons.svg?8e2a16a2b8730003dc0947db1d3d550e#icons") format("svg");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -57,9 +57,12 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 .icon-search:before {
     content: "\f10d";
 }
-.icon-vaccine:before {
+.icon-sign-out:before {
     content: "\f10e";
 }
-.icon-vaccines:before {
+.icon-vaccine:before {
     content: "\f10f";
+}
+.icon-vaccines:before {
+    content: "\f110";
 }

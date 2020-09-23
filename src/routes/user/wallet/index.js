@@ -1,19 +1,33 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import Search from 'Components/atoms/search'
 import Neo from 'Assets/neo.jpg'
 import Wallet from 'Components/molecules/wallet'
 import Button from 'Components/atoms/button'
 import moment from 'moment'
+import BR from 'Assets/brflag.png'
+import US from 'Assets/usflag.png'
 import Modals from 'Util/modals'
 import ShowWalletModal from 'Modals/showWallet'
 import CreateWalletModal from 'Modals/createWallet'
 import AddVaccineWallet from 'Modals/addVaccineWallet'
 import EditWalletModal from 'Modals/editWallet'
+import pagination from 'Util/hooks/pagination'
+import PaginationComponent from 'Components/atoms/paginationComponent'
+import i18next from 'i18next'
+import { useTranslation } from 'react-i18next'
 import Api from 'Util/api'
+
 import './index.scss'
 
 export default function WalletUser () {
-  const [persons, setPersons] = useState([])
+  const { t } = useTranslation('Wallets')
+  const [
+    page,
+    pages,
+    list,
+    setPage,
+    setContent
+  ] = pagination(6)
 
   const createWallet = () => {
     Modals.Generic.show('create-wallet')
@@ -31,6 +45,10 @@ export default function WalletUser () {
     Modals.Generic.show('edit-wallet', { data: elm })
   }
 
+  const changeLanguage = (lang) => {
+    i18next.changeLanguage(lang)
+  }
+
   useEffect(() => {
     fetchPersons()
   }, [])
@@ -38,24 +56,28 @@ export default function WalletUser () {
   const fetchPersons = async () => {
     await Api.Persona.list()
       .then((res) => {
-        setPersons(res.pessoas)
+        setContent(res.pessoas)
       })
   }
 
   return (
     <div className='wallet-user-route'>
-      <h1 className='title'>Carteiras</h1>
+      <div className='title-and-language'>
+        <h1 className='title'>Carteiras</h1>
+        <img src={BR} onClick={() => changeLanguage('pt')} alt='br-flag' />
+        <img src={US} onClick={() => changeLanguage('en')} alt='us-flag' />
+      </div>
       <div className='wallet-header'>
         <div className='search-container'>
           <Search
             placeholder='search'
           />
         </div>
-        <Button onClick={() => createWallet()} type='primary'>ADICIONAR +</Button>
+        <Button onClick={() => createWallet()} type='primary'>{t('add-button')}</Button>
       </div>
 
       <div className='grid-container'>
-        {persons.map(person => {
+        {list.map(person => {
           return (
             <Wallet
               key={person.id}
@@ -65,12 +87,17 @@ export default function WalletUser () {
               add={() => addVaccine(person)}
               name={person.strNome}
               date={moment(person.dtNascimento).format('DD/MM/YYYY')}
-              gender={(person.charGenero).toUpperCase()}
+              gender={person.charGenero === 'f' ? t('female') : t('male')}
               field={person.strCpf}
             />
           )
         })}
       </div>
+      <PaginationComponent
+        total={pages}
+        current={page}
+        onChange={setPage}
+      />
       <EditWalletModal />
       <ShowWalletModal />
       <AddVaccineWallet />

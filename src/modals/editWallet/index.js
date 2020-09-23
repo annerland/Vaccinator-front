@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import Button from 'Components/atoms/button'
 import Input from 'Components/atoms/input'
-import { FormValidator, validator } from 'Util/validator'
 import Modal from 'Components/molecules/genericModal'
 import Modals from 'Util/modals'
 import Api from 'Util/api'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 import { useTranslation } from 'react-i18next'
-import { cpfMask } from 'Util/helpers'
-
 import Loading from 'Components/atoms/loading'
 import { useSelector } from 'react-redux'
 import { path } from 'ramda'
@@ -24,6 +21,7 @@ const EditWalletModal = (props) => {
   const [adress, setAdress] = useState('')
   const [cep, setCep] = useState('')
   const [data, setData] = useState()
+  const { t } = useTranslation('Wallets')
   const modal = useSelector(({ modals }) => modals.generic)
 
   // const fetchPerson = async () => {
@@ -45,7 +43,7 @@ const EditWalletModal = (props) => {
     setData(path(['body', 'data'], modal))
   }, [modal])
 
-  const submit = async () => {
+  const submit = () => {
     const payload = {}
     if (name) payload.strNome = name
     if (surname) payload.strSobrenome = surname
@@ -59,14 +57,15 @@ const EditWalletModal = (props) => {
 
     setLoading(true)
     try {
-      await Api.Persona.update(payload, path(['id'], data))
-      props.onChange()
-
       Modals.Generic.sucess({
-        title: 'Criar Carteira',
-        text: 'Sua Carteira foi editada com sucesso!',
-        continue: 'OK',
-        handleAction: () => Modals.Generic.hide()
+        title: t('edit-vaccine'),
+        text: t('edit-vaccine-text'),
+        cancel: t('cancel'),
+        continue: t('continue'),
+        handleAction: async () => {
+          await Api.Persona.update(payload, path(['id'], data))
+          props.onChange()
+        }
       })
     } catch (err) {
       console.log(err)
@@ -78,46 +77,46 @@ const EditWalletModal = (props) => {
     <Modal id='edit-wallet' height={400} width={532}>
       <Loading show={loading} />
       <div className='modal-container'>
-        <h2 className='title'>Editar Carteira</h2>
+        <h2 className='title'>{t('edit-wallet')}</h2>
 
         <Input
-          label='Nome'
+          label={t('name')}
           onChange={setName}
           value={name}
         />
         <Input
-          label='Sobrenome'
+          label={t('surname')}
           onChange={setSurname}
           value={surname}
         />
         <Input
-          label='Gênero'
+          label={t('gender')}
           onChange={setGender}
           value={gender}
         />
         <Input
-          label='Data de nascimento'
+          label={t('birthday')}
           onChange={setDate}
           value={date}
         />
         <Input
-          label='CPF'
+          label={t('cpf')}
           onChange={setCpf}
           value={cpf}
         />
 
         <Input
-          label='Endereço'
+          label={t('address')}
           onChange={setAdress}
           value={adress}
         />
 
         <Input
-          label='Cep'
+          label={t('cep')}
           onChange={setCep}
           value={cep}
         />
-        <Button onClick={() => submit()}>Enviar</Button>
+        <Button onClick={() => submit()}>{t('send')}</Button>
       </div>
     </Modal>
   )

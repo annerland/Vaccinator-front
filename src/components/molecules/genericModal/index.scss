@@ -45,9 +45,12 @@
       margin-bottom: 16px;
     }
 
-    p,
-    label {
+    p {
       color: $gray-color;
+    }
+
+    label {
+    color: $black-color;
     }
 
     .text {

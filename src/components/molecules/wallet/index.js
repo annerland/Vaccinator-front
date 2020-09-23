@@ -1,9 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
 
 import './index.scss'
 
 const Wallet = (props) => {
+  const { t } = useTranslation('Wallets')
+
   return (
     <div className='wallet-component-container'>
       <i className='icon-edit' onClick={props.edit} />
@@ -11,27 +14,27 @@ const Wallet = (props) => {
         <img src={props.src} />
         <div className='content'>
           <div className='flex-content'>
-            <p className='bold-text'>Nome:</p>
+            <p className='bold-text'>{t('name')}:</p>
             <p>{props.name}</p>
           </div>
           <div className='flex-content'>
-            <p className='bold-text'>Nascimento:</p>
+            <p className='bold-text'>{t('birthday')}:</p>
             <p>{props.date}</p>
           </div>
           <div className='flex-content'>
-            <p className='bold-text'>Gênero:</p>
+            <p className='bold-text'>{t('gender')}:</p>
             <p>{props.gender}</p>
           </div>
         </div>
       </div>
       <div className='footer'>
         <div className='flex-content'>
-          <p className='bold-text'>CPF:</p>
+          <p className='bold-text'>{t('cpf')}:</p>
           <p>{props.field}</p>
         </div>
         <div className='flex-content-buttons'>
-          <p onClick={props.watch}>Visualizar carteira</p>
-          <p onClick={props.add}>Inserir vacina</p>
+          <p onClick={props.watch}>{t('view')}</p>
+          <p onClick={props.add}>{t('add')}</p>
         </div>
       </div>
     </div>

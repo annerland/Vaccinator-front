@@ -11,9 +11,10 @@ import Api from 'Util/api'
 import StoreRedux from 'Redux/'
 import PropTypes from 'prop-types'
 import moment from 'moment'
-
 import { useSelector } from 'react-redux'
-import { path, set } from 'ramda'
+import { path } from 'ramda'
+
+import './index.scss'
 
 const AddVaccineWallet = (props) => {
   const [application, setApplication] = useState('')
@@ -24,6 +25,7 @@ const AddVaccineWallet = (props) => {
   const [data, setData] = useState()
   const [vaccine, setVaccine] = useState()
   const modal = useSelector(({ modals }) => modals.generic)
+  const { t } = useTranslation('Wallets')
   const { auth } = StoreRedux.getState()
 
   const fetchVaccines = async () => {
@@ -46,13 +48,13 @@ const AddVaccineWallet = (props) => {
       field: 'application',
       method: validator.isEmpty,
       validWhen: false,
-      message: 'data de aplicação inválida'
+      message: t('application-invalid')
     },
     {
       field: 'vaccine',
       method: validator.isEmpty,
       validWhen: false,
-      message: 'Vacina inválida'
+      message: t('vaccine-invalid')
     }
   ])
 
@@ -83,8 +85,8 @@ const AddVaccineWallet = (props) => {
         resetFields()
 
         Modals.Generic.sucess({
-          title: 'Adicionar vacina',
-          text: 'Sua vacina foi adicionada com sucesso!',
+          title: t('add-vaccine'),
+          text: t('add-vaccine-text'),
           continue: 'OK',
           handleAction: () => Modals.Generic.hide()
         })
@@ -104,17 +106,20 @@ const AddVaccineWallet = (props) => {
     <Modal id='add-vaccine-wallet' width={432}>
       <Loading show={loading} />
       <div className='modal-container'>
-        <h2 className='title'>Adicionar vacina</h2>
+        <h2 className='title'>{t('add-vaccine')}</h2>
+
+        <p className='info'>{t('info')}</p>
 
         <Select
-          label='Selecione a vacina'
+          label={t('label-vaccine')}
           options={options}
           value={vaccine}
           onChange={setVaccine}
+          validator={errors.vaccine}
         />
 
         <Input
-          label='Data da aplicação'
+          label={t('application')}
           onChange={setApplication}
           value={application}
           placeholder='Ex. 13/11/2020'
@@ -122,14 +127,13 @@ const AddVaccineWallet = (props) => {
         />
 
         <Input
-          label='Data de agêndamento'
+          label={t('scheduling')}
           onChange={setSchedule}
           value={schedule}
-          placeholder='Ex. 13/11/2020'
-          validator={errors.application}
+          placeholder='Ex. 13/12/2020'
         />
 
-        <Button onClick={() => submit()}>Enviar</Button>
+        <Button onClick={() => submit()}>{t('send')}</Button>
       </div>
     </Modal>
   )

@@ -22,6 +22,7 @@ const AddVaccineEstablishment = (props) => {
   const [unity, setUnity] = useState()
   const [vaccine, setVaccine] = useState()
   const modal = useSelector(({ modals }) => modals.generic)
+  const { t } = useTranslation('Establishments')
 
   const fetchVaccines = async () => {
     const res = await Api.Vaccine.list()
@@ -43,13 +44,13 @@ const AddVaccineEstablishment = (props) => {
       field: 'application',
       method: validator.isEmpty,
       validWhen: false,
-      message: 'data de aplicação inválida'
+      message: t('application-invalid')
     },
     {
       field: 'vaccine',
       method: validator.isEmpty,
       validWhen: false,
-      message: 'Vacina inválida'
+      message: t('vaccine-invalid')
     }
   ])
 
@@ -79,8 +80,8 @@ const AddVaccineEstablishment = (props) => {
         resetFields()
 
         Modals.Generic.sucess({
-          title: 'Adicionar vacina',
-          text: 'Sua vacina foi adicionada com sucesso!',
+          title: t('add-vaccine'),
+          text: t('info-text'),
           continue: 'OK',
           handleAction: () => Modals.Generic.hide()
         })
@@ -100,24 +101,24 @@ const AddVaccineEstablishment = (props) => {
     <Modal id='add-vaccine-establishment' width={532}>
       <Loading show={loading} />
       <div className='modal-container'>
-        <h2 className='title'>Adicionar vacina</h2>
+        <h2 className='title'>{t('add-vaccine')}</h2>
 
         <Select
-          label='Selecione a vacina'
+          label={t('label-vaccine')}
           options={options}
           value={vaccine}
           onChange={setVaccine}
         />
 
         <Input
-          label='Data da aplicação'
+          label={t('application')}
           onChange={setApplication}
           value={application}
           placeholder='Ex. 13/11/2020'
           validator={errors.application}
         />
 
-        <Button onClick={() => submit()}>Enviar</Button>
+        <Button onClick={() => submit()}>{t('send')}</Button>
       </div>
     </Modal>
   )

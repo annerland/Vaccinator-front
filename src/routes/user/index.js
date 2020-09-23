@@ -1,6 +1,6 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
-import HomeUser from 'Routes/user/home'
+// import HomeUser from 'Routes/user/home'
 import SideMenu from 'Components/molecules/sideMenu'
 import SucessModal from 'Modals/success'
 import VaccinesUser from 'Routes/user/vaccines/list'
@@ -20,7 +20,7 @@ export default function UserRoutes () {
       <div className='user_body'>
         <div className='user-routes__container'>
           <Switch>
-            <Route exact path='/user/home' component={HomeUser} />
+            {/* <Route exact path='/user/home' component={HomeUser} /> */}
             <Route exact path='/user/vaccines' component={VaccinesUser} />
             <Route path='/user/vaccines/:id' component={ShowVaccine} />
             <Route path='/user/establishments' component={EstablishmentsUser} />

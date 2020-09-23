@@ -39,15 +39,11 @@ const SideMenu = () => {
           <p>{t('establish')}</p>
         </li>
 
-        <li onClick={() => StoreRedux.dispatch(logOut())}>
-          <i className='icon-exit' />
-          <p>Sair</p>
+        <li className='exit' onClick={() => StoreRedux.dispatch(logOut())}>
+          <i className='icon-sign-out' />
+          <p>{t('exit')}</p>
         </li>
       </ul>
-
-      <div className='user-profile'>
-        <img src={Neo} /><p>Thomas A. Anderson</p>
-      </div>
     </div>
   )
 }

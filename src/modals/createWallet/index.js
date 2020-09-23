@@ -9,7 +9,7 @@ import PropTypes from 'prop-types'
 import moment from 'moment'
 import { useTranslation } from 'react-i18next'
 import { cpfMask } from 'Util/helpers'
-
+import Select from 'Components/atoms/select'
 import Loading from 'Components/atoms/loading'
 
 const CreateWalletModal = (props) => {
@@ -22,50 +22,51 @@ const CreateWalletModal = (props) => {
   const [errors, setErrors] = useState('')
   const [adress, setAdress] = useState('')
   const [cep, setCep] = useState('')
+  const { t } = useTranslation('Wallets')
 
   const formValidator = new FormValidator([
     {
       field: 'name',
       method: validator.isEmpty,
       validWhen: false,
-      message: 'vazio'
+      message: t('empty-name')
     },
     {
       field: 'surname',
       method: validator.isEmpty,
       validWhen: false,
-      message: 'vazio'
+      message: t('empty-surname')
     },
     {
       field: 'date',
       method: validator.isEmpty,
       validWhen: false,
-      message: 'vazio'
+      message: t('empty-date')
     },
     {
       field: 'gender',
       method: validator.isEmpty,
       validWhen: false,
-      message: 'vazio'
+      message: 'empty-gender'
     },
     {
       field: 'cpf',
       method: validator.isEmpty,
       validWhen: false,
-      message: 'vazio'
+      message: 'empty-cpf'
     },
     {
       field: 'adress',
       method: validator.isEmpty,
       validWhen: false,
-      message: 'vazio'
+      message: 'empty-address'
     },
 
     {
       field: 'cep',
       method: validator.isEmpty,
       validWhen: false,
-      message: 'vazio'
+      message: 'empty-cep'
     }
   ])
 
@@ -99,8 +100,8 @@ const CreateWalletModal = (props) => {
         props.onChange()
 
         Modals.Generic.sucess({
-          title: 'Criar Carteira',
-          text: 'Sua Carteira foi criada com sucesso!',
+          title: t('create-wallet'),
+          text: t('create-wallet-text'),
           continue: 'OK',
           handleAction: () => Modals.Generic.hide()
         })
@@ -111,64 +112,70 @@ const CreateWalletModal = (props) => {
     }
   }
 
+  const options = [
+    { value: 'f', label: 'F' },
+    { value: 'm', label: 'M' }
+  ]
+
   return (
     <Modal id='create-wallet' height={400} width={532}>
       <Loading show={loading} />
       <div className='modal-container'>
-        <h2 className='title'>Criar Carteira</h2>
+        <h2 className='title'>{t('create-wallet')}</h2>
 
         <Input
-          label='Nome'
+          label={t('name')}
           onChange={setName}
           value={name}
-          placeholder='Digite seu nome'
+          placeholder={t('type-name')}
           validator={errors.name}
         />
         <Input
-          label='Sobrenome'
+          label={t('surname')}
           onChange={setSurname}
           value={surname}
-          placeholder='Digite seu sobrenome'
+          placeholder={t('type-surname')}
           validator={errors.surname}
         />
-        <Input
-          label='Gênero'
+        <Select
+          label={t('gender')}
           onChange={setGender}
           value={gender}
-          placeholder='Gênero'
+          options={options}
+          placeholder={t('type-gender')}
           validator={errors.gender}
         />
         <Input
-          label='Data de nascimento'
+          label={t('date')}
           onChange={setDate}
           value={date}
-          placeholder='Data de nascimento'
+          placeholder={t('type-date')}
           validator={errors.date}
         />
         <Input
-          label='CPF'
+          label={t('cpf')}
           onChange={setCpf}
           value={cpfMask(cpf)}
-          placeholder='CPF'
+          placeholder={t('type-cpf')}
           validator={errors.cpf}
         />
 
         <Input
-          label='Endereço'
+          label={t('address')}
           onChange={setAdress}
           value={adress}
-          placeholder='endereço'
+          placeholder={t('type-address')}
           validator={errors.adress}
         />
 
         <Input
-          label='Cep'
+          label={t('cep')}
           onChange={setCep}
           value={cep}
-          placeholder='00000-000'
+          placeholder={t('type-cep')}
           validator={errors.cep}
         />
-        <Button onClick={() => submit()}>Enviar</Button>
+        <Button onClick={() => submit()}>{t('send')}</Button>
       </div>
     </Modal>
   )

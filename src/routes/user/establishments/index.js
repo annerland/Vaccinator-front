@@ -7,6 +7,7 @@ import Modals from 'Util/modals'
 import pagination from 'Util/hooks/pagination'
 import PaginationComponent from 'Components/atoms/paginationComponent'
 import React, { useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import Loading from 'Components/atoms/loading'
 import Api from 'Util/api'
 
@@ -17,6 +18,7 @@ export default function EstablishmentsUser () {
   const [options, setOptions] = useState({})
   const [vaccine, setVaccine] = useState()
   const [adress, setAdress] = useState('')
+  const { t } = useTranslation('Establishments')
   const [loading, setLoading] = useState(false)
   const [milles, setMilles] = useState('')
   const [
@@ -66,15 +68,15 @@ export default function EstablishmentsUser () {
 
   return (
     <div className='establishments-route'>
-      <h1 className='title'>Estabelecimentos</h1>
-
+      <h1 className='title'>{t('title')}</h1>
+      <p className='description'>{t('description')}:</p>
       <div className='establishments-header'>
         <div className='search-container'>
           <Input
             value={cep}
             onChange={setCep}
-            label='Digite seu CEP'
-            placeholder='00000-000'
+            label={t('label-cep')}
+            placeholder='Ex. 00000-000'
           />
         </div>
 
@@ -82,15 +84,15 @@ export default function EstablishmentsUser () {
           <Input
             value={adress}
             onChange={setAdress}
-            label='Digite seu Endereço'
-            placeholder='Rua toledo malta, 25'
+            label={t('label-address')}
+            placeholder='Ex. Rua toledo malta, 25'
           />
         </div>
 
         <div className='search-container'>
           <Input
-            label='Digite a distância'
-            placeholder='5km'
+            label={t('label-distance')}
+            placeholder='Ex. 5'
             onChange={setMilles}
             value={milles}
           />
@@ -100,13 +102,12 @@ export default function EstablishmentsUser () {
             options={options}
             value={vaccine}
             onChange={setVaccine}
-            label='Escolha a vacina'
-            placeholder='Escolher vacinas'
+            label={t('label-vaccine')}
           />
         </div>
 
         <div className='button-container'>
-          <Button onClick={() => search()}>Enviar</Button>
+          <Button onClick={() => search()}>{t('send')}</Button>
         </div>
       </div>
       <Loading show={loading} />

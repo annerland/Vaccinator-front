@@ -10,13 +10,24 @@
     grid-template-columns: 0.5fr 0.5fr 1fr;
   }
 
-  h1.title {
+  .title-and-language {
     padding: 0 24px 18px;
     border-bottom: 1px solid $mid-gray-color;
     margin: 0 32px 24px;
-    font-size: 36px;
+    display: flex;
     font-weight: 600;
     color: #333;
+
+    h1.title {
+      flex: 1;
+    }
+
+    img {
+      display: flex;
+      margin-right: 16px;
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
   }
 
   .wallet-header {

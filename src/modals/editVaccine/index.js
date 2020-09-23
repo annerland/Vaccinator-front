@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import Modal from 'Components/molecules/genericModal'
 import Input from 'Components/atoms/input'
 import Button from 'Components/atoms/button'
-import { FormValidator, validator } from 'Util/validator'
 import { useTranslation } from 'react-i18next'
 import Loading from 'Components/atoms/loading'
 import Modals from 'Util/modals'
@@ -54,10 +53,10 @@ const EditVaccineModal = (props) => {
     if (care) payload.strCuidados = care
 
     Modals.Generic.sucess({
-      title: 'Editar Vacina',
-      text: 'Os dados serão alterados, você tem certeza?',
-      cancel: 'Cancelar',
-      continue: 'Continuar',
+      title: t('edit-vaccine'),
+      text: t('edit-vaccine-text'),
+      cancel: t('cancel'),
+      continue: t('continue'),
       handleAction: async () => {
         try {
           setLoading(true)
@@ -81,59 +80,54 @@ const EditVaccineModal = (props) => {
           label={t('name')}
           onChange={setName}
           value={name}
-          placeholder={t('placeholder-name')}
         />
         <Input
           label={t('description')}
           onChange={setDescription}
           value={description}
-          placeholder={t('placeholder-desc')}
         />
         <Input
           label={t('restricted')}
           onChange={setRestricted}
           value={restricted}
-          placeholder={t('placeholder-rest')}
         />
         <Input
           type='number'
           label={t('doses')}
           onChange={setDose}
           value={dose}
-          placeholder={t('placeholder-doses')}
         />
         <Input
           type='number'
           label={t('interval')}
           onChange={setInterval}
           value={interval}
-          placeholder={t('placeholder-interval')}
         />
 
         <Input
           type='text'
-          label='Indicações'
+          label={t('indications')}
           onChange={setIndication}
           value={indication}
         />
 
         <Input
           type='text'
-          label='Efeitos'
+          label={t('effects')}
           onChange={setEffects}
           value={effects}
         />
 
         <Input
           type='text'
-          label='Cuidados'
+          label={t('care')}
           onChange={setCare}
           value={care}
         />
 
         <Input
           type='text'
-          label='Via de aplicação'
+          label={t('application')}
           onChange={setApplication}
           value={application}
         />
