@@ -122,6 +122,7 @@ const AddVaccineWallet = (props) => {
           label={t('application')}
           onChange={setApplication}
           value={application}
+          mask='99/99/9999'
           placeholder='Ex. 13/11/2020'
           validator={errors.application}
         />
@@ -130,6 +131,7 @@ const AddVaccineWallet = (props) => {
           label={t('scheduling')}
           onChange={setSchedule}
           value={schedule}
+          mask='99/99/9999'
           placeholder='Ex. 13/12/2020'
         />
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import ClassNames from 'classnames'
 import ErrorMessage from 'Components/atoms/errorMessage'
+import InputMask from 'react-input-mask'
 import PropTypes from 'prop-types'
 import './index.scss'
 
@@ -13,7 +14,8 @@ const Input = (props) => {
   return (
     <div className={style}>
       {props.label && <label>{props.label}</label>}
-      <input
+      <InputMask
+        mask={props.mask}
         type={props.type}
         disabled={props.disabled}
         placeholder={props.placeholder}
@@ -27,6 +29,7 @@ const Input = (props) => {
 
 Input.propTypes = {
   type: PropTypes.string,
+  mask: PropTypes.string,
   label: PropTypes.string,
   placeholder: PropTypes.string,
   primary: PropTypes.string,

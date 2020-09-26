@@ -8,7 +8,6 @@ import Api from 'Util/api'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 import { useTranslation } from 'react-i18next'
-import { cpfMask } from 'Util/helpers'
 import Select from 'Components/atoms/select'
 import Loading from 'Components/atoms/loading'
 
@@ -149,13 +148,14 @@ const CreateWalletModal = (props) => {
           label={t('date')}
           onChange={setDate}
           value={date}
+          mask='99/99/9999'
           placeholder={t('type-date')}
           validator={errors.date}
         />
         <Input
           label={t('cpf')}
           onChange={setCpf}
-          value={cpfMask(cpf)}
+          mask='999.999.999-99'
           placeholder={t('type-cpf')}
           validator={errors.cpf}
         />
@@ -172,6 +172,7 @@ const CreateWalletModal = (props) => {
           label={t('cep')}
           onChange={setCep}
           value={cep}
+          mask='99999-999'
           placeholder={t('type-cep')}
           validator={errors.cep}
         />

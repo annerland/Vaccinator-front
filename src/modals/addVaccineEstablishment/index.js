@@ -70,8 +70,6 @@ const AddVaccineEstablishment = (props) => {
       data.dtAplicacao = application
       data.boolStatus = '1'
       data.boolAtivo = '1'
-      moment(application).format('YYYY-MM-DD')
-      console.log(application)
 
       try {
         await Api.Establishment.addVaccine(data)
@@ -114,6 +112,7 @@ const AddVaccineEstablishment = (props) => {
           label={t('application')}
           onChange={setApplication}
           value={application}
+          mask='99/99/9999'
           placeholder='Ex. 13/11/2020'
           validator={errors.application}
         />
