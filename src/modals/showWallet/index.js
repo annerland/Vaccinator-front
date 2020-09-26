@@ -4,20 +4,37 @@ import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { path } from 'ramda'
 import moment from 'moment'
+import Api from 'Util/api'
 
 import './index.scss'
 
 const ShowWalletModal = () => {
   const modal = useSelector(({ modals }) => modals.generic)
   const [data, setData] = useState([])
+  const [vaccines, setVaccines] = useState([])
+  const [vaccinesScheduled, setVaccinesScheduled] = useState([])
   const { t } = useTranslation('Wallets')
 
   useEffect(() => {
     setData(path(['body', 'data'], modal))
   }, [modal])
 
+  const fetchWalletVaccine = () => {
+    Api.Wallet.getOne(path(['id'], data))
+      .then((res) => {
+        setVaccines((res.vacinas.filter((elm) => elm.dtAplicação)))
+        setVaccinesScheduled((res.vacinas.filter((elm) => elm.fkAgendamento)))
+      })
+  }
+
+  console.log(vaccinesScheduled)
+
+  useEffect(() => {
+    fetchWalletVaccine()
+  }, [data])
+
   return (
-    <Modal id='show-wallet' width={432}>
+    <Modal id='show-wallet' height={400} width={432}>
       <div className='modal-container'>
         <h1 className='title-component'>{t('infos')}</h1>
         <div className='header'>
@@ -49,6 +66,30 @@ const ShowWalletModal = () => {
             <p className='bold-text'>{t('cep')}:</p>
             <p>{path(['strCep'], data)}</p>
           </div>
+        </div>
+
+        <div className='footer'>
+          <h1 className='title-component'>Vacinas tomadas</h1>
+          {(vaccines || []).map((elm) => {
+            return (
+              <div key={elm.id} className='flex-content'>
+                <p className='bold-text'>{t('name')}:</p>
+                <p>{elm.vaccines.map(elm => elm.strNome)}</p>
+                <p>{elm.dtAplicação}</p>
+              </div>
+            )
+          })}
+        </div>
+        <div className='footer'>
+          <h1 className='title-component'>Vacinas agendadas</h1>
+          {(vaccinesScheduled || []).map((elm) => {
+            return (
+              <div key={elm.id} className='flex-content'>
+                <p className='bold-text'>{t('name')}:</p>
+                <p>{elm.vaccines.map(elm => elm.strNome)}</p>
+              </div>
+            )
+          })}
         </div>
       </div>
     </Modal>

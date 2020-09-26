@@ -24,24 +24,29 @@ const EditWalletModal = (props) => {
   const { t } = useTranslation('Wallets')
   const modal = useSelector(({ modals }) => modals.generic)
 
-  // const fetchPerson = async () => {
-  //   const res = await Api.Persona.getOne(path(['id', data]))
-  //   setName(res.pessoas.strNome)
-  //   setSurname(res.pessoas.strSobrenome)
-  //   setGender(res.pessoas.charGenero)
-  //   setDate(res.pessoas.dtNascimento)
-  //   setCpf(res.pessoas.strCpf)
-  //   setAdress(res.pessoas.strEndereco)
-  //   setCep(res.pessoas.strCep)
+  useEffect(() => {
+    setData(path(['body', 'data'], modal))
+  }, [modal])
+
+  // const fetchPerson = () => {
+  //   Api.Persona.getOne(path(['id'], data))
+  //     .then((res) => {
+  //       setName(res.pessoas.strNome)
+  //       setSurname(res.pessoas.strSobrenome)
+  //       setGender(res.pessoas.charGenero)
+  //       setDate(res.pessoas.dtNascimento)
+  //       setCpf(res.pessoas.strCpf)
+  //       setAdress(res.pessoas.strEndereco)
+  //       setCep(res.pessoas.strCep)
+  //     })
+  //     .catch(err => {
+  //       console.log(err)
+  //     })
   // }
 
   // useEffect(() => {
   //   fetchPerson()
   // }, [])
-
-  useEffect(() => {
-    setData(path(['body', 'data'], modal))
-  }, [modal])
 
   const submit = () => {
     const payload = {}

@@ -45,12 +45,6 @@ const AddVaccineWallet = (props) => {
 
   const formValidator = new FormValidator([
     {
-      field: 'application',
-      method: validator.isEmpty,
-      validWhen: false,
-      message: t('application-invalid')
-    },
-    {
       field: 'vaccine',
       method: validator.isEmpty,
       validWhen: false,
@@ -64,7 +58,7 @@ const AddVaccineWallet = (props) => {
   }, [modal])
 
   const submit = async () => {
-    const validation = formValidator.validate({ application, vaccine })
+    const validation = formValidator.validate({ vaccine })
     setErrors(validation)
 
     if (validation.isValid) {
@@ -74,7 +68,7 @@ const AddVaccineWallet = (props) => {
       payload.fkUser = auth.id
       payload.dtAgendamento = schedule
       payload.dtAplicacao = application
-      payload.boolAtivo = '1'
+      payload.boolAtivo = 1
       moment(application).format('YYYY-MM-DD')
       console.log(application)
 
@@ -123,7 +117,6 @@ const AddVaccineWallet = (props) => {
           onChange={setApplication}
           value={application}
           placeholder='Ex. 13/11/2020'
-          validator={errors.application}
         />
 
         <Input
