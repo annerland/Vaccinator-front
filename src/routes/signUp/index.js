@@ -56,7 +56,6 @@ export default function SignUpRoute () {
       const payload = {}
       payload.email = email
       payload.password = password
-      payload.language = 'pt'
       payload.password_confirmation = confirmPassword
 
       setLoading(false)
