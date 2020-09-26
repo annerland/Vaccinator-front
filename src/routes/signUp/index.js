@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next'
 import Modals from 'Util/modals'
 import Loading from 'Components/atoms/loading'
 import Button from '../../components/atoms/button'
-import { useDispatch } from 'react-redux'
+import { path } from 'ramda'
 import Api from 'Util/api'
 
 import './index.scss'
@@ -17,10 +17,10 @@ export default function SignUpRoute () {
   const [loading, setLoading] = useState(false)
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+  const [loginError, setLoginError] = useState('')
   const [errors, setErrors] = useState('')
   const { t } = useTranslation('Login')
   const history = useHistory()
-  const dispatch = useDispatch()
   const redirect = () => {
     history.push('/')
   }
@@ -73,6 +73,7 @@ export default function SignUpRoute () {
         .catch(err => {
           setLoading(false)
           console.log(err)
+          setLoginError(path(['error', 'message'], err))
         })
     }
   }
@@ -113,6 +114,8 @@ export default function SignUpRoute () {
           <Button type='decline' onClick={() => redirect()}>{t('back')}</Button>
           <Button onClick={submit}>{t('send')}</Button>
         </div>
+
+        {loginError && console.log(loginError)}
 
       </LoginTemplate>
     </div>

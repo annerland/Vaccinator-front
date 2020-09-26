@@ -2,7 +2,7 @@ import { path } from 'ramda'
 import StoreRedux from 'Redux/'
 
 export function getRedirectLoginUrl (data) {
-  return '/user/home'
+  return '/user/wallets'
 }
 
 export function getRequestError (err) {
@@ -35,6 +35,6 @@ export function getUserLogged (history) {
   const { auth } = StoreRedux.getState()
 
   if (auth.token) {
-    history.push('/user/home')
+    history.push('/user/wallets')
   }
 }

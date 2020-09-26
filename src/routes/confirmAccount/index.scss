@@ -1,0 +1,17 @@
+.active-content {
+  h1 {
+    color: #74b8d0;
+  }
+
+  p {
+    color: #333;
+    text-align: center;
+    margin-top: 16px;
+
+    span {
+      text-decoration: underline;
+      color: #74b8d0;
+      cursor: pointer;
+    }
+  }
+}

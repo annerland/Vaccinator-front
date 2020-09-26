@@ -9,14 +9,16 @@ export default class Auth {
     return res.data
   }
 
+  async active (token) {
+    const url = `/auth/activate/${token}`
+    const res = await this.httpWrapper.get(url)
+    return res.data
+  }
+
   async signUp (data) {
     const url = '/auth/register'
     const res = await this.httpWrapper.post(url, data)
     return res.data
-  }
-
-  logOut () {
-    // Store.dispatch(logOut())
   }
 
   async changePassword (data) {

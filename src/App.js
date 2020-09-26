@@ -6,6 +6,7 @@ import Home from 'Routes/home'
 import UserRoutes from 'Routes/user'
 import ForgotPasswordRoute from 'Routes/forgotPassword'
 import SignUpRoute from 'Routes/signUp'
+import ConfirmRoute from 'Routes/confirmAccount'
 
 export default function App () {
   return (
@@ -16,6 +17,7 @@ export default function App () {
       <Route path='/user' component={UserRoutes} />
       <Route path='/forgot-password' component={ForgotPasswordRoute} />
       <Route path='/sign-up' component={SignUpRoute} />
+      <Route exact path='/active/:token' component={ConfirmRoute} />
     </Switch>
   )
 }
