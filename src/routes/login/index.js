@@ -10,7 +10,7 @@ import Button from '../../components/atoms/button'
 import Loading from 'Components/atoms/loading'
 import { getUserLogged } from 'Util/helpers'
 import { useDispatch } from 'react-redux'
-import path from 'ramda'
+import Alert from 'Components/atoms/alert'
 
 import './index.scss'
 
@@ -58,7 +58,7 @@ export default function LoginRoute () {
         })
         .catch(err => {
           setLoading(false)
-          setLoginError(path(['error', 'message'], err))
+          if (err.response.status === 401) return setLoginError('ERRO: Credenciais inválidas')
         })
     }
   }
@@ -93,7 +93,7 @@ export default function LoginRoute () {
         <p><Link to='/forgot-password'>{t('forgot')}</Link></p>
       </div>
 
-      {loginError && console.log(loginError)}
+      {loginError && <Alert children={loginError} />}
 
     </LoginTemplate>
   )

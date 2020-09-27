@@ -19,19 +19,17 @@ const ShowWalletModal = () => {
     setData(path(['body', 'data'], modal))
   }, [modal])
 
-  const fetchWalletVaccine = () => {
-    Api.Wallet.getOne(path(['id'], data))
-      .then((res) => {
-        setVaccines((res.vacinas.filter((elm) => elm.dtAplicação)))
-        setVaccinesScheduled((res.vacinas.filter((elm) => elm.fkAgendamento)))
-      })
-  }
+  // const fetchWalletVaccine = () => {
+  //   Api.Wallet.getOne(path(['id'], data))
+  //     .then((res) => {
+  //       setVaccines((res.vacinas.filter((elm) => elm.dtAplicação)))
+  //       setVaccinesScheduled((res.vacinas.filter((elm) => elm.fkAgendamento)))
+  //     })
+  // }
 
-  console.log(vaccinesScheduled)
-
-  useEffect(() => {
-    fetchWalletVaccine()
-  }, [data])
+  // useEffect(() => {
+  //   fetchWalletVaccine()
+  // }, [data])
 
   return (
     <Modal id='show-wallet' height={400} width={432}>

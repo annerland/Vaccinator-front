@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Search from 'Components/atoms/search'
 import Neo from 'Assets/neo.jpg'
 import Wallet from 'Components/molecules/wallet'
@@ -14,12 +14,17 @@ import EditWalletModal from 'Modals/editWallet'
 import pagination from 'Util/hooks/pagination'
 import PaginationComponent from 'Components/atoms/paginationComponent'
 import i18next from 'i18next'
+import StoreRedux from 'Redux/'
+import { search } from 'fast-fuzzy'
 import { useTranslation } from 'react-i18next'
 import Api from 'Util/api'
 
 import './index.scss'
 
 export default function WalletUser () {
+  const [originalData, setOriginalData] = useState([])
+  const { auth } = StoreRedux.getState()
+
   const { t } = useTranslation('Wallets')
   const [
     page,
@@ -28,6 +33,14 @@ export default function WalletUser () {
     setPage,
     setContent
   ] = pagination(6)
+
+  const handleOnSearch = (query) => {
+    if (!query) return setContent(originalData)
+    if (query === null) return ''
+
+    const res = search(query || '', originalData, { keySelector: (obj) => obj.strNome || '' })
+    setContent(res)
+  }
 
   const createWallet = () => {
     Modals.Generic.show('create-wallet')
@@ -54,9 +67,10 @@ export default function WalletUser () {
   }, [])
 
   const fetchPersons = async () => {
-    await Api.Persona.list()
+    await Api.Persona.getPersonByUser(auth.id)
       .then((res) => {
         setContent(res.pessoas)
+        setOriginalData(res.pessoas)
       })
   }
 
@@ -70,6 +84,7 @@ export default function WalletUser () {
       <div className='wallet-header'>
         <div className='search-container'>
           <Search
+            onChange={handleOnSearch}
             placeholder='search'
           />
         </div>

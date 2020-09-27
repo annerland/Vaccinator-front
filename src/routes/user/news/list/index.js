@@ -6,6 +6,7 @@ import PaginationComponent from 'Components/atoms/paginationComponent'
 import Api from 'Util/api'
 import { useTranslation } from 'react-i18next'
 import Loading from 'Components/atoms/loading'
+import { search } from 'fast-fuzzy'
 import { useHistory } from 'react-router-dom'
 
 // eslint-disable-next-line import/no-absolute-path
@@ -14,6 +15,7 @@ import '../index.scss'
 export default function NewsUser () {
   const [loading, setLoading] = useState(false)
   const { t } = useTranslation('News')
+  const [originalData, setOriginalData] = useState([])
   const history = useHistory()
   const [
     page,
@@ -23,10 +25,19 @@ export default function NewsUser () {
     setContent
   ] = pagination(5)
 
+  const handleOnSearch = (query) => {
+    if (!query) return setContent(originalData)
+    if (query === null) return ''
+
+    const res = search(query || '', originalData, { keySelector: (obj) => obj.strTitulo || '' })
+    setContent(res)
+  }
+
   const fetchNews = async () => {
     setLoading(true)
     const res = await Api.News.list()
     setContent(res[0])
+    setOriginalData(res[0])
     setLoading(false)
   }
 
@@ -45,6 +56,7 @@ export default function NewsUser () {
       <div className='news-header'>
         <div className='search-container'>
           <Search
+            onChange={handleOnSearch}
             placeholder={t('search')}
           />
         </div>

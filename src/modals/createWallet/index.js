@@ -6,6 +6,7 @@ import Modal from 'Components/molecules/genericModal'
 import Modals from 'Util/modals'
 import Api from 'Util/api'
 import PropTypes from 'prop-types'
+import StoreRedux from 'Redux/'
 import moment from 'moment'
 import { useTranslation } from 'react-i18next'
 import Select from 'Components/atoms/select'
@@ -22,6 +23,7 @@ const CreateWalletModal = (props) => {
   const [adress, setAdress] = useState('')
   const [cep, setCep] = useState('')
   const { t } = useTranslation('Wallets')
+  const { auth } = StoreRedux.getState()
 
   const formValidator = new FormValidator([
     {
@@ -84,6 +86,7 @@ const CreateWalletModal = (props) => {
     if (validation.isValid) {
       const payload = {}
       payload.strNome = name
+      payload.fkUser = auth.id
       payload.strSobrenome = surname
       payload.charGenero = gender
       payload.dtNascimento = date

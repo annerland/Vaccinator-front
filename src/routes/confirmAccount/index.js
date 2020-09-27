@@ -10,7 +10,7 @@ export default function ConfirmRoute () {
   const params = useParams()
 
   const getParam = () => {
-    Api.Auth.active(params)
+    Api.Auth.active(params.token)
   }
 
   useEffect(() => {

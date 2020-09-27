@@ -6,8 +6,8 @@ import { FormValidator, validator } from 'Util/validator'
 import { useTranslation } from 'react-i18next'
 import Modals from 'Util/modals'
 import Loading from 'Components/atoms/loading'
+import Alert from 'Components/atoms/alert'
 import Button from '../../components/atoms/button'
-import { path } from 'ramda'
 import Api from 'Util/api'
 
 import './index.scss'
@@ -52,13 +52,12 @@ export default function SignUpRoute () {
     setErrors(validation)
 
     if (validation.isValid) {
-      setLoading(true)
       const payload = {}
       payload.email = email
       payload.password = password
       payload.password_confirmation = confirmPassword
 
-      setLoading(false)
+      setLoading(true)
       Api.Auth.signUp(payload)
         .then(res => {
           setLoading(false)
@@ -73,7 +72,7 @@ export default function SignUpRoute () {
         .catch(err => {
           setLoading(false)
           console.log(err)
-          setLoginError(path(['error', 'message'], err))
+          if (err.response.status === 422) return setLoginError('ERRO: Usuário já cadastrado')
         })
     }
   }
@@ -115,7 +114,7 @@ export default function SignUpRoute () {
           <Button onClick={submit}>{t('send')}</Button>
         </div>
 
-        {loginError && console.log(loginError)}
+        {loginError && <Alert children={loginError} />}
 
       </LoginTemplate>
     </div>

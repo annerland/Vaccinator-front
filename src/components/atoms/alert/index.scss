@@ -1,0 +1,29 @@
+@import '~Styles/theme';
+
+.alert {
+  font-family: $font-base;
+  font-size: $body-font-size;
+  text-align: center;
+  padding: 10px;
+  border-radius: 4px;
+  position: relative;
+  color: $text-color-inverse;
+  margin-top: 24px;
+  padding-right: 34px;
+	background-color: $error-color-dark;
+	color: #fff;
+	border: 2px solid $error-color;
+
+	.icon-close {
+    position: absolute;
+    bottom: 11px;
+    right: 13px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+      color: darken($text-color-inverse, 10%);
+    }
+  }
+}

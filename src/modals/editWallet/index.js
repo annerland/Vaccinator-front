@@ -5,10 +5,10 @@ import Modal from 'Components/molecules/genericModal'
 import Modals from 'Util/modals'
 import Api from 'Util/api'
 import PropTypes from 'prop-types'
-import moment from 'moment'
 import { useTranslation } from 'react-i18next'
 import Loading from 'Components/atoms/loading'
 import { useSelector } from 'react-redux'
+import Select from 'Components/atoms/select'
 import { path } from 'ramda'
 
 const EditWalletModal = (props) => {
@@ -24,41 +24,42 @@ const EditWalletModal = (props) => {
   const { t } = useTranslation('Wallets')
   const modal = useSelector(({ modals }) => modals.generic)
 
+  const fetchPerson = async () => {
+    const res = await Api.Persona.getOne(path(['id'], data))
+    console.log(res)
+    setName(res.pessoa.strNome)
+    setSurname(res.pessoa.strSobrenome)
+    setGender(res.pessoa.charGenero)
+    setDate(res.pessoa.dtNascimento)
+    setCpf(res.pessoa.strCpf)
+    setAdress(res.pessoa.strEndereco)
+    setCep(res.pessoa.strCep)
+  }
+
+
+  const options = [
+    { value: 'f', label: 'F' },
+    { value: 'm', label: 'M' }
+  ]
+
   useEffect(() => {
     setData(path(['body', 'data'], modal))
   }, [modal])
 
-  // const fetchPerson = () => {
-  //   Api.Persona.getOne(path(['id'], data))
-  //     .then((res) => {
-  //       setName(res.pessoas.strNome)
-  //       setSurname(res.pessoas.strSobrenome)
-  //       setGender(res.pessoas.charGenero)
-  //       setDate(res.pessoas.dtNascimento)
-  //       setCpf(res.pessoas.strCpf)
-  //       setAdress(res.pessoas.strEndereco)
-  //       setCep(res.pessoas.strCep)
-  //     })
-  //     .catch(err => {
-  //       console.log(err)
-  //     })
-  // }
-
-  // useEffect(() => {
-  //   fetchPerson()
-  // }, [])
+  useEffect(() => {
+    fetchPerson()
+  }, [])
 
   const submit = () => {
     const payload = {}
     if (name) payload.strNome = name
     if (surname) payload.strSobrenome = surname
-    if (gender) payload.charGenero = gender
+    if (gender) payload.charGenero = gender.value
     if (date) payload.dtNascimento = date
     if (cpf) payload.strCpf = cpf
     if (adress) payload.strEndereco = adress
     if (cep) payload.strCep = cep
     payload.boolAtivo = 1
-    moment(date).format('YYYY-MM-DD')
 
     setLoading(true)
     try {
@@ -94,20 +95,23 @@ const EditWalletModal = (props) => {
           onChange={setSurname}
           value={surname}
         />
-        <Input
+        <Select
           label={t('gender')}
           onChange={setGender}
           value={gender}
+          options={options}
         />
         <Input
           label={t('birthday')}
           onChange={setDate}
+          mask='99/99/9999'
           value={date}
         />
         <Input
           label={t('cpf')}
           onChange={setCpf}
           value={cpf}
+          mask='999.999.999-99'
         />
 
         <Input
@@ -120,6 +124,7 @@ const EditWalletModal = (props) => {
           label={t('cep')}
           onChange={setCep}
           value={cep}
+          mask='99999-999'
         />
         <Button onClick={() => submit()}>{t('send')}</Button>
       </div>
