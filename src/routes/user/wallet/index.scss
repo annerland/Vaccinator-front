@@ -8,6 +8,13 @@
     display: grid;
     margin-top: 32px;
     grid-template-columns: 0.5fr 0.5fr 1fr;
+
+    @media (max-width: $max-width-laptop) {
+      display: flex;
+      margin-top: 32px;
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   .title-and-language {

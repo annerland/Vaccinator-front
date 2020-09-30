@@ -1,0 +1,33 @@
+@import '~Styles/theme';
+
+.cookie-banner {
+		position: fixed;
+		z-index: 10;
+    display: flex;
+    bottom: 0;
+    padding: 16px;
+    background-color: $primary-color-dark;
+    color: white;
+    width: 100%;
+
+    .button--secondary {
+      margin-right: 32px;
+    }
+    
+    i {
+      margin-right: 13px;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    p {
+      flex: 1;
+
+      span {
+        text-decoration: underline;
+        cursor: pointer;
+        margin-left: 4px;
+      }
+    }
+  }

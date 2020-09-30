@@ -2,6 +2,14 @@
   form {
     margin-top: 32px;
 
+    .checkbox {
+      margin: 16px 0;
+      p {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+
     .sign-button {
       display: flex;
       margin: 0 16px;

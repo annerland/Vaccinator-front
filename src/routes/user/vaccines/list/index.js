@@ -52,6 +52,10 @@ export default function Vaccines () {
     fetchVaccine()
   }, [])
 
+  useEffect(() => {
+    setPage(1)
+  }, [pages])
+
   const redirect = (elm) => {
     history.push(`/user/vaccines/${elm.id}`)
   }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Curve from 'Assets/curve.svg'
 import MiniCurve from 'Assets/mini-curve.svg'
 import Logo from 'Assets/logo-vaccinator-home.svg'
@@ -36,11 +36,6 @@ export default function HomePage () {
     <div className='home-container'>
       <div className='home-navbar'>
         <img className='logo' src={Logo} />
-        <div className='home-options'>
-          <p>{t('home')}</p>
-          <p>{t('about')}</p>
-          <p>{t('contact')}</p>
-        </div>
 
         <Button size='middle' type='decline-primary' onClick={() => redirectLogin()}>{t('login')}</Button>
       </div>

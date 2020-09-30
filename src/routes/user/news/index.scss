@@ -27,6 +27,11 @@
     width: 800px;
     margin: 0 auto;
 
+    @media (max-width: $max-width-laptop) {
+      padding: 0px 52px;
+      width: auto;
+    }
+
     .content {
       h1 {
         color: $primary-color;

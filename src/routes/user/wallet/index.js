@@ -14,6 +14,7 @@ import EditWalletModal from 'Modals/editWallet'
 import pagination from 'Util/hooks/pagination'
 import PaginationComponent from 'Components/atoms/paginationComponent'
 import i18next from 'i18next'
+import Loading from 'Components/atoms/loading'
 import StoreRedux from 'Redux/'
 import { search } from 'fast-fuzzy'
 import { useTranslation } from 'react-i18next'
@@ -23,6 +24,7 @@ import './index.scss'
 
 export default function WalletUser () {
   const [originalData, setOriginalData] = useState([])
+  const [loading, setLoading] = useState(false)
   const { auth } = StoreRedux.getState()
 
   const { t } = useTranslation('Wallets')
@@ -66,16 +68,23 @@ export default function WalletUser () {
     fetchPersons()
   }, [])
 
+  useEffect(() => {
+    setPage(1)
+  }, [pages])
+
   const fetchPersons = async () => {
+    setLoading(true)
     await Api.Persona.getPersonByUser(auth.id)
       .then((res) => {
         setContent(res.pessoas)
         setOriginalData(res.pessoas)
       })
+    setLoading(false)
   }
 
   return (
     <div className='wallet-user-route'>
+      <Loading show={loading} />
       <div className='title-and-language'>
         <h1 className='title'>Carteiras</h1>
         <img src={BR} onClick={() => changeLanguage('pt')} alt='br-flag' />
@@ -113,7 +122,7 @@ export default function WalletUser () {
         current={page}
         onChange={setPage}
       />
-      <EditWalletModal />
+      <EditWalletModal onChange={fetchPersons} />
       <ShowWalletModal />
       <AddVaccineWallet />
       <CreateWalletModal onChange={fetchPersons} />

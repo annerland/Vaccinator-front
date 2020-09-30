@@ -7,7 +7,9 @@ import { useTranslation } from 'react-i18next'
 import Modals from 'Util/modals'
 import Loading from 'Components/atoms/loading'
 import Alert from 'Components/atoms/alert'
+import Checkbox from 'Components/atoms/checkbox'
 import Button from '../../components/atoms/button'
+import ShowTerms from 'Modals/terms'
 import Api from 'Util/api'
 
 import './index.scss'
@@ -19,10 +21,15 @@ export default function SignUpRoute () {
   const [confirmPassword, setConfirmPassword] = useState('')
   const [loginError, setLoginError] = useState('')
   const [errors, setErrors] = useState('')
+  const [check, setCheck] = useState(false)
   const { t } = useTranslation('Login')
   const history = useHistory()
   const redirect = () => {
     history.push('/')
+  }
+
+  const showTerms = () => {
+    Modals.Generic.show('show-terms')
   }
 
   const formValidator = new FormValidator([
@@ -107,15 +114,16 @@ export default function SignUpRoute () {
             placeholder='******'
             validator={errors.confirmPassword}
           />
+
+          <Checkbox value={check} onChange={setCheck} label={<>{t('register')} <p onClick={showTerms}>{t('subtitle')}</p></>} />
         </div>
 
         <div className='sign-button'>
           <Button type='decline' onClick={() => redirect()}>{t('back')}</Button>
-          <Button onClick={submit}>{t('send')}</Button>
+          <Button disabled={!check} onClick={submit}>{t('send')}</Button>
         </div>
-
         {loginError && <Alert children={loginError} />}
-
+        <ShowTerms />
       </LoginTemplate>
     </div>
   )

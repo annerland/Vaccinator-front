@@ -8,15 +8,6 @@ describe('Primeira visita', () => {
     cy.visit(`${BASE_URL}`)
   })
 
-  describe('Trocando idioma', () => {
-    it('Português'), () => {
-      cy.get('[alt="br-flag"]').click({ force: true })
-    }
-    it('Inglês'), () => {
-      cy.get('[alt="us-flag"]').click({ force: true })
-    }
-  })
-
   describe('Entrando na plataforma', () => {
     it('Clicando no botão', () => {
       cy.get('.home-navbar > .button').click()
@@ -84,6 +75,38 @@ describe('Primeira visita', () => {
 
     it('OK', () => {
       cy.get('.user-routes > .generic-modal > .generic-body > .modal-actions > .button').click()
+    })
+
+    it('Entrando na página da vacina detalhada', () => {
+      cy.get('.vaccines-content > :nth-child(7)').click()
+    })
+
+    it('Clicando no botão de editar', () => {
+      cy.get('.button').click()
+    })
+
+    it('Editando nome da vacina', () => {
+      cy.get(':nth-child(2) > input').type(' vacina')
+    })
+
+    it('Enviando dados', () => {
+      cy.get('.modal-container > .button').click()
+    })
+
+    it('Confirmar a edição de uma vacina', () => {
+      cy.get('.user-routes > .generic-modal > .generic-body > .modal-actions > .button--primary').click()
+    })
+
+    it('Voltando para listagem', () => {
+      cy.get('ul > :nth-child(2)').click()
+    })
+
+    it('Deletando uma vacina', () => {
+      cy.get(':nth-child(7) > .icon-close').click()
+    })
+
+    it('Confirmar o delete de uma vacina', () => {
+      cy.get('.user-routes > .generic-modal > .generic-body > .modal-actions > .button--primary').click()
     })
   })
 })

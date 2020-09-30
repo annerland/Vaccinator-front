@@ -22,11 +22,11 @@ const AddVaccineWallet = (props) => {
   const [schedule, setSchedule] = useState('')
   const [loading, setLoading] = useState(false)
   const [options, setOptions] = useState({})
-  const [data, setData] = useState()
+  const [data, setData] = useState('')
   const [vaccine, setVaccine] = useState()
   const modal = useSelector(({ modals }) => modals.generic)
-  const { t } = useTranslation('Wallets')
   const { auth } = StoreRedux.getState()
+  const { t } = useTranslation('Wallets')
 
   const fetchVaccines = async () => {
     const res = await Api.Vaccine.list()
@@ -66,11 +66,9 @@ const AddVaccineWallet = (props) => {
       payload.fkPessoa = path(['id'], data)
       payload.fkVacina = vaccine.value
       payload.fkUser = auth.id
-      payload.dtAgendamento = schedule
-      payload.dtAplicacao = application
+      if (schedule) payload.dtAgendamento = schedule
+      if (application) payload.dtAplicacao = application
       payload.boolAtivo = 1
-      moment(application).format('YYYY-MM-DD')
-      console.log(application)
 
       try {
         setLoading(true)

@@ -4,6 +4,39 @@
   position: relative;
   height: 100vh;
 
+  .cookie-banner {
+    position: fixed;
+    display: flex;
+    bottom: 0;
+    padding: 16px;
+    background-color: $primary-color-dark;
+    color: white;
+    width: 100%;
+
+    .button--secondary {
+      margin-right: 32px;
+    }
+    
+    i {
+      margin-right: 13px;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    p {
+      display: flex;
+      align-items: center;
+      flex: 1;
+
+      span {
+        text-decoration: underline;
+        cursor: pointer;
+        margin-left: 4px;
+      }
+    }
+  }
+
   img.curve {
     height: 100vh;
     position: fixed;
@@ -17,6 +50,12 @@
     bottom: -52px;
     left: -52px;
     z-index: -1;
+   
+    @media (max-width: $max-width-laptop) {
+      bottom: -2px;
+      left: -43px;
+      height: 290px;
+    }
   }
 
   img.undraw-vector {
@@ -24,12 +63,20 @@
     right: 45px;
     height: 400px;
     bottom: 120px;
+
+    @media (max-width: $max-width-laptop) {
+      height: 290px;
+    }
   }
 
   .call-to-action {
     width: 482px;
     position: absolute;
     transform: translate(51%, 32%);
+
+    @media (max-width: $max-width-laptop) {
+      transform: translate(16%, 32%);
+    }
 
     .flex-div {
       display: flex;
@@ -78,6 +125,10 @@
 
     img.logo {
       margin-left: 172px;
+
+      @media (max-width: $max-width-laptop) {
+        margin: 0;
+      }
     }
 
     .home-options {

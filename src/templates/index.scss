@@ -25,6 +25,10 @@
     width: 120px;
     transform: translateY(48%);
     top: 0;
+
+    @media (max-width: $max-width-laptop) {
+      transform: translateY(11%);
+    }
   }
 
   form {
@@ -33,7 +37,7 @@
     flex-direction: column;
     justify-content: center;
     border-radius: 16px;
-    padding: 30px 72px;
+    padding: 19px 53px;
     box-shadow: 0 10px 15px $mid-gray-color;
     background-color: #f8f8f8;
 
@@ -42,7 +46,7 @@
       text-align: center;
       font-size: $title-font-size;
       color: $black-color;
-      margin-bottom: 32px;
+      margin-bottom: 16px;
     }
 
     h3 {

@@ -76,7 +76,9 @@ const keys = {
     send: 'Send',
     'text-sign-up': 'Your registration has been successfully created! Check your email to activate your registration',
     cancel: 'Cancel',
-    continue: 'Continue'
+    continue: 'Continue',
+    register: 'When you register, you agree to our',
+    subtitle: 'terms of use'
   },
 
   Vaccines: {
@@ -161,6 +163,62 @@ const keys = {
   News: {
     title: 'News',
     search: 'Search news'
+  },
+
+  Policy: {
+    cookie: 'We use cookies to improve your experience. Using our services, you agree to our',
+    policy: 'privacy policies',
+    title: 'Privacy Policies',
+    'paragraph-1': "Your privacy is important to us. It is Vaccinator's policy to respect your privacy in relation to any information about you that we may collect on the Vaccinator website, and other websites that we own and operate.",
+    'paragraph-2': 'We request personal information only when we really need it to provide you with a service. We do this by fair and legal means, with your knowledge and consent. We also tell you why we are collecting it and how it will be used. ',
+    'paragraph-3': 'We only retain the information collected for as long as necessary to provide the requested service. When we store data, we protect it within commercially acceptable means to prevent loss and theft, as well as unauthorized access, disclosure, copying, use or modification. ',
+    'paragraph-4': 'We do not share personally identifiable information publicly or with third parties, except as required by law.',
+    'paragraph-5': 'Our website may have links to external websites that are not operated by us. Please be aware that we have no control over the content and practices of these sites and we cannot accept responsibility for their respective privacy policies. ',
+    'paragraph-6': 'You are free to refuse our request for personal information, understanding that we may not be able to provide some of the desired services.',
+    'paragraph-7': 'Your continued use of our website will be considered acceptance of our practices around privacy and personal information. If you have any questions about how we handle user data and personal information, please contact us. ',
+    'paragraph-8': 'Vaccinator Cookie Policy',
+    'paragraph-9': 'What are cookies?',
+    'paragraph-10': "As is common practice on almost all professional sites, this site uses cookies, which are small files downloaded to your computer, to improve your experience. This page describes what information they collect, how we use it and why that we sometimes need to store these cookies. We will also share how you can prevent these cookies from being stored, however, this can downgrade or 'break' certain elements of the site's functionality. ",
+    'paragraph-12': 'How do we use cookies?',
+    'paragraph-13': 'We use cookies for a variety of reasons, detailed below. Unfortunately, in most cases, there are no industry standard options for disabling cookies without completely disabling the functionality and features that they add to this site. It is recommended that you leave all cookies if you are unsure whether or not you need them, if they are used to provide a service that you use. ',
+    'paragraph-14': 'Disable cookies',
+    'paragraph-15': "You can prevent cookies from being set by adjusting your browser settings (see your browser's Help for how to do this). Be aware that disabling cookies will affect the functionality of this and many other websites you visit. Disabling cookies will generally result in disabling certain features and features on this site. Therefore, it is recommended that you do not disable cookies.",
+    'paragraph-16': 'Cookies we set',
+    'paragraph-17': 'Account-related cookies',
+    'paragraph-18': "If you create an account with us, we will use cookies to manage the registration process and general administration. These cookies will generally be deleted when you log out of the system, however, in some cases, they may remain later to remember your site's preferences when you log out.",
+    'paragraph-19': 'Login-related cookies',
+    'paragraph-20': 'We use cookies when you are logged in, so that we can remember this action. This saves you from having to sign in every time you visit a new page. These cookies are normally removed or cleared when you log out to ensure that you can only access resources and restricted areas when you log in. ',
+    'paragraph-21': 'Site preference cookies',
+    'paragraph-22': 'To provide you with a great experience on this website, we provide the functionality to set your preferences for how that website runs when you use it. To remember your preferences, we need to set cookies so that this information can be called up whenever you interact with a page is affected by your preferences. Third Party Cookies',
+    'paragraph-23': 'In some special cases, we also use cookies provided by trusted third parties. The following section details which third-party cookies you can find through this website. This site uses Google Analytics, which is one of the most widespread and reliable analytics solutions on the web, to help us understand how you use the site and how we can improve your experience. These cookies can track items such as how much time you spend on the site and the pages you visit, so that we can continue to produce compelling content. For more information about Google Analytics cookies, see the official Google Analytics page. Third party analytics are used to track and measure the use of this site, so that we can continue to produce compelling content. These cookies can track items such as the time you spend on the site or the pages you visit, which helps us understand how we can improve the site for you. We periodically test new features and make subtle changes to the way the site looks. When we are still testing new features, these cookies can be used to ensure that you receive a consistent experience while on the site, while understanding which optimizations our users appreciate most. As we sell products, it is important to understand the statistics on how many visitors to our website actually buy and, therefore, this is the type of data these cookies tracked. This is important to you, as it means that we can make accurate business forecasts that allow us to analyze our advertising and product costs to ensure the best possible price. More information Hopefully it is clear and, as mentioned earlier, if there is something you are not sure whether you need or not, it is generally safer to leave cookies enabled if you interact with one of the features you use on our website. ',
+    'paragraph-24': 'This policy is effective from September / 2020.'
+  },
+
+  Terms: {
+    title: 'Terms of use',
+    terms: '1. Terms',
+    paragraph: 'By accessing the Vaccinator website, you agree to comply with these terms of service, all applicable laws and regulations and agree that you are responsible for compliance with all applicable local laws. If you do not agree with any of these terms, you are prohibited from using or accessing this website. The materials on this site are protected by applicable copyright and trademark laws. ',
+    'paragraph-2': '2. License Use ',
+    'paragraph-3': 'Permission is granted to temporarily download a copy of the materials (information or software) on the Vaccinator website, only for personal, non-commercial transitory viewing. This is the granting of a license, not a transfer of title and, under this license, you cannot: ',
+    'paragraph-4': '1. modify or copy the materials; ',
+    'paragraph-5': '2. use the materials for any commercial purpose or for public display (commercial or non-commercial); ',
+    'paragraph-6': '3. attempt to decompile or reverse engineer any software contained on the Vaccinator website; ',
+    'paragraph-7': '4. remove any copyright or other proprietary notations from the materials; or',
+    'paragraph-8': "5. transfer the materials to another person or 'mirror' the materials on any other server.",
+    'paragraph-9': 'This license will automatically terminate if you violate any of these restrictions and may be terminated by Vaccinator at any time. When you finish viewing these materials or after this license has expired, you must delete all downloaded materials in your possession, whether in electronic or printed format. ',
+    'paragraph-10': '3. Disclaimer ',
+    'paragraph-11': "The materials on the Vaccinator website are provided 'as is'. Vaccinator makes no warranties, express or implied, and hereby disclaims and disclaims all other warranties, including, without limitation, implied warranties or marketing conditions, fitness for a particular purpose or non-infringement of intellectual property or other violation of rights. ",
+    'paragraph-12': 'In addition, Vaccinator does not warrant or make any representations regarding the accuracy, probable results or reliability of the use of the materials on its website or otherwise related to those materials or on websites linked to this site.',
+    'paragraph-13': '4. Limitations',
+    'paragraph-14': 'In no event will Vaccinator or its suppliers be liable for any damages (including, without limitation, damage due to loss of data or profit or due to business interruption) arising from use or inability to use the materials in Vaccinator, even if Vaccinator or an authorized Vaccinator representative has been notified orally or in writing of the possibility of such damage. Because some jurisdictions do not allow limitations on implied warranties, or limitations on liability for consequential or incidental damages, these limitations may not apply to you. ',
+    'paragraph-15': 'accuracy of materials',
+    'paragraph-16': 'The materials displayed on the Vaccinator website may include technical, typographical or photographic errors. Vaccinator does not guarantee that any material on its website is accurate, complete or current. Vaccinator may make changes to the materials contained on its website at any time, without notice. However, Vaccinator does not undertake to update the materials. ',
+    'paragraph-17': '6. Links',
+    'paragraph-18': "Vaccinator has not analyzed all sites linked to its site and is not responsible for the content of any linked site. The inclusion of any link does not imply endorsement by Vaccinator of the site. The use of any linked website is at the user's own risk and risk.",
+    'paragraph-19': 'Modifications',
+    'paragraph-20': 'Vaccinator may revise these website terms of service at any time without notice. By using this website, you agree to be bound by the current version of these terms of service. ',
+    'paragraph-21': 'applicable law',
+    'paragraph-22': 'These terms and conditions are governed and interpreted in accordance with the laws of the Vaccinator and you are irrevocably subject to the exclusive jurisdiction of the courts in that state or locality.'
   }
 }
 

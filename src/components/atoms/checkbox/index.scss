@@ -1,0 +1,63 @@
+@import '~Styles/theme';
+
+.checkbox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+
+  span {
+    min-width: 16px;
+    min-height: 16px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    border: 1px solid $mid-gray-color;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px;
+
+    i {
+      display: none;
+      font-size: 10px;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &--checked {
+    span {
+      border: 1px solid $primary-color;
+      color: $primary-color-dark;
+
+      i {
+        display: flex;
+      }
+    }
+  }
+
+  &--rounded {
+    span {
+      border-radius: 20px;
+    }
+
+    &.checkbox--checked {
+      span {
+        color: #fff;
+        background-color: $primary-color-dark;
+      }
+    }
+  }
+
+  &--disabled {
+    cursor: default;
+    opacity: 0.7;
+  }
+
+  label {
+    cursor: inherit;
+    color: $gray-color;
+  }
+}

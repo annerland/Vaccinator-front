@@ -87,6 +87,10 @@
 
       .field-name {
         width: 300px;
+
+        @media (max-width: $max-width-laptop) {
+          width: 177px;
+        }
       }
 
       .field {

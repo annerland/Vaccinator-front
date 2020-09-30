@@ -19,6 +19,13 @@
     padding: 0 56px;
     margin-bottom: 62px;
 
+    @media (max-width: $max-width-laptop) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 0 56px;
+      margin: 32px 0;
+    }
+
     p {
       margin-top: 11px;
       font-size: 14px;

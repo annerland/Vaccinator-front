@@ -24,31 +24,24 @@ const EditWalletModal = (props) => {
   const { t } = useTranslation('Wallets')
   const modal = useSelector(({ modals }) => modals.generic)
 
-  const fetchPerson = async () => {
-    const res = await Api.Persona.getOne(path(['id'], data))
-    console.log(res)
-    setName(res.pessoa.strNome)
-    setSurname(res.pessoa.strSobrenome)
-    setGender(res.pessoa.charGenero)
-    setDate(res.pessoa.dtNascimento)
-    setCpf(res.pessoa.strCpf)
-    setAdress(res.pessoa.strEndereco)
-    setCep(res.pessoa.strCep)
-  }
-
-
   const options = [
     { value: 'f', label: 'F' },
     { value: 'm', label: 'M' }
   ]
 
   useEffect(() => {
-    setData(path(['body', 'data'], modal))
+    const data = path(['body', 'data'], modal)
+    setData(data)
+    if (data) {
+      setName(data.strNome)
+      setSurname(data.strSobrenome)
+      setGender(data.charGenero)
+      setDate(data.dtNascimento)
+      setCpf(data.strCpf)
+      setAdress(data.strEndereco)
+      setCep(data.strCep)
+    }
   }, [modal])
-
-  useEffect(() => {
-    fetchPerson()
-  }, [])
 
   const submit = () => {
     const payload = {}
@@ -61,7 +54,6 @@ const EditWalletModal = (props) => {
     if (cep) payload.strCep = cep
     payload.boolAtivo = 1
 
-    setLoading(true)
     try {
       Modals.Generic.sucess({
         title: t('edit-vaccine'),
@@ -69,14 +61,15 @@ const EditWalletModal = (props) => {
         cancel: t('cancel'),
         continue: t('continue'),
         handleAction: async () => {
-          await Api.Persona.update(payload, path(['id'], data))
+          setLoading(true)
+          await Api.Persona.update(payload, data.id)
+          setLoading(false)
           props.onChange()
         }
       })
     } catch (err) {
       console.log(err)
     }
-    setLoading(false)
   }
 
   return (
