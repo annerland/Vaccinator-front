@@ -5,6 +5,7 @@ import Vaccine from './vaccine'
 import Persona from './persona'
 import News from './news.js'
 import Establishment from './establishment'
+import { logOut } from 'Redux/auth/actions'
 import Wallet from './wallet'
 import Schedule from './schedules'
 
@@ -25,6 +26,7 @@ const handleRequest = config => {
 
 const handleError = error => {
   if (error.response.status === 401 && !/login/.test(error.config.url)) {
+    StoreRedux.dispatch(logOut())
     window.location.replace('/login')
   }
 
