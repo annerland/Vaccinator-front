@@ -1,0 +1,11 @@
+@import '~Styles/theme';
+
+.config-route {
+	h1.title {
+			padding: 0 24px 18px;
+			border-bottom: 1px solid $mid-gray-color;
+			margin: 0 32px 24px;
+			font-size: 36px;
+			color: #333;
+		}
+}

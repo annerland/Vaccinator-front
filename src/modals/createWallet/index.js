@@ -88,7 +88,7 @@ const CreateWalletModal = (props) => {
       payload.strNome = name
       payload.fkUser = auth.id
       payload.strSobrenome = surname
-      payload.charGenero = gender
+      payload.charGenero = gender.value
       payload.dtNascimento = date
       payload.strCpf = cpf
       payload.strEndereco = adress

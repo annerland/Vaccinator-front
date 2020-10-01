@@ -12,9 +12,21 @@
   .icon-edit {
     color: $secondary-color;
     position: absolute;
-    right: 10px;
+    right: 35px;
     top: 10px;
     font-size: 16px;
+    cursor: pointer;
+
+    &:hover {
+      color: $secondary-color-dark;
+    }
+  }
+
+  .icon-trash {
+    position: absolute;
+    color: $secondary-color;
+    top: 10px;
+    right: 10px;
     cursor: pointer;
 
     &:hover {

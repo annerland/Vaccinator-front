@@ -56,8 +56,8 @@ const EditWalletModal = (props) => {
 
     try {
       Modals.Generic.sucess({
-        title: t('edit-vaccine'),
-        text: t('edit-vaccine-text'),
+        title: t('edit-wallet'),
+        text: t('edit-wallet-text'),
         cancel: t('cancel'),
         continue: t('continue'),
         handleAction: async () => {

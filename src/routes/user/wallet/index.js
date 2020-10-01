@@ -64,6 +64,21 @@ export default function WalletUser () {
     i18next.changeLanguage(lang)
   }
 
+  const deleteWallet = (elm) => {
+    Modals.Generic.sucess({
+      title: 'Deletar Carteira',
+      text: 'Sua carteira e todo o conteúdo serão deletados. Essa ação é irreversível, você tem certeza?',
+      cancel: t('cancel'),
+      continue: t('continue'),
+      handleAction: async () => {
+        setLoading(true)
+        await Api.Persona.delete(elm.id)
+        fetchPersons()
+        setLoading(false)
+      }
+    })
+  }
+
   useEffect(() => {
     fetchPersons()
   }, [])
@@ -106,6 +121,7 @@ export default function WalletUser () {
             <Wallet
               key={person.id}
               src={Neo}
+              delete={() => deleteWallet(person)}
               edit={() => editWallet(person)}
               watch={() => showWallet(person)}
               add={() => addVaccine(person)}

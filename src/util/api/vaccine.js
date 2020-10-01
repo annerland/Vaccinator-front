@@ -23,7 +23,7 @@ export default class Vaccine {
 
   async update (data, id) {
     const url = `/vaccines/${id}`
-    const res = await this.httpWrapper.put(url, data)
+    const res = await this.httpWrapper.patch(url, data)
     return res.data
   }
 

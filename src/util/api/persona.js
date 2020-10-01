@@ -21,6 +21,12 @@ export default class Persona {
     return res.data
   }
 
+  async delete (id) {
+    const url = `/persons/${id}`
+    const res = await this.httpWrapper.delete(url)
+    return res.data
+  }
+
   async getOne (id) {
     const url = `/persons/${id}`
     const res = await this.httpWrapper.get(url)

@@ -9,6 +9,7 @@ import EstablishmentsUser from 'Routes/user/establishments'
 import WalletUser from 'Routes/user/wallet'
 import NewsUser from 'Routes/user/news/list'
 import ShowNews from 'Routes/user/news/show'
+import ConfigUser from 'Routes/user/config'
 
 import './index.scss'
 
@@ -27,6 +28,7 @@ export default function UserRoutes () {
             <Route path='/user/wallets' component={WalletUser} />
             <Route exact path='/user/news' component={NewsUser} />
             <Route path='/user/news/:id' component={ShowNews} />
+            <Route path='/user/configurations' component={ConfigUser} />
           </Switch>
         </div>
       </div>

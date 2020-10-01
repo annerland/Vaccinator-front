@@ -22,7 +22,13 @@
     }
 
     p {
+      display: flex;
+      align-items: center;
       flex: 1;
+
+      @media (max-width: $max-width-laptop) {
+        display: block;
+      }
 
       span {
         text-decoration: underline;

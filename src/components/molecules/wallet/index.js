@@ -9,6 +9,7 @@ const Wallet = (props) => {
 
   return (
     <div className='wallet-component-container'>
+      <i className='icon-trash' onClick={props.delete} />
       <i className='icon-edit' onClick={props.edit} />
       <div className='header'>
         <img src={props.src} />
@@ -49,7 +50,8 @@ Wallet.propTypes = {
   field: PropTypes.string,
   edit: PropTypes.func,
   add: PropTypes.func,
-  watch: PropTypes.func
+  watch: PropTypes.func,
+  delete: PropTypes.func
 }
 
 export default Wallet

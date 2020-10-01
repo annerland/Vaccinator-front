@@ -1,10 +1,10 @@
 @font-face {
     font-family: "icons";
-    src: url("./icons.eot?ec10841060d1d42dad4abe7b03e89419?#iefix") format("embedded-opentype"),
-url("./icons.woff2?ec10841060d1d42dad4abe7b03e89419") format("woff2"),
-url("./icons.woff?ec10841060d1d42dad4abe7b03e89419") format("woff"),
-url("./icons.ttf?ec10841060d1d42dad4abe7b03e89419") format("truetype"),
-url("./icons.svg?ec10841060d1d42dad4abe7b03e89419#icons") format("svg");
+    src: url("./icons.eot?1073c3460a1cb19ecc2d4bd297f11484?#iefix") format("embedded-opentype"),
+url("./icons.woff2?1073c3460a1cb19ecc2d4bd297f11484") format("woff2"),
+url("./icons.woff?1073c3460a1cb19ecc2d4bd297f11484") format("woff"),
+url("./icons.ttf?1073c3460a1cb19ecc2d4bd297f11484") format("truetype"),
+url("./icons.svg?1073c3460a1cb19ecc2d4bd297f11484#icons") format("svg");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -33,42 +33,48 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 .icon-close:before {
     content: "\f105";
 }
-.icon-cookie:before {
+.icon-cog:before {
     content: "\f106";
 }
-.icon-double-arrow-left:before {
+.icon-cookie:before {
     content: "\f107";
 }
-.icon-double-arrow-right:before {
+.icon-double-arrow-left:before {
     content: "\f108";
 }
-.icon-edit:before {
+.icon-double-arrow-right:before {
     content: "\f109";
 }
-.icon-exit:before {
+.icon-edit:before {
     content: "\f10a";
 }
-.icon-home:before {
+.icon-exit:before {
     content: "\f10b";
 }
-.icon-hospital:before {
+.icon-home:before {
     content: "\f10c";
 }
-.icon-map:before {
+.icon-hospital:before {
     content: "\f10d";
 }
-.icon-news:before {
+.icon-map:before {
     content: "\f10e";
 }
-.icon-search:before {
+.icon-news:before {
     content: "\f10f";
 }
-.icon-sign-out:before {
+.icon-search:before {
     content: "\f110";
 }
-.icon-vaccine:before {
+.icon-sign-out:before {
     content: "\f111";
 }
-.icon-vaccines:before {
+.icon-trash:before {
     content: "\f112";
+}
+.icon-vaccine:before {
+    content: "\f113";
+}
+.icon-vaccines:before {
+    content: "\f114";
 }

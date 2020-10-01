@@ -33,6 +33,11 @@
 			margin-bottom: 8px;
 			cursor: pointer;
 
+			&.active {
+				background-color: #ffffff47;
+				border-radius: 6px;
+			}
+
 			&:hover {
 				background-color: #ffffff47;
 				border-radius: 6px;
@@ -55,9 +60,9 @@
 			.icon-vaccine {
 				font-size: 28px;
 				height: 22px;
-			}
-    }
-    
+			}	
+		}
+		 
     .exit {
       position: fixed;
       z-index: 1;
