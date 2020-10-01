@@ -16,7 +16,12 @@ export default function ConfigUser () {
       <div className='config-content'>
         <p>Termos de uso</p>
         <p>Politica de privacidade</p>
-        <Select options={options} label='Selecione o idioma' />
+
+        <div className='select-container'>
+          <Select options={options} label='Selecione o idioma' />
+        </div>
+
+        <p className='delete'>Deletar dados da conta</p>
       </div>
     </div>
   )

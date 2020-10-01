@@ -7,5 +7,31 @@
 			margin: 0 32px 24px;
 			font-size: 36px;
 			color: #333;
-		}
+    }
+  
+  .config-content {
+    padding: 30px 52px;
+
+    p {
+      border-bottom: 1px solid $mid-gray-color;
+      padding-bottom: 12px;
+      padding-left: 8px;
+      margin-bottom: 15px;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .delete {
+      border-top: 1px solid $mid-gray-color;
+      color: $error-color;
+      padding: 16px 8px;
+      margin-top: 16px;
+    }
+
+    .select-container {
+      width: 200px;
+      padding-left: 8px;
+      margin-top: 8px;
+    }
+  }
 }
