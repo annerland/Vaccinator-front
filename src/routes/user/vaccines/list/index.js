@@ -10,6 +10,8 @@ import { search } from 'fast-fuzzy'
 import Loading from 'Components/atoms/loading'
 import Modals from 'Util/modals'
 import pagination from 'Util/hooks/pagination'
+import StoreRedux from 'Redux/'
+
 import PaginationComponent from 'Components/atoms/paginationComponent'
 import Api from 'Util/api'
 
@@ -19,6 +21,9 @@ export default function Vaccines () {
   const [loading, setLoading] = useState(false)
   const { t } = useTranslation('Vaccines')
   const [originalData, setOriginalData] = useState([])
+  const [adminVaccine, setAdminVaccine] = useState([])
+  const { auth } = StoreRedux.getState()
+  const admin = auth.intNivel === 2
   const history = useHistory()
   const [
     page,
@@ -43,7 +48,8 @@ export default function Vaccines () {
   const fetchVaccine = async () => {
     setLoading(true)
     const res = await Api.Vaccine.list()
-    setContent(res.vacinas)
+    setContent(res.vacinas.filter(elm => elm.intStatus === 1))
+    setAdminVaccine(res.vacinas.filter(elm => elm.intStatus === 2))
     setOriginalData(res.vacinas)
     setLoading(false)
   }
@@ -58,6 +64,28 @@ export default function Vaccines () {
 
   const redirect = (elm) => {
     history.push(`/user/vaccines/${elm.id}`)
+  }
+
+  const approveVaccine = (elm) => {
+    const payload = {}
+    payload.intStatus = 1
+
+    Modals.Generic.sucess({
+      title: 'Aprovar vacina',
+      text: 'Deseja aprovar essa vacina? Ela ficará visível publicamente',
+      cancel: `${t('cancel')}`,
+      continue: `${t('continue')}`,
+      handleAction: async () => {
+        setLoading(true)
+        try {
+          await Api.Vaccine.update(elm)
+        } catch (err) {
+          console.log(err)
+        }
+        fetchVaccine()
+        setLoading(false)
+      }
+    })
   }
 
   const createVaccine = () => {
@@ -94,10 +122,26 @@ export default function Vaccines () {
             onChange={handleOnSearch}
           />
         </div>
+
         <Button onClick={() => createVaccine()} type='primary'>{t('add')}</Button>
+        {/* <Button onClick={() => createVaccine()} type='secondary'>Vacinas em análise</Button> */}
       </div>
 
       <Loading show={loading} />
+
+      {admin && <h2 className='subtitle'>Vacinas em análise</h2>}
+      {admin && adminVaccine.map(elm =>
+        <ListItem
+          key={elm.id}
+          onClick={() => redirect(elm)}
+          name={elm.strNome}
+          description={truncate(elm.strSobre, 70)}
+          active={() => approveVaccine(elm.id)}
+          delete={() => deleteVaccine(elm.id)}
+        />
+      )}
+
+      {admin && <h2 className='subtitle'>Vacinas aprovadas</h2>}
       {list.map(elm =>
         <ListItem
           key={elm.id}

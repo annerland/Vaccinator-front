@@ -22,4 +22,10 @@
       display: flex;
     }
   }
+
+  h2.subtitle {
+    padding-left: 52px;
+    font-size: 16px;
+    color: $secondary-color;
+  }
 }

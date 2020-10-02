@@ -6,6 +6,7 @@ import Loading from 'Components/atoms/loading'
 import Modals from 'Util/modals'
 import EditVaccineModal from 'Modals/editVaccine'
 import { useTranslation } from 'react-i18next'
+import StoreRedux from 'Redux/'
 
 import './index.scss'
 
@@ -21,6 +22,8 @@ export default function ShowVaccine () {
   const [loading, setLoading] = useState(false)
   const [effects, setEffects] = useState('')
   const [care, setCare] = useState('')
+  const { auth } = StoreRedux.getState()
+  const admin = auth.intNivel === 2
 
   const { t } = useTranslation('CreateVaccineModal')
 
@@ -53,7 +56,7 @@ export default function ShowVaccine () {
       <h1 className='title'>{name}</h1>
 
       <div className='vaccines-header-show'>
-        <Button onClick={() => editVaccine()} type='primary'>Editar</Button>
+        {admin && <Button onClick={() => editVaccine()} type='primary'>Editar</Button>}
       </div>
 
       <div className='show-content'>

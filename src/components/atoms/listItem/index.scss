@@ -52,6 +52,7 @@
     }
   }
 
+  .icon-check,
   .icon-close {
     background-color: $error-color;
     color: white;
@@ -60,5 +61,11 @@
     font-size: 20px;
     cursor: pointer;
     border-radius: 8px;
+  }
+
+  .icon-check {
+    background-color: $sucess-color;
+    margin-right: 8px;
+    padding: 6px 7px;
   }
 }

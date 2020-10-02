@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import Search from 'Components/atoms/search'
-import Neo from 'Assets/neo.jpg'
 import Wallet from 'Components/molecules/wallet'
 import Button from 'Components/atoms/button'
 import moment from 'moment'
@@ -120,7 +119,6 @@ export default function WalletUser () {
           return (
             <Wallet
               key={person.id}
-              src={Neo}
               delete={() => deleteWallet(person)}
               edit={() => editWallet(person)}
               watch={() => showWallet(person)}

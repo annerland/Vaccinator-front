@@ -1,11 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
+import StoreRedux from 'Redux/'
 
 import './index.scss'
 
 const ListItem = (props) => {
   const { t } = useTranslation('ListItem')
+  const { auth } = StoreRedux.getState()
+  const admin = auth.intNivel === 2
 
   return (
     <div className='list-item'>
@@ -20,7 +23,8 @@ const ListItem = (props) => {
         <p>{props.description}</p>
       </div>
 
-      <i onClick={props.delete} className='icon-close' />
+      {admin && props.active && <i onClick={props.active} className='icon-check' />}
+      {admin && <i onClick={props.delete} className='icon-close' />}
     </div>
   )
 }
@@ -29,7 +33,8 @@ ListItem.propTypes = {
   name: PropTypes.string,
   onClick: PropTypes.func,
   description: PropTypes.string,
-  delete: PropTypes.func
+  delete: PropTypes.func,
+  active: PropTypes.func
 }
 
 export default ListItem

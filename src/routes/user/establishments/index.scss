@@ -54,6 +54,10 @@
       display: flex;
       align-items: center;
       margin-top: 18px;
+
+      .button--secondary {
+        margin-left: 16px;
+      }
     }
   }
 }

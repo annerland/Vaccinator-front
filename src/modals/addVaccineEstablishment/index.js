@@ -3,14 +3,14 @@ import Modal from 'Components/molecules/genericModal'
 import Input from 'Components/atoms/input'
 import Select from 'Components/atoms/select'
 import Button from 'Components/atoms/button'
+import Checkbox from 'Components/atoms/checkbox'
 import { FormValidator, validator } from 'Util/validator'
 import { useTranslation } from 'react-i18next'
 import Loading from 'Components/atoms/loading'
 import Modals from 'Util/modals'
 import Api from 'Util/api'
 import PropTypes from 'prop-types'
-import moment from 'moment'
-
+import './index.scss'
 import { useSelector } from 'react-redux'
 import { path } from 'ramda'
 
@@ -21,6 +21,9 @@ const AddVaccineEstablishment = (props) => {
   const [options, setOptions] = useState({})
   const [unity, setUnity] = useState()
   const [vaccine, setVaccine] = useState()
+  const [hasVaccine, setHasVaccine] = useState(false)
+  const [hasntVaccine, setHasntVaccine] = useState(false)
+
   const modal = useSelector(({ modals }) => modals.generic)
   const { t } = useTranslation('Establishments')
 
@@ -41,12 +44,6 @@ const AddVaccineEstablishment = (props) => {
 
   const formValidator = new FormValidator([
     {
-      field: 'application',
-      method: validator.isEmpty,
-      validWhen: false,
-      message: t('application-invalid')
-    },
-    {
       field: 'vaccine',
       method: validator.isEmpty,
       validWhen: false,
@@ -54,22 +51,38 @@ const AddVaccineEstablishment = (props) => {
     }
   ])
 
+  console.log(formValidator)
+
+  if (hasVaccine) {
+    const valApp = {
+      field: 'application',
+      method: validator.isEmpty,
+      validWhen: false,
+      message: t('application-invalid')
+    }
+
+    formValidator.map(elm => elm.validator.push(valApp))
+  }
+
   useEffect(() => {
     setUnity(path(['body', 'unity', 'id'], modal))
     resetFields()
   }, [modal])
 
   const submit = async () => {
-    const validation = formValidator.validate({ application, vaccine })
+    let validation = formValidator.validate({ vaccine })
+    if (hasVaccine) validation = formValidator.validate({ vaccine, application })
+
     setErrors(validation)
 
     if (validation.isValid) {
       const data = {}
       data.fkUnidade = unity
       data.fkVacina = vaccine.value
-      data.dtAplicacao = application
-      data.boolStatus = '1'
+      if (application) data.dtAplicacao = application
       data.boolAtivo = '1'
+      if (hasVaccine) data.boolStatus = '1'
+      if (hasntVaccine) data.boolStatus = '0'
 
       try {
         await Api.Establishment.addVaccine(data)
@@ -106,6 +119,7 @@ const AddVaccineEstablishment = (props) => {
           options={options}
           value={vaccine}
           onChange={setVaccine}
+          validator={errors.vaccine}
         />
 
         <Input
@@ -116,6 +130,13 @@ const AddVaccineEstablishment = (props) => {
           placeholder='Ex. 13/11/2020'
           validator={errors.application}
         />
+
+        <p className='text'>Nesse estabelecimento há essa vaccina?</p>
+
+        <div className='checkbox-container'>
+          <Checkbox label='Sim' onChange={setHasVaccine} value={hasVaccine} />
+          <Checkbox label='Não' onChange={setHasntVaccine} value={hasntVaccine} />
+        </div>
 
         <Button onClick={() => submit()}>{t('send')}</Button>
       </div>

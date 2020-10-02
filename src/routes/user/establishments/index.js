@@ -108,6 +108,7 @@ export default function EstablishmentsUser () {
 
         <div className='button-container'>
           <Button onClick={() => search()}>{t('send')}</Button>
+          {/* <Button type='secondary' onClick={() => search()}>Adicionar +</Button> */}
         </div>
       </div>
       <Loading show={loading} />

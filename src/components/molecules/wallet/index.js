@@ -12,7 +12,6 @@ const Wallet = (props) => {
       <i className='icon-trash' onClick={props.delete} />
       <i className='icon-edit' onClick={props.edit} />
       <div className='header'>
-        <img src={props.src} />
         <div className='content'>
           <div className='flex-content'>
             <p className='bold-text'>{t('name')}:</p>
