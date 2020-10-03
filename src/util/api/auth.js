@@ -21,15 +21,15 @@ export default class Auth {
     return res.data
   }
 
-  async changePassword (data) {
-    const url = '/auth/password/change'
-    const res = await this.httpWrapper.put(url, data)
+  async resetPassword (data) {
+    const url = '/auth/password/reset'
+    const res = await this.httpWrapper.patch(url, data)
     return res.data
   }
 
-  async resetPassword (email) {
-    const url = '/auth/password/reset'
-    const res = await this.httpWrapper.post(url, { email })
+  async forgotPassword (email) {
+    const url = '/auth/token/create'
+    const res = await this.httpWrapper.post(url, email)
     return res.data
   }
 }

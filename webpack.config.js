@@ -22,6 +22,7 @@ module.exports = {
     port: 3001
   },
   resolve: {
+    extensions: ['.png', '.jsx', '.js'],
     alias: {
       Components: path.resolve(__dirname, 'src/components/'),
       Assets: path.resolve(__dirname, 'src/assets/'),
@@ -36,7 +37,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /(\.js|.jsx)$/,
         exclude: /node_modulest/,
         use: {
           loader: 'babel-loader',

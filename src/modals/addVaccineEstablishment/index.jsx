@@ -51,27 +51,13 @@ const AddVaccineEstablishment = (props) => {
     }
   ])
 
-  console.log(formValidator)
-
-  if (hasVaccine) {
-    const valApp = {
-      field: 'application',
-      method: validator.isEmpty,
-      validWhen: false,
-      message: t('application-invalid')
-    }
-
-    formValidator.map(elm => elm.validator.push(valApp))
-  }
-
   useEffect(() => {
     setUnity(path(['body', 'unity', 'id'], modal))
     resetFields()
   }, [modal])
 
   const submit = async () => {
-    let validation = formValidator.validate({ vaccine })
-    if (hasVaccine) validation = formValidator.validate({ vaccine, application })
+    const validation = formValidator.validate({ vaccine })
 
     setErrors(validation)
 

@@ -119,7 +119,7 @@ export default function EstablishmentsUser () {
             name={elm.strNomeUnidade}
             adress={elm.strEndereco}
             cep={elm.strCep}
-            vaccine={(elm.vaccines || []).map(elm => elm.strNome).join(', ') || <i>Sem informação</i>}
+            vaccine={(elm.vacinas || []).map(elm => elm.strNome).join(', ') || <i>Sem informação</i>}
             onClick={() => addVaccine(elm)}
             district={elm.strBairro}
           />)

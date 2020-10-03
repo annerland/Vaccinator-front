@@ -25,7 +25,7 @@ const handleRequest = config => {
 }
 
 const handleError = error => {
-  if (error.response.status === 401 && !/login/.test(error.config.url)) {
+  if (error.response.status === 401 && !/login|forgotPassword/.test(error.config.url)) {
     StoreRedux.dispatch(logOut())
     window.location.replace('/login')
   }
