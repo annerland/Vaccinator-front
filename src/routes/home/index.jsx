@@ -7,6 +7,7 @@ import Health from 'Assets/health-vector.svg'
 import { useHistory } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import BR from 'Assets/brflag.png'
+import { motion } from 'framer-motion'
 import US from 'Assets/usflag.png'
 import StoreRedux from 'Redux/'
 import i18next from 'i18next'
@@ -27,20 +28,41 @@ export default function HomePage () {
   const redirectSignUp = () => {
     history.push('/sign-up')
   }
+  const list = {
+    visible: { opacity: 1 },
+    hidden: { opacity: 0 }
+  }
+
+  const item = {
+    visible: { opacity: 1, y: 0 },
+    transition: {
+      delay: 1
+    },
+    hidden: { opacity: 0, y: 1 }
+  }
 
   const changeLanguage = (lang) => {
     i18next.changeLanguage(lang)
   }
 
   return (
-    <div className='home-container'>
-      <div className='home-navbar'>
-        <img className='logo' src={Logo} />
+    <motion.div
+      initial='hidden'
+      animate='visible'
+      variants={list}
+      className='home-container'
+    >
+      <motion.div variants={list} className='home-navbar'>
+        <motion.img
+          variants={item}
+          className='logo'
+          src={Logo}
+        />
 
         <Button size='middle' type='decline-primary' onClick={() => redirectLogin()}>{t('login')}</Button>
-      </div>
+      </motion.div>
 
-      <div className='call-to-action'>
+      <motion.div variants={list} className='call-to-action'>
         <div className='flex-div'>
           <h1>{t('title')}</h1>
           <img src={BR} onClick={() => changeLanguage('pt')} alt='br-flag' />
@@ -50,10 +72,10 @@ export default function HomePage () {
         <p>{t('resume')}</p>
 
         <Button onClick={() => redirectSignUp()}>{t('register')}</Button>
-      </div>
+      </motion.div>
       <img className='curve' src={Curve} />
       <img className='mini-curve' src={MiniCurve} />
-      <img className='undraw-vector' src={Health} />
-    </div>
+      <motion.img variants={item} className='undraw-vector' src={Health} />
+    </motion.div>
   )
 }

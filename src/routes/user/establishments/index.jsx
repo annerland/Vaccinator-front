@@ -108,7 +108,7 @@ export default function EstablishmentsUser () {
 
         <div className='button-container'>
           <Button onClick={() => search()}>{t('send')}</Button>
-          {/* <Button type='secondary' onClick={() => search()}>Adicionar +</Button> */}
+          <p onClick={() => fetchEstablishments()}>Limpar filtros</p>
         </div>
       </div>
       <Loading show={loading} />

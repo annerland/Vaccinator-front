@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 
 import './index.scss'
@@ -7,8 +8,18 @@ import './index.scss'
 const Wallet = (props) => {
   const { t } = useTranslation('Wallets')
 
+  const text = {
+    visible: { opacity: 1 },
+    hidden: { opacity: 0 }
+  }
+
   return (
-    <div className='wallet-component-container'>
+    <motion.div
+      initial='hidden'
+      animate='visible'
+      variants={text}
+      className='wallet-component-container'
+    >
       <i className='icon-trash' onClick={props.delete} />
       <i className='icon-edit' onClick={props.edit} />
       <div className='header'>
@@ -37,7 +48,7 @@ const Wallet = (props) => {
           <p onClick={props.add}>{t('add')}</p>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

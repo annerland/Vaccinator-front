@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { motion } from 'framer-motion'
 import PropTypes from 'prop-types'
 
 import './index.scss'
@@ -12,8 +13,26 @@ const DropDown = (props) => {
     show ? setShow(false) : setShow(true)
   }
 
+  const animation = () => {
+    if (show) {
+      return { y: -9, scale: 1 }
+    } else {
+      return { x: 0, scale: 0 }
+    }
+  }
+
+  const text = {
+    visible: { opacity: 1 },
+    hidden: { opacity: 0 }
+  }
+
   return (
-    <div className='drop-down'>
+    <motion.div
+      initial='hidden'
+      animate='visible'
+      variants={text}
+      className='drop-down'
+    >
       <div className='list-drop'>
         <div className='flex-text-name'>
           <i className='icon-hospital' />
@@ -30,7 +49,7 @@ const DropDown = (props) => {
       </div>
 
       {show &&
-        <div className='info'>
+        <motion.div animate={animation()} className='info'>
           <p className='title'>{t('info')}</p>
 
           <div className='flex-text'>
@@ -49,8 +68,8 @@ const DropDown = (props) => {
           </div>
 
           <p className='information'>{t('info-text')} <span onClick={props.onClick}>{t('here')}</span></p>
-        </div>}
-    </div>
+        </motion.div>}
+    </motion.div>
   )
 }
 

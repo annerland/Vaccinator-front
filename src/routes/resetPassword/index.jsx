@@ -5,20 +5,20 @@ import { useHistory, useParams } from 'react-router-dom'
 import LoginTemplate from 'Templates'
 import { FormValidator, validator } from 'Util/validator'
 import Api from 'Util/api'
+import Alert from 'Components/atoms/alert'
+import Modals from 'Util/modals'
+import Loading from 'Components/atoms/loading'
 import Button from '../../components/atoms/button'
-import { useDispatch } from 'react-redux'
-import { signIn } from 'Redux/auth/actions'
 
 export default function ResetPasswordRoute () {
   const { t } = useTranslation('ResetPassword')
   const history = useHistory()
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+  const [loading, setLoading] = useState(false)
   const [errors, setErrors] = useState({})
   const [loginError, setLoginError] = useState('')
-  const [token, setToken] = useState(null)
   const params = useParams()
-  const dispatch = useDispatch()
 
   const redirect = () => {
     history.push('/')
@@ -50,25 +50,33 @@ export default function ResetPasswordRoute () {
     e.preventDefault()
     const validation = formValidator.validate({ password, confirmPassword })
     setErrors(validation)
+    const payload = {}
+    payload.password = password
+    payload.password_confirmation = confirmPassword
+    payload.token = params.token
 
-    if (validation.isValid) {
-      Api.Auth.changePassword({
-        password,
-        password_confirmation: confirmPassword,
-        token: params.token
+    setLoading(true)
+    Api.Auth.resetPassword(payload)
+      .then(res => {
+        setLoading(false)
+        Modals.Generic.sucess({
+          title: t('sign-up'),
+          text: t('text-sign-up'),
+          cancel: t('cancel'),
+          continue: t('continue'),
+          handleAction: () => history.push('/login')
+        })
       })
-        .then((res) => {
-          dispatch(signIn(res))
-          history.push('/login')
-        })
-        .catch(err => {
-          console.log(err)
-        })
-    }
+      .catch(err => {
+        setLoading(false)
+        console.log(err)
+        if (err.response.status === 422) return setLoginError('ERRO: Token expirado')
+      })
   }
 
   return (
     <LoginTemplate>
+      <Loading show={loading} />
       <h2>{t('title')}</h2>
       <Input
         type='password'
@@ -92,6 +100,7 @@ export default function ResetPasswordRoute () {
         <Button type='decline' onClick={redirect}>{t('back')}</Button>
         <Button onClick={submit}>{t('reset')}</Button>
       </div>
+      {loginError && <Alert children={loginError} />}
     </LoginTemplate>
   )
 }

@@ -15,6 +15,12 @@ export default class Auth {
     return res.data
   }
 
+  async delete (id) {
+    const url = `/auth/${id}`
+    const res = await this.httpWrapper.delete(url)
+    return res.data
+  }
+
   async signUp (data) {
     const url = '/auth/register'
     const res = await this.httpWrapper.post(url, data)
