@@ -14,7 +14,8 @@ const keys = {
     wallets: 'Wallets',
     establish: 'Establishments',
     news: 'News',
-    exit: 'Exit'
+    exit: 'Exit',
+    config: 'Configurations'
   },
 
   CreateVaccineModal: {
@@ -115,7 +116,9 @@ const keys = {
   },
 
   Wallets: {
+    wallets: 'Wallets',
     name: 'Name',
+    vaccines: 'Vaccines Received',
     surname: 'Surname',
     birthday: 'Birthday',
     gender: 'Gender',

@@ -6,6 +6,11 @@
     font-size: 16px;    
   }
 
+  .flex-content-date {
+    margin-bottom: 16px;
+  }
+  
+  .flex-content-date,
   .flex-content {
     display: flex;
     
@@ -13,6 +18,7 @@
       font-weight: 600;
       color: $black-color;
       margin-right: 8px;
+      padding-left: 8px;
       margin-bottom: 8px;
     }
   }

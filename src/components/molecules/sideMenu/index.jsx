@@ -1,6 +1,5 @@
 import React from 'react'
 import Logo from 'Assets/reverse-logo.svg'
-import Neo from 'Assets/neo.jpg'
 import { useHistory } from 'react-router-dom'
 import StoreRedux from 'Redux/'
 import { logOut } from 'Redux/auth/actions'
@@ -56,7 +55,7 @@ const SideMenu = () => {
 
         <li className={getStyle('/user/configurations')} onClick={() => redirect('configurations')}>
           <i className='icon-cog' />
-          <p>Configurações</p>
+          <p>{t('config')}</p>
         </li>
 
         <li className='exit' onClick={() => StoreRedux.dispatch(logOut())}>

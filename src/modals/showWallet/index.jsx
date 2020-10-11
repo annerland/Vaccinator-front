@@ -22,10 +22,12 @@ const ShowWalletModal = () => {
   const fetchWalletVaccine = () => {
     Api.Wallet.getOne(path(['id'], data))
       .then((res) => {
-        setVaccines((res.vacinas.filter((elm) => elm.dtAplicação)))
+        setVaccines(res.vacinas.filter(elm => elm.dtAplicacao))
         setVaccinesScheduled((res.vacinas.filter((elm) => elm.fkAgendamento)))
       })
   }
+
+  console.log(vaccinesScheduled)
 
   useEffect(() => {
     fetchWalletVaccine()
@@ -67,24 +69,35 @@ const ShowWalletModal = () => {
         </div>
 
         <div className='footer'>
-          <h1 className='title-component'>Vacinas tomadas</h1>
+          <h1 className='title-component'>{t('vaccines')}</h1>
           {(vaccines || []).map((elm) => {
             return (
-              <div key={elm.id} className='flex-content'>
-                <p className='bold-text'>{t('name')}:</p>
-                <p>{elm.vaccines.map(elm => elm.strNome)}</p>
-                <p>{elm.dtAplicação}</p>
+              <div key={elm.id}>
+                <div className='flex-content'>
+                  <p className='bold-text'>{t('name')}:</p>
+                  <p>{elm.vaccines.map(elm => elm.strNome)}</p>
+                </div>
+                <div className='flex-content-date'>
+                  <p className='bold-text'>{t('application')}:</p>
+                  <p>{moment(elm.dtAplicacao).format('DD/MM/YYYY')}</p>
+                </div>
               </div>
             )
           })}
         </div>
         <div className='footer'>
-          <h1 className='title-component'>Vacinas agendadas</h1>
+          <h1 className='title-component'>{t('scheduling')}</h1>
           {(vaccinesScheduled || []).map((elm) => {
             return (
-              <div key={elm.id} className='flex-content'>
-                <p className='bold-text'>{t('name')}:</p>
-                <p>{elm.vaccines.map(elm => elm.strNome)}</p>
+              <div key={elm.id}>
+                <div className='flex-content'>
+                  <p className='bold-text'>{t('name')}:</p>
+                  <p>{elm.vaccines.map(elm => elm.strNome)}</p>
+                </div>
+                <div className='flex-content-date'>
+                  <p className='bold-text'>{t('scheduling')}:</p>
+                  <p>{moment(elm.agendamento.dtAgendamento).format('DD/MM/YYYY')}</p>
+                </div>
               </div>
             )
           })}

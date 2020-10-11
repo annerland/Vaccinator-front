@@ -67,8 +67,12 @@ export default function Vaccines () {
   }
 
   const approveVaccine = (elm) => {
-    const payload = {}
-    payload.intStatus = 1
+    const payload = {
+      intStatus: 1
+    }
+
+    console.log(payload)
+    console.log(elm)
 
     Modals.Generic.sucess({
       title: 'Aprovar vacina',
@@ -78,7 +82,7 @@ export default function Vaccines () {
       handleAction: async () => {
         setLoading(true)
         try {
-          await Api.Vaccine.update(elm)
+          await Api.Vaccine.update(payload, elm)
         } catch (err) {
           console.log(err)
         }
@@ -140,6 +144,7 @@ export default function Vaccines () {
           delete={() => deleteVaccine(elm.id)}
         />
       )}
+
 
       {admin && <h2 className='subtitle'>Vacinas aprovadas</h2>}
       {list.map(elm =>

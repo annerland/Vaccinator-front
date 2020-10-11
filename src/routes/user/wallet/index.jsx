@@ -100,7 +100,7 @@ export default function WalletUser () {
     <div className='wallet-user-route'>
       <Loading show={loading} />
       <div className='title-and-language'>
-        <h1 className='title'>Carteiras</h1>
+        <h1 className='title'>{t('wallets')}</h1>
         <img src={BR} onClick={() => changeLanguage('pt')} alt='br-flag' />
         <img src={US} onClick={() => changeLanguage('en')} alt='us-flag' />
       </div>

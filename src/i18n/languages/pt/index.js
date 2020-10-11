@@ -12,8 +12,10 @@ const keys = {
     wallets: 'Carteiras',
     establish: 'Estabelecimentos',
     news: 'Notícias',
-    exit: 'Sair'
+    exit: 'Sair',
+    config: 'Configurações'
   },
+
   CreateVaccineModal: {
     title: 'Criar Vacina',
     name: 'Nome da vacina',
@@ -107,7 +109,9 @@ const keys = {
   },
 
   Wallets: {
+    wallets: 'Carteiras',
     name: 'Nome',
+    vaccines: 'Vacinas tomadas',
     surname: 'Sobrenome',
     birthday: 'Nascimento',
     gender: 'Gênero',
