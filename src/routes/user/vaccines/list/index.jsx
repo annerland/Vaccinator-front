@@ -9,9 +9,9 @@ import { truncate } from 'Util/helpers'
 import { search } from 'fast-fuzzy'
 import Loading from 'Components/atoms/loading'
 import Modals from 'Util/modals'
+import Order from 'Components/atoms/order'
 import pagination from 'Util/hooks/pagination'
 import StoreRedux from 'Redux/'
-
 import PaginationComponent from 'Components/atoms/paginationComponent'
 import Api from 'Util/api'
 
@@ -41,6 +41,19 @@ export default function Vaccines () {
     setContent(res)
   }
 
+  const reorder = (data = []) => {
+    const safeLow = (str = '') => {
+      if (str === null) return ''
+      return str.toLowerCase()
+    }
+
+    return data.sort((a, b) => {
+      if (safeLow(a.strNome) < safeLow(b.strNome)) return -1
+      if (safeLow(a.strNome) > safeLow(b.strNome)) return 1
+      return 0
+    })
+  }
+
   useEffect((query) => {
     handleOnSearch(query)
   }, [])
@@ -48,7 +61,7 @@ export default function Vaccines () {
   const fetchVaccine = async () => {
     setLoading(true)
     const res = await Api.Vaccine.list()
-    setContent(res.vacinas.filter(elm => elm.intStatus === 1))
+    setContent(reorder(res.vacinas.filter(elm => elm.intStatus === 1)))
     setAdminVaccine(res.vacinas.filter(elm => elm.intStatus === 2))
     setOriginalData(res.vacinas)
     setLoading(false)
@@ -70,9 +83,6 @@ export default function Vaccines () {
     const payload = {
       intStatus: 1
     }
-
-    console.log(payload)
-    console.log(elm)
 
     Modals.Generic.sucess({
       title: 'Aprovar vacina',
@@ -125,6 +135,8 @@ export default function Vaccines () {
             placeholder={t('search')}
             onChange={handleOnSearch}
           />
+
+          <Order placeholder='Order by' />
         </div>
 
         <Button onClick={() => createVaccine()} type='primary'>{t('add')}</Button>
@@ -144,7 +156,6 @@ export default function Vaccines () {
           delete={() => deleteVaccine(elm.id)}
         />
       )}
-
 
       {admin && <h2 className='subtitle'>Vacinas aprovadas</h2>}
       {list.map(elm =>

@@ -70,6 +70,8 @@ const keys = {
     sign: 'Sign up',
     forgot: 'Forget my password',
     invalidPass: 'Invalid password',
+    weakPass: 'Passwords of at least 8 characters of different types (capital letter, lowercase, number and special character)',
+    equalPass: 'Passwords do not match',
     invalidUser: 'Invalid Email',
     welcome: 'Welcome!',
     'confirm-password': 'Confirm password',

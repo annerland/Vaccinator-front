@@ -1,4 +1,22 @@
 .modal-container {
+  .doses-content {
+    position: relative;
+
+    i {
+      display: flex;
+      align-items: center;
+      font-size: 30px;
+      position: absolute;
+      right: 5px;
+      top: 37px;
+      cursor: pointer;
+      color: #74b8d0;
+    }
+
+    .main-input {
+      width: 85%;
+    }
+  }
   .info {
     margin-bottom: 24px;
   }   

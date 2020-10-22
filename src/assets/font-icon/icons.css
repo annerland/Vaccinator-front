@@ -1,10 +1,10 @@
 @font-face {
     font-family: "icons";
-    src: url("./icons.eot?1073c3460a1cb19ecc2d4bd297f11484?#iefix") format("embedded-opentype"),
-url("./icons.woff2?1073c3460a1cb19ecc2d4bd297f11484") format("woff2"),
-url("./icons.woff?1073c3460a1cb19ecc2d4bd297f11484") format("woff"),
-url("./icons.ttf?1073c3460a1cb19ecc2d4bd297f11484") format("truetype"),
-url("./icons.svg?1073c3460a1cb19ecc2d4bd297f11484#icons") format("svg");
+    src: url("./icons.eot?6c0cff7494434ade6c685e47472e2577?#iefix") format("embedded-opentype"),
+url("./icons.woff2?6c0cff7494434ade6c685e47472e2577") format("woff2"),
+url("./icons.woff?6c0cff7494434ade6c685e47472e2577") format("woff"),
+url("./icons.ttf?6c0cff7494434ade6c685e47472e2577") format("truetype"),
+url("./icons.svg?6c0cff7494434ade6c685e47472e2577#icons") format("svg");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -63,18 +63,21 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 .icon-news:before {
     content: "\f10f";
 }
-.icon-search:before {
+.icon-plus-circle:before {
     content: "\f110";
 }
-.icon-sign-out:before {
+.icon-search:before {
     content: "\f111";
 }
-.icon-trash:before {
+.icon-sign-out:before {
     content: "\f112";
 }
-.icon-vaccine:before {
+.icon-trash:before {
     content: "\f113";
 }
-.icon-vaccines:before {
+.icon-vaccine:before {
     content: "\f114";
+}
+.icon-vaccines:before {
+    content: "\f115";
 }

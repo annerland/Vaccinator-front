@@ -34,7 +34,7 @@ export default function ResetPasswordRoute () {
     },
     {
       field: 'password',
-      method: validator.isShort,
+      method: validator.isPowerfullPassword,
       validWhen: false,
       message: t('validation.short-password')
     },

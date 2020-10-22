@@ -71,14 +71,14 @@ const AddVaccineEstablishment = (props) => {
       if (hasntVaccine) data.boolStatus = '0'
 
       try {
+        setLoading(true)
         await Api.Establishment.addVaccine(data)
         props.onChange()
-        setLoading(true)
         resetFields()
 
         Modals.Generic.sucess({
           title: t('add-vaccine'),
-          text: t('info-text'),
+          text: t('add-vaccine-text'),
           continue: 'OK',
           handleAction: () => Modals.Generic.hide()
         })

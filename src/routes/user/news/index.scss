@@ -33,6 +33,11 @@
     }
 
     .content {
+      .link {
+        margin-bottom: 16px;
+        color: $primary-color
+      }
+
       h1 {
         color: $primary-color;
         margin: 72px 0 32px;

@@ -13,8 +13,6 @@ const EditVaccineModal = (props) => {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [restricted, setRestricted] = useState('')
-  const [dose, setDose] = useState('')
-  const [interval, setInterval] = useState('')
   const [indication, setIndication] = useState('')
   const [application, setApplication] = useState('')
   const [effects, setEffects] = useState('')
@@ -28,8 +26,6 @@ const EditVaccineModal = (props) => {
     setName(res.vacinas.strNome)
     setDescription(res.vacinas.strSobre)
     setRestricted(res.vacinas.strRestricoes)
-    setDose(res.vacinas.intQtdDoses)
-    setInterval(res.vacinas.intDiasIntervaloDose)
     setIndication(res.vacinas.strIndicacao)
     setApplication(res.vacinas.strViaAplicacao)
     setEffects(res.vacinas.strEfeitos)
@@ -44,9 +40,7 @@ const EditVaccineModal = (props) => {
     const payload = {}
     if (name) payload.strNome = name
     if (description) payload.strSobre = description
-    if (dose) payload.intQtdDoses = dose
     if (restricted) payload.strRestricoes = restricted
-    if (interval) payload.intDiasIntervaloDose = interval
     if (indication) payload.strIndicacao = indication
     if (application) payload.strViaAplicacao = application
     if (effects) payload.strEfeitos = effects
@@ -91,19 +85,6 @@ const EditVaccineModal = (props) => {
           onChange={setRestricted}
           value={restricted}
         />
-        <Input
-          type='number'
-          label={t('doses')}
-          onChange={setDose}
-          value={dose}
-        />
-        <Input
-          type='number'
-          label={t('interval')}
-          onChange={setInterval}
-          value={interval}
-        />
-
         <Input
           type='text'
           label={t('indications')}

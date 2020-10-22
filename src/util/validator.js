@@ -15,6 +15,12 @@ validator.isShort = (value = '') => {
   return value.length < 6
 }
 
+validator.isPowerfullPassword = (value) => {
+  // eslint-disable-next-line no-useless-escape
+  const regex = /(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*\+\[\]\{\}\$\)\()]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/
+  return regex.test(value)
+}
+
 class FormValidator {
   constructor (validations) {
     this.validations = validations

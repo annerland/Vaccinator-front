@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom'
 import StoreRedux from 'Redux/'
 import { logOut } from 'Redux/auth/actions'
 import { useTranslation } from 'react-i18next'
+import { truncate } from 'Util/helpers'
 import Classnames from 'classnames'
 
 import './index.scss'
@@ -11,6 +12,7 @@ import './index.scss'
 const SideMenu = () => {
   const history = useHistory()
   const { t } = useTranslation('SideMenu')
+  const { auth } = StoreRedux.getState()
 
   const getStyle = (term) => {
     const pathname = window.location.href
@@ -56,6 +58,10 @@ const SideMenu = () => {
         <li className={getStyle('/user/configurations')} onClick={() => redirect('configurations')}>
           <i className='icon-cog' />
           <p>{t('config')}</p>
+        </li>
+
+        <li className='user-logged'>
+          <p>{truncate(auth.email, 22)}</p>
         </li>
 
         <li className='exit' onClick={() => StoreRedux.dispatch(logOut())}>

@@ -65,6 +65,8 @@ const keys = {
     sign: 'Registre-se',
     forgot: 'Esqueci minha senha',
     invalidPass: 'Senha inválida',
+    weakPass: 'Senhas devem ser no mínimo com 8 caracteres de diferentes tipos (letra maíuscula, mínuscula, números e caractere especial)',
+    equalPass: 'As Senhas não coincidem',
     invalidUser: 'Usuário inválido',
     welcome: 'Bem-vindo!',
     'confirm-password': 'Confirmar senha',

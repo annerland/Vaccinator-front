@@ -65,7 +65,7 @@ export default function LoginRoute () {
 
   return (
     <LoginTemplate>
-      <h2>Welcome</h2>
+      <h2>{t('welcome')}</h2>
 
       <Loading show={loading} />
 

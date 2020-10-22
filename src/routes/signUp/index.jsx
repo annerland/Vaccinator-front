@@ -41,15 +41,15 @@ export default function SignUpRoute () {
     },
     {
       field: 'password',
-      method: validator.isEmpty,
-      validWhen: false,
-      message: t('invalidPass')
+      method: validator.isPowerfullPassword,
+      validWhen: true,
+      message: t('weakPass')
     },
     {
       field: 'confirmPassword',
-      method: validator.isEmpty,
-      validWhen: false,
-      message: t('invalidPass')
+      method: validator.isSamePassword,
+      validWhen: true,
+      message: t('equalPass')
     }
   ])
 
@@ -88,7 +88,7 @@ export default function SignUpRoute () {
     <div className='sign-up-route'>
       <Loading show={loading} />
       <LoginTemplate>
-        <h2>Sign up</h2>
+        <h2>{t('sign')}</h2>
         <div className='sign-up-grid'>
           <Input
             label='E-mail'

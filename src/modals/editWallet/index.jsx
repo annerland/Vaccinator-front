@@ -16,10 +16,7 @@ const EditWalletModal = (props) => {
   const [surname, setSurname] = useState('')
   const [gender, setGender] = useState('')
   const [date, setDate] = useState('')
-  const [cpf, setCpf] = useState('')
   const [loading, setLoading] = useState(false)
-  const [adress, setAdress] = useState('')
-  const [cep, setCep] = useState('')
   const [data, setData] = useState()
   const { t } = useTranslation('Wallets')
   const modal = useSelector(({ modals }) => modals.generic)
@@ -37,9 +34,6 @@ const EditWalletModal = (props) => {
       setSurname(data.strSobrenome)
       setGender(data.charGenero)
       setDate(data.dtNascimento)
-      setCpf(data.strCpf)
-      setAdress(data.strEndereco)
-      setCep(data.strCep)
     }
   }, [modal])
 
@@ -49,9 +43,6 @@ const EditWalletModal = (props) => {
     if (surname) payload.strSobrenome = surname
     if (gender) payload.charGenero = gender.value
     if (date) payload.dtNascimento = date
-    if (cpf) payload.strCpf = cpf
-    if (adress) payload.strEndereco = adress
-    if (cep) payload.strCep = cep
     payload.boolAtivo = 1
 
     try {
@@ -100,25 +91,7 @@ const EditWalletModal = (props) => {
           mask='99/99/9999'
           value={date}
         />
-        <Input
-          label={t('cpf')}
-          onChange={setCpf}
-          value={cpf}
-          mask='999.999.999-99'
-        />
 
-        <Input
-          label={t('address')}
-          onChange={setAdress}
-          value={adress}
-        />
-
-        <Input
-          label={t('cep')}
-          onChange={setCep}
-          value={cep}
-          mask='99999-999'
-        />
         <Button onClick={() => submit()}>{t('send')}</Button>
       </div>
     </Modal>

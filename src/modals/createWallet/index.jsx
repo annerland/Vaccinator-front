@@ -17,11 +17,8 @@ const CreateWalletModal = (props) => {
   const [surname, setSurname] = useState('')
   const [gender, setGender] = useState('')
   const [date, setDate] = useState('')
-  const [cpf, setCpf] = useState('')
   const [loading, setLoading] = useState(false)
   const [errors, setErrors] = useState('')
-  const [adress, setAdress] = useState('')
-  const [cep, setCep] = useState('')
   const { t } = useTranslation('Wallets')
   const { auth } = StoreRedux.getState()
 
@@ -51,23 +48,10 @@ const CreateWalletModal = (props) => {
       message: 'empty-gender'
     },
     {
-      field: 'cpf',
-      method: validator.isEmpty,
-      validWhen: false,
-      message: 'empty-cpf'
-    },
-    {
       field: 'adress',
       method: validator.isEmpty,
       validWhen: false,
       message: 'empty-address'
-    },
-
-    {
-      field: 'cep',
-      method: validator.isEmpty,
-      validWhen: false,
-      message: 'empty-cep'
     }
   ])
 
@@ -76,10 +60,7 @@ const CreateWalletModal = (props) => {
       name,
       surname,
       gender,
-      date,
-      cpf,
-      adress,
-      cep
+      date
     })
     setErrors(validation)
 
@@ -90,9 +71,6 @@ const CreateWalletModal = (props) => {
       payload.strSobrenome = surname
       payload.charGenero = gender.value
       payload.dtNascimento = date
-      payload.strCpf = cpf
-      payload.strEndereco = adress
-      payload.strCep = cep
       payload.boolAtivo = 1
       moment(date).format('YYYY-MM-DD')
 
@@ -154,30 +132,6 @@ const CreateWalletModal = (props) => {
           mask='99/99/9999'
           placeholder={t('type-date')}
           validator={errors.date}
-        />
-        <Input
-          label={t('cpf')}
-          onChange={setCpf}
-          mask='999.999.999-99'
-          placeholder={t('type-cpf')}
-          validator={errors.cpf}
-        />
-
-        <Input
-          label={t('address')}
-          onChange={setAdress}
-          value={adress}
-          placeholder={t('type-address')}
-          validator={errors.adress}
-        />
-
-        <Input
-          label={t('cep')}
-          onChange={setCep}
-          value={cep}
-          mask='99999-999'
-          placeholder={t('type-cep')}
-          validator={errors.cep}
         />
         <Button onClick={() => submit()}>{t('send')}</Button>
       </div>

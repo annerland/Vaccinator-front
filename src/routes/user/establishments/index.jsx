@@ -33,10 +33,23 @@ export default function EstablishmentsUser () {
     setLoading(true)
     Api.Establishment.list()
       .then((res) => {
-        setContent(res.establishments)
+        setContent(reorder(res.establishments))
         setLoading(false)
       })
       .catch(err => console.log(err))
+  }
+
+  const reorder = (data = []) => {
+    const safeLow = (str = '') => {
+      if (str === null) return ''
+      return str.toLowerCase()
+    }
+
+    return data.sort((a, b) => {
+      if (safeLow(a.strNome) < safeLow(b.strNome)) return -1
+      if (safeLow(a.strNome) > safeLow(b.strNome)) return 1
+      return 0
+    })
   }
 
   const fetchVaccines = async () => {
@@ -65,6 +78,14 @@ export default function EstablishmentsUser () {
   useEffect(() => {
     fetchEstablishments()
   }, [])
+
+  const cleanFilters = () => {
+    setVaccine('')
+    setAdress('')
+    setMilles('')
+    setCep('')
+    fetchEstablishments()
+  }
 
   return (
     <div className='establishments-route'>
@@ -108,7 +129,7 @@ export default function EstablishmentsUser () {
 
         <div className='button-container'>
           <Button onClick={() => search()}>{t('send')}</Button>
-          <p onClick={() => fetchEstablishments()}>Limpar filtros</p>
+          <p onClick={() => cleanFilters()}>Limpar filtros</p>
         </div>
       </div>
       <Loading show={loading} />

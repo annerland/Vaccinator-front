@@ -39,10 +39,6 @@ const Wallet = (props) => {
         </div>
       </div>
       <div className='footer'>
-        <div className='flex-content'>
-          <p className='bold-text'>{t('cpf')}:</p>
-          <p>{props.field}</p>
-        </div>
         <div className='flex-content-buttons'>
           <p onClick={props.watch}>{t('view')}</p>
           <p onClick={props.add}>{t('add')}</p>

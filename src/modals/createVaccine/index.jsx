@@ -15,8 +15,6 @@ const CreateVaccineModal = (props) => {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [restricted, setRestricted] = useState('')
-  const [dose, setDose] = useState('')
-  const [interval, setInterval] = useState('')
   const [indication, setIndication] = useState('')
   const [application, setApplication] = useState('')
   const [effects, setEffects] = useState('')
@@ -39,24 +37,11 @@ const CreateVaccineModal = (props) => {
       message: `${t('empty-desc')}`
     },
     {
-      field: 'dose',
-      method: validator.isEmpty,
-      validWhen: false,
-      message: `${t('empty-dose')}`
-    },
-    {
       field: 'restricted',
       method: validator.isEmpty,
       validWhen: false,
       message: `${t('empty-rest')}`
     },
-    {
-      field: 'interval',
-      method: validator.isEmpty,
-      validWhen: false,
-      message: `${t('empty-inter')}`
-    },
-
     {
       field: 'indication',
       method: validator.isEmpty,
@@ -87,9 +72,7 @@ const CreateVaccineModal = (props) => {
     const validation = formValidator.validate({
       name,
       description,
-      dose,
       restricted,
-      interval,
       indication,
       application,
       effects,
@@ -101,9 +84,7 @@ const CreateVaccineModal = (props) => {
       const payload = {}
       payload.strNome = name
       payload.strSobre = description
-      payload.intQtdDoses = dose
       payload.strRestricoes = restricted
-      payload.intDiasIntervaloDose = interval
       payload.strIndicacao = indication
       payload.strViaAplicacao = application
       payload.strEfeitos = effects
@@ -154,22 +135,6 @@ const CreateVaccineModal = (props) => {
           value={restricted}
           placeholder={t('placeholder-rest')}
           validator={errors.restricted}
-        />
-        <Input
-          type='number'
-          label={t('doses')}
-          onChange={setDose}
-          value={dose}
-          placeholder={t('placeholder-doses')}
-          validator={errors.dose}
-        />
-        <Input
-          type='number'
-          label={t('interval')}
-          onChange={setInterval}
-          value={interval}
-          placeholder={t('placeholder-interval')}
-          validator={errors.interval}
         />
 
         <Input

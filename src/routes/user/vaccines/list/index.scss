@@ -20,6 +20,14 @@
     .search-container {
       flex: 1;
       display: flex;
+
+      .search-bar .icon-search {
+        top: 44%;
+      }
+
+      .line {
+        margin-left: 16px;
+      }
     }
   }
 

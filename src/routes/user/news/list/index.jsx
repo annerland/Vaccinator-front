@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next'
 import Loading from 'Components/atoms/loading'
 import { search } from 'fast-fuzzy'
 import { useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 // eslint-disable-next-line import/no-absolute-path
 import '../index.scss'
@@ -68,6 +69,7 @@ export default function NewsUser () {
           return (
             <div key={elm.id} className='content'>
               <h1 onClick={() => redirect(elm)}>{elm.strTitulo}</h1>
+              <a className='link' href={elm.strLink}>Link original</a>
               <div
                 className='item'
                 dangerouslySetInnerHTML={{ __html: truncate(elm.strDescricao, 1000) }}

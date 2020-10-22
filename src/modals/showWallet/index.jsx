@@ -23,11 +23,9 @@ const ShowWalletModal = () => {
     Api.Wallet.getOne(path(['id'], data))
       .then((res) => {
         setVaccines(res.vacinas.filter(elm => elm.dtAplicacao))
-        setVaccinesScheduled((res.vacinas.filter((elm) => elm.fkAgendamento)))
+        setVaccinesScheduled((res.vacinas.filter((elm) => elm.dtAplicacao == null)))
       })
   }
-
-  console.log(vaccinesScheduled)
 
   useEffect(() => {
     fetchWalletVaccine()
@@ -51,20 +49,6 @@ const ShowWalletModal = () => {
               <p className='bold-text'>{t('gender')}:</p>
               <p>{path(['charGenero'], data) === 'f' ? t('female') : t('male')}</p>
             </div>
-          </div>
-        </div>
-        <div className='footer'>
-          <div className='flex-content'>
-            <p className='bold-text'>{t('cpf')}:</p>
-            <p>{path(['strCpf'], data)}</p>
-          </div>
-          <div className='flex-content'>
-            <p className='bold-text'>{t('address')}:</p>
-            <p>{path(['strEndereco'], data)}</p>
-          </div>
-          <div className='flex-content'>
-            <p className='bold-text'>{t('cep')}:</p>
-            <p>{path(['strCep'], data)}</p>
           </div>
         </div>
 
@@ -92,7 +76,7 @@ const ShowWalletModal = () => {
               <div key={elm.id}>
                 <div className='flex-content'>
                   <p className='bold-text'>{t('name')}:</p>
-                  <p>{elm.vaccines.map(elm => elm.strNome)}</p>
+                  <p>{elm.vaccines[0].strNome}</p>
                 </div>
                 <div className='flex-content-date'>
                   <p className='bold-text'>{t('scheduling')}:</p>
