@@ -15,16 +15,18 @@ import { path } from 'ramda'
 
 import './index.scss'
 
-const generateId = () => `_${Math.random().toString(36).substr(2, 9)}`
+const generateId = () => `${Math.random().toString(36).substr(2, 9)}`
 
 const AddVaccineWallet = (props) => {
   const [errors, setErrors] = useState('')
   const [loading, setLoading] = useState(false)
   const [options, setOptions] = useState({})
+  const [dataOptions, setDataOptions] = useState({})
   const [application, setApplication] = useState('')
   const [inputs, setInputs] = useState(null)
   const [data, setData] = useState('')
   const [vaccine, setVaccine] = useState()
+  const [establishment, setEstablishment] = useState()
   const modal = useSelector(({ modals }) => modals.generic)
   const { auth } = StoreRedux.getState()
   const { t } = useTranslation('Wallets')
@@ -34,6 +36,16 @@ const AddVaccineWallet = (props) => {
     // eslint-disable-next-line prefer-const
     let array = res.vacinas.map(elm => {
       return { value: elm.id, label: elm.strNome }
+    })
+
+    setDataOptions(array)
+  }
+
+  const fetchEstablishments = async () => {
+    const res = await Api.Establishment.list()
+    // eslint-disable-next-line prefer-const
+    let array = res.establishments.map(elm => {
+      return { value: elm.id, label: elm.strNomeUnidade }
     })
 
     setOptions(array)
@@ -58,6 +70,8 @@ const AddVaccineWallet = (props) => {
 
   const resetFields = () => {
     setVaccine('')
+    setEstablishment('')
+    setInputs('')
   }
 
   const formValidator = new FormValidator([
@@ -83,10 +97,10 @@ const AddVaccineWallet = (props) => {
       payload.fkPessoa = path(['id'], data)
       payload.fkVacina = vaccine.value
       payload.fkUser = auth.id
+      payload.fkUnidade = establishment.value
+      payload.boolAtivo = 1
       if (inputs) payload.doses = inputs.map(elm => elm.value)
       if (application) payload.dtAplicacao = application
-
-      payload.boolAtivo = 1
 
       try {
         Modals.Generic.sucess({
@@ -109,6 +123,7 @@ const AddVaccineWallet = (props) => {
   }
 
   useEffect(() => {
+    fetchEstablishments()
     fetchVaccines()
   }, [])
 
@@ -127,6 +142,14 @@ const AddVaccineWallet = (props) => {
           validator={errors.vaccine}
         />
 
+        <Select
+          label='Estabelecimentos'
+          options={dataOptions}
+          value={establishment}
+          onChange={setEstablishment}
+          validator={errors.vaccine}
+        />
+
         <Input
           label={t('application')}
           onChange={setApplication}
@@ -139,7 +162,14 @@ const AddVaccineWallet = (props) => {
           <i onClick={() => createNewInput()} className='icon-plus-circle' />
           {inputs && inputs.length && inputs.map(({ id, value }) => {
             return (
-              <Input value={value} onChange={(e) => onChangeInput({ id, value: e })} key={id} label='Insira a data da dose' />
+              <Input
+                placeholder='Ex. 13/11/2020'
+                mask='99/99/9999'
+                value={value}
+                onChange={(e) => onChangeInput({ id, value: e })}
+                key={id}
+                label={t('dose-date')}
+              />
             )
           })}
         </div>

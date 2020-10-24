@@ -78,10 +78,14 @@ const ShowWalletModal = () => {
                   <p className='bold-text'>{t('name')}:</p>
                   <p>{elm.vaccines[0].strNome}</p>
                 </div>
-                <div className='flex-content-date'>
-                  <p className='bold-text'>{t('scheduling')}:</p>
-                  <p>{moment(elm.agendamento.dtAgendamento).format('DD/MM/YYYY')}</p>
-                </div>
+                {elm.agendamento.map((elm, i) => {
+                  return (
+                    <div key={elm.id} className='flex-content-date'>
+                      <p className='bold-text'>{t('scheduling')} {i + 1}º {t('dose')}:</p>
+                      <p>{moment(elm.dtAgendamento).format('DD/MM/YYYY')}</p>
+                    </div>
+                  )
+                })}
               </div>
             )
           })}

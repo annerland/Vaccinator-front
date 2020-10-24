@@ -29,6 +29,19 @@ export default function EstablishmentsUser () {
     setContent
   ] = pagination(5)
 
+  const reorder = (data = []) => {
+    const safeLow = (str = '') => {
+      if (str === null) return ''
+      return str.toLowerCase()
+    }
+
+    return data.sort((a, b) => {
+      if (safeLow(a.strNomeUnidade) < safeLow(b.strNomeUnidade)) return -1
+      if (safeLow(a.strNomeUnidade) > safeLow(b.strNomeUnidade)) return 1
+      return 0
+    })
+  }
+
   const fetchEstablishments = () => {
     setLoading(true)
     Api.Establishment.list()
@@ -37,19 +50,6 @@ export default function EstablishmentsUser () {
         setLoading(false)
       })
       .catch(err => console.log(err))
-  }
-
-  const reorder = (data = []) => {
-    const safeLow = (str = '') => {
-      if (str === null) return ''
-      return str.toLowerCase()
-    }
-
-    return data.sort((a, b) => {
-      if (safeLow(a.strNome) < safeLow(b.strNome)) return -1
-      if (safeLow(a.strNome) > safeLow(b.strNome)) return 1
-      return 0
-    })
   }
 
   const fetchVaccines = async () => {

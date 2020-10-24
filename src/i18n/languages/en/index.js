@@ -131,6 +131,7 @@ const keys = {
     view: 'View wallet',
     add: 'Add vaccine',
     date: 'Birthday',
+    'dose-date': 'Enter the dose date',
     'application-invalid': 'Invalid application date',
     'vaccine-invalid': 'Invalid vaccine',
     'add-vaccine': 'Add vaccine',
