@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next'
 import Loading from 'Components/atoms/loading'
 import { useSelector } from 'react-redux'
 import Select from 'Components/atoms/select'
+import moment from 'moment'
 import { path } from 'ramda'
 
 const EditWalletModal = (props) => {
@@ -33,7 +34,7 @@ const EditWalletModal = (props) => {
       setName(data.strNome)
       setSurname(data.strSobrenome)
       setGender(data.charGenero)
-      setDate(data.dtNascimento)
+      setDate(moment(data.dtNascimento).format('DD/MM/YYYY'))
     }
   }, [modal])
 

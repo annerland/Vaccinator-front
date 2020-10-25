@@ -46,12 +46,6 @@ const CreateWalletModal = (props) => {
       method: validator.isEmpty,
       validWhen: false,
       message: 'empty-gender'
-    },
-    {
-      field: 'adress',
-      method: validator.isEmpty,
-      validWhen: false,
-      message: 'empty-address'
     }
   ])
 

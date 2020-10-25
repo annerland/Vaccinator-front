@@ -9,6 +9,7 @@ import Loading from 'Components/atoms/loading'
 import Modals from 'Util/modals'
 import Api from 'Util/api'
 import StoreRedux from 'Redux/'
+import Checkbox from 'Components/atoms/checkbox'
 import PropTypes from 'prop-types'
 import { useSelector } from 'react-redux'
 import { path } from 'ramda'
@@ -25,6 +26,8 @@ const AddVaccineWallet = (props) => {
   const [application, setApplication] = useState('')
   const [inputs, setInputs] = useState(null)
   const [data, setData] = useState('')
+  const [add, setAdd] = useState(false)
+  const [sched, setSched] = useState(false)
   const [vaccine, setVaccine] = useState()
   const [establishment, setEstablishment] = useState()
   const modal = useSelector(({ modals }) => modals.generic)
@@ -132,49 +135,57 @@ const AddVaccineWallet = (props) => {
       <Loading show={loading} />
       <div className='modal-container'>
         <h2 className='title'>{t('add-vaccine')}</h2>
-        <p className='info'>{t('info')}</p>
 
-        <Select
+        <div className='information'>
+          <p>Você precisa agendar ou adicionar?</p>
+          <div className='flex-button'>
+            <Checkbox label='adicionar' value={add} onChange={setAdd} />
+            <Checkbox onClick={setSched} type='secondary' />
+          </div>
+        </div>
+
+        {(add || sched) && <Select
           label={t('label-vaccine')}
-          options={options}
+          options={dataOptions}
           value={vaccine}
           onChange={setVaccine}
           validator={errors.vaccine}
-        />
+        />}
 
-        <Select
+        {add && <Select
           label='Estabelecimentos'
-          options={dataOptions}
+          options={options}
           value={establishment}
           onChange={setEstablishment}
           validator={errors.vaccine}
-        />
+        />}
 
-        <Input
+        {add && <Input
           label={t('application')}
           onChange={setApplication}
           value={application}
           mask='99/99/9999'
           placeholder='Ex. 13/11/2020'
-        />
+        />}
 
-        <div className='doses-content'>
-          <i onClick={() => createNewInput()} className='icon-plus-circle' />
-          {inputs && inputs.length && inputs.map(({ id, value }) => {
-            return (
-              <Input
-                placeholder='Ex. 13/11/2020'
-                mask='99/99/9999'
-                value={value}
-                onChange={(e) => onChangeInput({ id, value: e })}
-                key={id}
-                label={t('dose-date')}
-              />
-            )
-          })}
-        </div>
+        {sched &&
+          <div className='doses-content'>
+            <i onClick={() => createNewInput()} className='icon-plus-circle' />
+            {inputs && inputs.length && inputs.map(({ id, value }) => {
+              return (
+                <Input
+                  placeholder='Ex. 13/11/2020'
+                  mask='99/99/9999'
+                  value={value}
+                  onChange={(e) => onChangeInput({ id, value: e })}
+                  key={id}
+                  label={t('dose-date')}
+                />
+              )
+            })}
+          </div>}
 
-        <Button onClick={() => submit()}>{t('send')}</Button>
+        {(add || sched) && <Button onClick={() => submit()}>{t('send')}</Button>}
       </div>
     </Modal>
   )

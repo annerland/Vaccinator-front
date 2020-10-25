@@ -1,4 +1,12 @@
 .modal-container {
+
+  .information {
+    text-align: center;
+    
+    .flex-button {
+      display: flex;
+    }
+  }
   .doses-content {
     position: relative;
 
