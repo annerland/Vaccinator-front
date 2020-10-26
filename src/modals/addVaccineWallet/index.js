@@ -73,6 +73,8 @@ const AddVaccineWallet = (props) => {
 
   const resetFields = () => {
     setVaccine('')
+    setAdd('')
+    setSched('')
     setEstablishment('')
     setInputs('')
   }
@@ -137,10 +139,10 @@ const AddVaccineWallet = (props) => {
         <h2 className='title'>{t('add-vaccine')}</h2>
 
         <div className='information'>
-          <p>Você precisa agendar ou adicionar?</p>
+          <p>{t('info-vaccine')}</p>
           <div className='flex-button'>
-            <Checkbox label='adicionar' value={add} onChange={setAdd} />
-            <Checkbox onClick={setSched} type='secondary' />
+            <Checkbox label={t('add')} value={add} onChange={setAdd} />
+            <Checkbox label={t('schedule')} value={sched} onChange={setSched} type='secondary' />
           </div>
         </div>
 
@@ -153,7 +155,7 @@ const AddVaccineWallet = (props) => {
         />}
 
         {add && <Select
-          label='Estabelecimentos'
+          label={t('establishments')}
           options={options}
           value={establishment}
           onChange={setEstablishment}

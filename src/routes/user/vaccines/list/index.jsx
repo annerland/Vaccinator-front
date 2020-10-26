@@ -9,7 +9,6 @@ import { truncate } from 'Util/helpers'
 import { search } from 'fast-fuzzy'
 import Loading from 'Components/atoms/loading'
 import Modals from 'Util/modals'
-import Order from 'Components/atoms/order'
 import pagination from 'Util/hooks/pagination'
 import StoreRedux from 'Redux/'
 import PaginationComponent from 'Components/atoms/paginationComponent'
@@ -85,10 +84,10 @@ export default function Vaccines () {
     }
 
     Modals.Generic.sucess({
-      title: 'Aprovar vacina',
-      text: 'Deseja aprovar essa vacina? Ela ficará visível publicamente',
-      cancel: `${t('cancel')}`,
-      continue: `${t('continue')}`,
+      title: t('approve'),
+      text: t('approve-text'),
+      cancel: t('cancel'),
+      continue: t('continue'),
       handleAction: async () => {
         setLoading(true)
         try {
@@ -108,10 +107,10 @@ export default function Vaccines () {
 
   const deleteVaccine = (elm) => {
     Modals.Generic.sucess({
-      title: `${t('delete')}`,
-      text: `${t('text')}`,
-      cancel: `${t('cancel')}`,
-      continue: `${t('continue')}`,
+      title: t('delete'),
+      text: t('text'),
+      cancel: t('cancel'),
+      continue: t('continue'),
       handleAction: async () => {
         setLoading(true)
         try {
@@ -135,17 +134,14 @@ export default function Vaccines () {
             placeholder={t('search')}
             onChange={handleOnSearch}
           />
-
-          <Order placeholder='Order by' />
         </div>
 
         <Button onClick={() => createVaccine()} type='primary'>{t('add')}</Button>
-        {/* <Button onClick={() => createVaccine()} type='secondary'>Vacinas em análise</Button> */}
       </div>
 
       <Loading show={loading} />
 
-      {admin && <h2 className='subtitle'>Vacinas em análise</h2>}
+      {admin && <h2 className='subtitle'>{t('analize')}</h2>}
       {admin && adminVaccine.map(elm =>
         <ListItem
           key={elm.id}
@@ -157,7 +153,7 @@ export default function Vaccines () {
         />
       )}
 
-      {admin && <h2 className='subtitle'>Vacinas aprovadas</h2>}
+      {admin && <h2 className='subtitle'>{t('approved')}</h2>}
       {list.map(elm =>
         <ListItem
           key={elm.id}

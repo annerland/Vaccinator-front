@@ -27,6 +27,8 @@ const EditWalletModal = (props) => {
     { value: 'm', label: 'M' }
   ]
 
+  console.log(data)
+
   useEffect(() => {
     const data = path(['body', 'data'], modal)
     setData(data)

@@ -15,6 +15,15 @@ const keys = {
     exit: 'Sair',
     config: 'Configurações'
   },
+  Config: {
+    title: 'Configurações',
+    'delete-account': 'Deletar dados da conta',
+    'delete-text': 'Todos os dados da conta serão deletados',
+    cancel: 'Cancelar',
+    continue: 'Continuar',
+    terms: 'Termos de uso',
+    policy: 'Politica de privacidade'
+  },
 
   CreateVaccineModal: {
     title: 'Criar Vacina',
@@ -85,7 +94,11 @@ const keys = {
     delete: 'Deletar Vacina',
     text: 'Deseja realmente deletar essa vacina?',
     cancel: 'Cancelar',
-    continue: 'Continuar'
+    analize: 'Vacinas em análise',
+    approved: 'Vacinas aprovadas',
+    continue: 'Continuar',
+    approve: 'Aprovar Vacina',
+    'approve-text': 'Deseja aprovar essa vacina? Ela ficará visível publicamente'
   },
   Establishments: {
     title: 'Estabelecimentos',
@@ -156,7 +169,10 @@ const keys = {
     continue: 'Continuar',
     female: 'Feminino',
     male: 'Masculino',
-    'add-button': 'Adicionar +'
+    'add-button': 'Adicionar +',
+    'info-vaccine': 'O que você deseja fazer?',
+    establishments: 'Estabelecimentos',
+    schedule: 'Agendar vacina'
   },
 
   News: {
@@ -190,7 +206,8 @@ const keys = {
     'paragraph-21': 'Cookies de preferências do site',
     'paragraph-22': 'Para proporcionar uma ótima experiência neste site, fornecemos a funcionalidade para definir suas preferências de como esse site é executado quando você o usa. Para lembrar suas preferências, precisamos definir cookies para que essas informações possam ser chamadas sempre que você interagir com uma página for afetada por suas preferências. Cookies de Terceiros',
     'paragraph-23': 'Em alguns casos especiais, também usamos cookies fornecidos por terceiros confiáveis. A seção a seguir detalha quais cookies de terceiros você pode encontrar através deste site. Este site usa o Google Analytics, que é uma das soluções de análise mais difundidas e confiáveis ​​da Web, para nos ajudar a entender como você usa o site e como podemos melhorar sua experiência. Esses cookies podem rastrear itens como quanto tempo você gasta no site e as páginas visitadas, para que possamos continuar produzindo conteúdo atraente. Para mais informações sobre cookies do Google Analytics, consulte a página oficial do Google Analytics. As análises de terceiros são usadas para rastrear e medir o uso deste site, para que possamos continuar produzindo conteúdo atrativo. Esses cookies podem rastrear itens como o tempo que você passa no site ou as páginas visitadas, o que nos ajuda a entender como podemos melhorar o site para você. Periodicamente, testamos novos recursos e fazemos alterações sutis na maneira como o site se apresenta. Quando ainda estamos testando novos recursos, esses cookies podem ser usados ​​para garantir que você receba uma experiência consistente enquanto estiver no site, enquanto entendemos quais otimizações os nossos usuários mais apreciam. À medida que vendemos produtos, é importante entendermos as estatísticas sobre quantos visitantes de nosso site realmente compram e, portanto, esse é o tipo de dados que esses cookies rastrearam. Isso é importante para você, pois significa que podemos fazer previsões de negócios com precisão que nos permitem analisar nossos custos de publicidade e produtos para garantir o melhor preço possível. Mais informações Esperemos que esteja esclarecido e, como mencionado anteriormente, se houver algo que você não tem certeza se precisa ou não, geralmente é mais seguro deixar os cookies ativados, caso interaja com um dos recursos que você usa em nosso site.',
-    'paragraph-24': 'Esta política é efetiva a partir de September/2020.'
+    'paragraph-24': 'Esta política é efetiva a partir de September/2020.',
+    continue: 'Prosseguir'
   },
 
   Terms: {

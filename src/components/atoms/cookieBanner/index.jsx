@@ -33,7 +33,7 @@ const CookieBanner = () => {
           <i className='icon-cookie' />
           <p>{t('cookie')}<span onClick={showPolicy}>{t('policy')}</span></p>
 
-          <Button type='secondary' onClick={() => handleClose()} children='Prosseguir' />
+          <Button type='secondary' onClick={() => handleClose()} children={t('continue')} />
         </div>}
       <PolicyModal />
     </div>

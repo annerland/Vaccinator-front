@@ -18,6 +18,16 @@ const keys = {
     config: 'Configurations'
   },
 
+  Config: {
+    title: 'Configuration',
+    'delete-account': 'Delete data account',
+    'delete-text': 'All data will be deleted',
+    cancel: 'Cancel',
+    continue: 'Continue',
+    terms: 'Terms of use',
+    policy: 'Privacy policy'
+  },
+
   CreateVaccineModal: {
     title: 'Create vaccine',
     name: 'Name',
@@ -91,7 +101,11 @@ const keys = {
     delete: 'Delete vaccine',
     text: 'Do you want to delete this vaccine?',
     cancel: 'Cancel',
-    continue: 'Continue'
+    continue: 'Continue',
+    analize: 'Vaccines in analysis',
+    approved: 'Vaccines approved',
+    approve: 'Approve vaccine',
+    'approve-text': 'Would you like to approve this vaccine? it will be visible for the public'
   },
 
   Establishments: {
@@ -163,7 +177,10 @@ const keys = {
     continue: 'Continue',
     female: 'Female',
     male: 'Male',
-    'add-button': 'Add +'
+    'add-button': 'Add +',
+    'info-vaccine': 'What do you need to do?',
+    schedule: 'Schedule vaccine',
+    establishments: 'Establishments'
   },
 
   News: {
@@ -197,7 +214,8 @@ const keys = {
     'paragraph-21': 'Site preference cookies',
     'paragraph-22': 'To provide you with a great experience on this website, we provide the functionality to set your preferences for how that website runs when you use it. To remember your preferences, we need to set cookies so that this information can be called up whenever you interact with a page is affected by your preferences. Third Party Cookies',
     'paragraph-23': 'In some special cases, we also use cookies provided by trusted third parties. The following section details which third-party cookies you can find through this website. This site uses Google Analytics, which is one of the most widespread and reliable analytics solutions on the web, to help us understand how you use the site and how we can improve your experience. These cookies can track items such as how much time you spend on the site and the pages you visit, so that we can continue to produce compelling content. For more information about Google Analytics cookies, see the official Google Analytics page. Third party analytics are used to track and measure the use of this site, so that we can continue to produce compelling content. These cookies can track items such as the time you spend on the site or the pages you visit, which helps us understand how we can improve the site for you. We periodically test new features and make subtle changes to the way the site looks. When we are still testing new features, these cookies can be used to ensure that you receive a consistent experience while on the site, while understanding which optimizations our users appreciate most. As we sell products, it is important to understand the statistics on how many visitors to our website actually buy and, therefore, this is the type of data these cookies tracked. This is important to you, as it means that we can make accurate business forecasts that allow us to analyze our advertising and product costs to ensure the best possible price. More information Hopefully it is clear and, as mentioned earlier, if there is something you are not sure whether you need or not, it is generally safer to leave cookies enabled if you interact with one of the features you use on our website. ',
-    'paragraph-24': 'This policy is effective from September / 2020.'
+    'paragraph-24': 'This policy is effective from September / 2020.',
+    continue: 'Continue'
   },
 
   Terms: {
