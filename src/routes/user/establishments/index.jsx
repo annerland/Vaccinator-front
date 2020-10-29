@@ -54,7 +54,7 @@ export default function EstablishmentsUser () {
   }
 
   const fetchVaccines = async () => {
-    const res = await Api.Vaccine.list()
+    const res = await Api.Vaccine.list(1)
     // eslint-disable-next-line prefer-const
     let array = res.vacinas.map(elm => {
       return { value: elm.id, label: elm.strNome }
@@ -145,8 +145,8 @@ export default function EstablishmentsUser () {
             name={elm.strNomeUnidade}
             adress={elm.strEndereco}
             cep={elm.strCep}
-            vaccine={(elm.vacinas || []).map(elm => elm.strNome).join(', ') || <i>Sem informação</i>}
-            onClick={() => getInfo(elm)}
+            vaccine={() => getInfo(elm)}
+            onClick={() => addVaccine(elm)}
             district={elm.strBairro}
           />)
       })}

@@ -53,8 +53,7 @@ const DropDown = (props) => {
           <p className='title'>{t('info')}</p>
 
           <div className='flex-text'>
-            <p className='field'>{t('vaccines')}:</p>
-            <p>{props.vaccine}</p>
+            <p className='field-vaccine' onClick={props.vaccine}>{t('vaccines')}</p>
           </div>
 
           <div className='flex-text'>
@@ -77,7 +76,7 @@ DropDown.propTypes = {
   name: PropTypes.string,
   onClick: PropTypes.func,
   adress: PropTypes.string,
-  vaccine: PropTypes.string,
+  vaccine: PropTypes.func,
   district: PropTypes.string,
   cep: PropTypes.string
 }

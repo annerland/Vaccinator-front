@@ -113,7 +113,7 @@ const keys = {
     name: 'Nome do estabelecimento',
     address: 'Endereço',
     info: 'Informações adicionais',
-    vaccines: 'Vacinas disponíveis',
+    vaccines: 'Clique aqui para visualizar as vacinas disponíveis',
     district: 'Bairro',
     cep: 'CEP',
     'info-text': 'Avise outros usuários que há vacinas disponíveis',

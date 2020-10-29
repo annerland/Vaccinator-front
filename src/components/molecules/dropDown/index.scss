@@ -34,6 +34,15 @@
         display: block;
       }
 
+      .field-vaccine {
+        color: $primary-color;
+        margin-right: 4px;
+        margin-left: 0;
+        margin-bottom: 16px;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+
       .field {
         color: $black-color;
         margin-right: 4px;

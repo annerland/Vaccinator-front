@@ -27,8 +27,8 @@ const AddVaccineEstablishment = (props) => {
   const modal = useSelector(({ modals }) => modals.generic)
   const { t } = useTranslation('Establishments')
 
-  const fetchVaccines = async () => {
-    const res = await Api.Vaccine.list()
+  const fetchVaccines = async () => { 
+    const res = await Api.Vaccine.list(1)
     // eslint-disable-next-line prefer-const
     let array = res.vacinas.map(elm => {
       return { value: elm.id, label: elm.strNome }
@@ -94,6 +94,16 @@ const AddVaccineEstablishment = (props) => {
     fetchVaccines()
   }, [])
 
+  const handleHasVaccine = (value) => {
+    setHasVaccine(value)
+    setHasntVaccine(false)
+  }
+
+  const handleHasntVaccine = (value) => {
+    setHasntVaccine(value)
+    setHasVaccine(false)
+  }
+
   return (
     <Modal id='add-vaccine-establishment' width={532}>
       <Loading show={loading} />
@@ -120,8 +130,8 @@ const AddVaccineEstablishment = (props) => {
         <p className='text'>Nesse estabelecimento há essa vaccina?</p>
 
         <div className='checkbox-container'>
-          <Checkbox label='Sim' onChange={setHasVaccine} value={hasVaccine} />
-          <Checkbox label='Não' onChange={setHasntVaccine} value={hasntVaccine} />
+          <Checkbox label='Sim' onChange={(e) => handleHasVaccine(e)} value={hasVaccine} />
+          <Checkbox label='Não' onChange={(e) => handleHasntVaccine(e)} value={hasntVaccine} />
         </div>
 
         <Button onClick={() => submit()}>{t('send')}</Button>
