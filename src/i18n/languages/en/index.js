@@ -51,6 +51,8 @@ const keys = {
     care: 'Care',
     application: 'Means of application',
     'edit-vaccine': 'Edit vaccine',
+    'suggest-title': 'Suggest vaccine',
+    suggest: 'Your vaccine has been created! Wait for an administrator approval to add it to the list.',
     'edit-vaccine-text': 'Are you sure? this data will be changed',
     continue: 'Continue',
     cancel: 'Cancel'
@@ -98,7 +100,7 @@ const keys = {
 
   Vaccines: {
     title: 'Vaccines',
-    add: 'Add +',
+    add: 'Suggest vaccine +',
     search: 'Search vaccines',
     delete: 'Delete vaccine',
     text: 'Do you want to delete this vaccine?',

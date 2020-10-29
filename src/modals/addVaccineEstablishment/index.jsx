@@ -27,7 +27,7 @@ const AddVaccineEstablishment = (props) => {
   const modal = useSelector(({ modals }) => modals.generic)
   const { t } = useTranslation('Establishments')
 
-  const fetchVaccines = async () => { 
+  const fetchVaccines = async () => {
     const res = await Api.Vaccine.list(1)
     // eslint-disable-next-line prefer-const
     let array = res.vacinas.map(elm => {
@@ -39,6 +39,8 @@ const AddVaccineEstablishment = (props) => {
 
   const resetFields = () => {
     setVaccine('')
+    setHasVaccine('')
+    setHasntVaccine('')
     setApplication('')
   }
 

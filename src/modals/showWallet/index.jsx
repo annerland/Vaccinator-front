@@ -56,10 +56,14 @@ const ShowWalletModal = () => {
           <h1 className='title-component'>{t('vaccines')}</h1>
           {(vaccines || []).map((elm) => {
             return (
-              <div key={elm.id}>
+              <div className='info-content' key={elm.id}>
                 <div className='flex-content'>
                   <p className='bold-text'>{t('name')}:</p>
                   <p>{elm.vaccines.map(elm => elm.strNome)}</p>
+                </div>
+                <div className='flex-content'>
+                  <p className='bold-text'>Local:</p>
+                  <p>{elm.unidade.strNomeUnidade}</p>
                 </div>
                 <div className='flex-content-date'>
                   <p className='bold-text'>{t('application')}:</p>

@@ -74,9 +74,6 @@ export default function Vaccines () {
 
   useEffect(() => {
     fetchVaccine()
-  }, [])
-
-  useEffect(() => {
     fetchAdminVaccine()
   }, [])
 
@@ -106,6 +103,7 @@ export default function Vaccines () {
           console.log(err)
         }
         fetchVaccine()
+        fetchAdminVaccine()
         setLoading(false)
       }
     })
@@ -129,6 +127,7 @@ export default function Vaccines () {
           console.log(err)
         }
         fetchVaccine()
+        fetchAdminVaccine()
         setLoading(false)
       }
     })
@@ -178,7 +177,7 @@ export default function Vaccines () {
         current={page}
         onChange={setPage}
       />
-      <CreateVaccineModal onChange={fetchVaccine} />
+      <CreateVaccineModal onChange={fetchAdminVaccine} />
     </div>
   )
 }

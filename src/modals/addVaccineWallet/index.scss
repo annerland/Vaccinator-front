@@ -1,5 +1,6 @@
-.modal-container {
+@import '~Styles/theme';
 
+.modal-container {
   .information {
     text-align: center;
     
@@ -12,12 +13,27 @@
   .doses-content {
     position: relative;
 
-    i {
+    .icon-close {
+      position: absolute;
+      color: #8e8e93;
+      cursor: pointer;
+      top: 43px;
+      right: 26px;
+      z-index: 1;
+      font-size: 18px;
+      cursor: pointer;
+
+      &:hover {
+        color: $error-color;
+      }
+    }
+
+    .icon-plus-circle {
       display: flex;
       align-items: center;
       font-size: 30px;
       position: absolute;
-      right: 5px;
+      right: 0px;
       top: 37px;
       cursor: pointer;
       color: #74b8d0;

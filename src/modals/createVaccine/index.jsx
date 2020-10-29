@@ -52,19 +52,19 @@ const CreateVaccineModal = (props) => {
       field: 'application',
       method: validator.isEmpty,
       validWhen: false,
-      message: `${t('empty-inter')}`
+      message: `${t('empty-app')}`
     },
     {
       field: 'effects',
       method: validator.isEmpty,
       validWhen: false,
-      message: `${t('empty-inter')}`
+      message: `${t('empty-effects')}`
     },
     {
       field: 'care',
       method: validator.isEmpty,
       validWhen: false,
-      message: `${t('empty-inter')}`
+      message: `${t('empty-care')}`
     }
   ])
 
@@ -96,8 +96,8 @@ const CreateVaccineModal = (props) => {
         props.onChange()
 
         Modals.Generic.sucess({
-          title: 'Criar vacina',
-          text: 'Sua vacina foi criada com sucesso!',
+          title: t('suggest-title'),
+          text: t('suggest'),
           continue: 'OK',
           handleAction: () => Modals.Generic.hide()
         })
@@ -143,7 +143,7 @@ const CreateVaccineModal = (props) => {
           onChange={setIndication}
           value={indication}
           placeholder='Ex. Pessoas acima de 60 anos'
-          validator={errors.interval}
+          validator={errors.indication}
         />
 
         <Input
@@ -152,7 +152,7 @@ const CreateVaccineModal = (props) => {
           onChange={setEffects}
           value={effects}
           placeholder='Ex. Enjoô'
-          validator={errors.interval}
+          validator={errors.effects}
         />
 
         <Input
@@ -161,7 +161,7 @@ const CreateVaccineModal = (props) => {
           onChange={setCare}
           value={care}
           placeholder='Ex. Não pegar peso pelas próximas 3 horas'
-          validator={errors.interval}
+          validator={errors.care}
         />
 
         <Input
@@ -170,7 +170,7 @@ const CreateVaccineModal = (props) => {
           onChange={setApplication}
           value={application}
           placeholder='Ex. intramuscular'
-          validator={errors.interval}
+          validator={errors.application}
         />
 
         <Button onClick={() => submit()}>{t('send')}</Button>

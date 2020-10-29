@@ -191,14 +191,15 @@ const AddVaccineWallet = (props) => {
             <i onClick={() => createNewInput()} className='icon-plus-circle' />
             {inputs && inputs.length && inputs.map(({ id, value }) => {
               return (
-                <Input
-                  placeholder='Ex. 13/11/2020'
-                  mask='99/99/9999'
-                  value={value}
-                  onChange={(e) => onChangeInput({ id, value: e })}
-                  key={id}
-                  label={t('dose-date')}
-                />
+                <div className='input-content' key={id}>
+                  <Input
+                    placeholder='Ex. 13/11/2020'
+                    mask='99/99/9999'
+                    value={value}
+                    onChange={(e) => onChangeInput({ id, value: e })}
+                    label={t('dose-date')}
+                  />
+                </div>
               )
             })}
           </div>}
