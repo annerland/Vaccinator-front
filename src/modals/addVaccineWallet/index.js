@@ -105,7 +105,7 @@ const AddVaccineWallet = (props) => {
       payload.fkUser = auth.id
       payload.fkUnidade = establishment.value
       payload.boolAtivo = 1
-      if (inputs.some((e) => e.length > 0)) payload.doses = inputs.map(elm => elm.value)
+      if (inputs) payload.doses = inputs.map(elm => elm.value)
       if (application) payload.dtAplicacao = application
 
       try {
