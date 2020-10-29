@@ -70,6 +70,8 @@ const keys = {
     contact: 'Contact',
     login: 'Login',
     title: 'Vaccinator',
+    vaccine: 'To see our list of public vaccines',
+    click: 'click here',
     register: 'Register',
     resume: "Vaccinator is an app aimed to simplify, organize and keep yours and any relative vaccina chart, merging quickness and efficiency to something made manually, allowing quick access to information and a pratical system's usability."
   },

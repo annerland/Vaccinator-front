@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Api from 'Util/api'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import Button from 'Components/atoms/button'
 import Loading from 'Components/atoms/loading'
 import Modals from 'Util/modals'
@@ -10,7 +10,7 @@ import StoreRedux from 'Redux/'
 
 import './index.scss'
 
-export default function ShowVaccine () {
+export default function ShowPublicVaccine () {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [restricted, setRestricted] = useState('')
@@ -22,9 +22,7 @@ export default function ShowVaccine () {
   const [loading, setLoading] = useState(false)
   const [effects, setEffects] = useState('')
   const [care, setCare] = useState('')
-  const { auth } = StoreRedux.getState()
-  const admin = auth.intNivel === 2
-
+  const history = useHistory()
   const { t } = useTranslation('CreateVaccineModal')
 
   const fetchVaccine = async () => {
@@ -46,18 +44,18 @@ export default function ShowVaccine () {
     fetchVaccine()
   }, [])
 
-  const editVaccine = () => {
-    Modals.Generic.show('edit-vaccine')
+  const redirectHome = () => {
+    history.push('/vaccines')
   }
 
   return (
     <div className='vaccines-content'>
       <Loading show={loading} />
-      <h1 className='title'>{name}</h1>
-
-      <div className='vaccines-header-show'>
-        {admin && <Button onClick={() => editVaccine()} type='primary'>Editar</Button>}
+      <div className='back'>
+        <i onClick={redirectHome} className='icon-arrow-back' />
+        <p onClick={redirectHome}>Back</p>
       </div>
+      <h1 className='title-public'>{name}</h1>
 
       <div className='show-content'>
         <div className='content'>

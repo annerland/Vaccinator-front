@@ -25,6 +25,10 @@ export default function HomePage () {
     history.push('/login')
   }
 
+  const redirectVaccines = () => {
+    history.push('/vaccines')
+  }
+
   const redirectSignUp = () => {
     history.push('/sign-up')
   }
@@ -70,6 +74,7 @@ export default function HomePage () {
         </div>
 
         <p>{t('resume')}</p>
+        <p>{t('vaccines')} <span onClick={() => redirectVaccines()}>{t('click')}</span></p>
 
         <Button onClick={() => redirectSignUp()}>{t('register')}</Button>
       </motion.div>

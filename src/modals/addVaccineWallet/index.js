@@ -35,7 +35,7 @@ const AddVaccineWallet = (props) => {
   const { t } = useTranslation('Wallets')
 
   const fetchVaccines = async () => {
-    const res = await Api.Vaccine.list()
+    const res = await Api.Vaccine.list(1)
     // eslint-disable-next-line prefer-const
     let array = res.vacinas.map(elm => {
       return { value: elm.id, label: elm.strNome }
@@ -76,6 +76,7 @@ const AddVaccineWallet = (props) => {
     setAdd('')
     setSched('')
     setEstablishment('')
+    setApplication('')
     setInputs('')
   }
 
@@ -104,7 +105,7 @@ const AddVaccineWallet = (props) => {
       payload.fkUser = auth.id
       payload.fkUnidade = establishment.value
       payload.boolAtivo = 1
-      if (inputs) payload.doses = inputs.map(elm => elm.value)
+      if (inputs.some((e) => e.length > 0)) payload.doses = inputs.map(elm => elm.value)
       if (application) payload.dtAplicacao = application
 
       try {
@@ -132,6 +133,18 @@ const AddVaccineWallet = (props) => {
     fetchVaccines()
   }, [])
 
+  const handleAddVaccine = (value) => {
+    resetFields()
+    setAdd(value)
+    setSched(false)
+  }
+
+  const handleScheduleVaccine = (value) => {
+    resetFields()
+    setAdd(false)
+    setSched(value)
+  }
+
   return (
     <Modal id='add-vaccine-wallet' height={400} width={432}>
       <Loading show={loading} />
@@ -141,34 +154,37 @@ const AddVaccineWallet = (props) => {
         <div className='information'>
           <p>{t('info-vaccine')}</p>
           <div className='flex-button'>
-            <Checkbox label={t('add')} value={add} onChange={setAdd} />
-            <Checkbox label={t('schedule')} value={sched} onChange={setSched} type='secondary' />
+            <Checkbox label={t('add')} value={add} onChange={(e) => handleAddVaccine(e)} />
+            <Checkbox label={t('schedule')} value={sched} onChange={(e) => handleScheduleVaccine(e)} type='secondary' />
           </div>
         </div>
 
-        {(add || sched) && <Select
-          label={t('label-vaccine')}
-          options={dataOptions}
-          value={vaccine}
-          onChange={setVaccine}
-          validator={errors.vaccine}
-        />}
+        {(add || sched) &&
+          <Select
+            label={t('label-vaccine')}
+            options={dataOptions}
+            value={vaccine}
+            onChange={setVaccine}
+            validator={errors.vaccine}
+          />}
 
-        {add && <Select
-          label={t('establishments')}
-          options={options}
-          value={establishment}
-          onChange={setEstablishment}
-          validator={errors.vaccine}
-        />}
+        {add &&
+          <Select
+            label={t('establishments')}
+            options={options}
+            value={establishment}
+            onChange={setEstablishment}
+            validator={errors.vaccine}
+          />}
 
-        {add && <Input
-          label={t('application')}
-          onChange={setApplication}
-          value={application}
-          mask='99/99/9999'
-          placeholder='Ex. 13/11/2020'
-        />}
+        {add &&
+          <Input
+            label={t('application')}
+            onChange={setApplication}
+            value={application}
+            mask='99/99/9999'
+            placeholder='Ex. 13/11/2020'
+          />}
 
         {sched &&
           <div className='doses-content'>

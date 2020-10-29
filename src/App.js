@@ -8,6 +8,8 @@ import ForgotPasswordRoute from 'Routes/forgotPassword'
 import SignUpRoute from 'Routes/signUp'
 import ConfirmRoute from 'Routes/confirmAccount'
 import ResetPasswordRoute from 'Routes/resetPassword'
+import PublicVaccines from 'Routes/publicVaccines/list'
+import ShowPublicVaccines from 'Routes/publicVaccines/show'
 
 export default function App () {
   return (
@@ -18,6 +20,8 @@ export default function App () {
       <Route path='/user' component={UserRoutes} />
       <Route path='/forgot-password' component={ForgotPasswordRoute} />
       <Route path='/sign-up' component={SignUpRoute} />
+      <Route exact path='/vaccines' component={PublicVaccines} />
+      <Route path='/vaccines/:id' component={ShowPublicVaccines} />
       <Route exact path='/active/:token' component={ConfirmRoute} />
       <Route exact path='/reset-password/:token' component={ResetPasswordRoute} />
     </Switch>

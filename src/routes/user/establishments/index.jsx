@@ -3,6 +3,7 @@ import Button from 'Components/atoms/button'
 import Input from 'Components/atoms/input'
 import DropDown from 'Components/molecules/dropDown'
 import AddVaccineEstablishment from 'Modals/addVaccineEstablishment'
+import GetInfoVaccine from 'Modals/getInfoVaccine'
 import Modals from 'Util/modals'
 import pagination from 'Util/hooks/pagination'
 import PaginationComponent from 'Components/atoms/paginationComponent'
@@ -64,6 +65,10 @@ export default function EstablishmentsUser () {
 
   const addVaccine = (elm) => {
     Modals.Generic.show('add-vaccine-establishment', { unity: elm })
+  }
+
+  const getInfo = (elm) => {
+    Modals.Generic.show('get-info-vaccine', { data: elm })
   }
 
   const search = async () => {
@@ -141,7 +146,7 @@ export default function EstablishmentsUser () {
             adress={elm.strEndereco}
             cep={elm.strCep}
             vaccine={(elm.vacinas || []).map(elm => elm.strNome).join(', ') || <i>Sem informação</i>}
-            onClick={() => addVaccine(elm)}
+            onClick={() => getInfo(elm)}
             district={elm.strBairro}
           />)
       })}
@@ -151,6 +156,7 @@ export default function EstablishmentsUser () {
         onChange={setPage}
       />
       <AddVaccineEstablishment onChange={fetchEstablishments} />
+      <GetInfoVaccine />
     </div>
   )
 }

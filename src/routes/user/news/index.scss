@@ -4,6 +4,24 @@
   min-height: 100%;
   box-sizing: border-box;
 
+  .back {
+    display: flex;
+    margin-bottom: 16px;
+    color: $secondary-color;
+
+    i {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    p {
+      font-size: 16px;
+      margin-left: 8px;
+      cursor: pointer;
+    }
+  }
+
   h1.title {
     padding: 0 24px 18px;
     border-bottom: 1px solid $mid-gray-color;

@@ -1,10 +1,10 @@
 @font-face {
     font-family: "icons";
-    src: url("./icons.eot?6c0cff7494434ade6c685e47472e2577?#iefix") format("embedded-opentype"),
-url("./icons.woff2?6c0cff7494434ade6c685e47472e2577") format("woff2"),
-url("./icons.woff?6c0cff7494434ade6c685e47472e2577") format("woff"),
-url("./icons.ttf?6c0cff7494434ade6c685e47472e2577") format("truetype"),
-url("./icons.svg?6c0cff7494434ade6c685e47472e2577#icons") format("svg");
+    src: url("./icons.eot?b64d731ba3e5cbc05122b05f209341d3?#iefix") format("embedded-opentype"),
+url("./icons.woff2?b64d731ba3e5cbc05122b05f209341d3") format("woff2"),
+url("./icons.woff?b64d731ba3e5cbc05122b05f209341d3") format("woff"),
+url("./icons.ttf?b64d731ba3e5cbc05122b05f209341d3") format("truetype"),
+url("./icons.svg?b64d731ba3e5cbc05122b05f209341d3#icons") format("svg");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -18,66 +18,69 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
     -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-arrow-down:before {
+.icon-arrow-back:before {
     content: "\f101";
 }
-.icon-arrow-up:before {
+.icon-arrow-down:before {
     content: "\f102";
 }
-.icon-card:before {
+.icon-arrow-up:before {
     content: "\f103";
 }
-.icon-check:before {
+.icon-card:before {
     content: "\f104";
 }
-.icon-close:before {
+.icon-check:before {
     content: "\f105";
 }
-.icon-cog:before {
+.icon-close:before {
     content: "\f106";
 }
-.icon-cookie:before {
+.icon-cog:before {
     content: "\f107";
 }
-.icon-double-arrow-left:before {
+.icon-cookie:before {
     content: "\f108";
 }
-.icon-double-arrow-right:before {
+.icon-double-arrow-left:before {
     content: "\f109";
 }
-.icon-edit:before {
+.icon-double-arrow-right:before {
     content: "\f10a";
 }
-.icon-exit:before {
+.icon-edit:before {
     content: "\f10b";
 }
-.icon-home:before {
+.icon-exit:before {
     content: "\f10c";
 }
-.icon-hospital:before {
+.icon-home:before {
     content: "\f10d";
 }
-.icon-map:before {
+.icon-hospital:before {
     content: "\f10e";
 }
-.icon-news:before {
+.icon-map:before {
     content: "\f10f";
 }
-.icon-plus-circle:before {
+.icon-news:before {
     content: "\f110";
 }
-.icon-search:before {
+.icon-plus-circle:before {
     content: "\f111";
 }
-.icon-sign-out:before {
+.icon-search:before {
     content: "\f112";
 }
-.icon-trash:before {
+.icon-sign-out:before {
     content: "\f113";
 }
-.icon-vaccine:before {
+.icon-trash:before {
     content: "\f114";
 }
-.icon-vaccines:before {
+.icon-vaccine:before {
     content: "\f115";
+}
+.icon-vaccines:before {
+    content: "\f116";
 }

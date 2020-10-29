@@ -1,0 +1,31 @@
+@import '~Styles/theme';
+
+.vaccines-content {
+  .vaccines-header-show {
+    display: flex;
+    padding: 0 56px;
+    margin-bottom: 42px;
+    justify-content: flex-end;
+  }
+
+  .show-content {
+    width: 632px;
+    margin-left: 52px;
+
+    .content {
+      h1 {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: $primary-color;
+      }
+
+      p {
+        font-size: 16px;
+        color: $gray-color;
+        line-height: 2;
+        margin-bottom: 32px;
+      }
+    }
+  }
+}

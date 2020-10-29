@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Api from 'Util/api'
 import Loading from 'Components/atoms/loading'
 import { useTranslation } from 'react-i18next'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 // eslint-disable-next-line import/no-absolute-path
 import '../index.scss'
 
@@ -11,6 +11,7 @@ export default function ShowNews () {
   const { t } = useTranslation('News')
   const [news, setNews] = useState([])
   const params = useParams()
+  const history = useHistory()
 
   const fetchNews = async () => {
     setLoading(true)
@@ -23,8 +24,16 @@ export default function ShowNews () {
     fetchNews()
   }, [])
 
+  const redirectHome = () => {
+    history.push('/user/news')
+  }
+
   return (
     <div className='news-content'>
+      <div className='back'>
+        <i onClick={redirectHome} className='icon-arrow-back' />
+        <p onClick={redirectHome}>Back</p>
+      </div>
       <h1 className='title'>{t('title')}</h1>
 
       <div className='news'>
