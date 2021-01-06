@@ -20,7 +20,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.6.0",
     "autoprefixer": "^9.6.1",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "axios-cache-plugin": "^0.1.0",
     "classnames": "^2.2.6",
     "cypress": "^3.8.3",
