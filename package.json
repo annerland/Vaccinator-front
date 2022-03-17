@@ -58,7 +58,7 @@
     "redux-logger": "^3.0.6",
     "sass": "^1.20.1",
     "use-query-params": "^0.6.0",
-    "validator": "^11.1.0"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "@babel/core": "^7.1.0",
