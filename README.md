@@ -1,6 +1,7 @@
-![icon-vaccinator](https://github.com/user-attachments/assets/3c9f54f7-9250-4722-aa1f-6d0073d1c726)
-
-# Vaccinator
+<p align="center">
+<img src="https://github.com/user-attachments/assets/3c9f54f7-9250-4722-aa1f-6d0073d1c726" height="100" />
+</p>
+<h1 align="center">Vaccinator</h1>
 
 Vaccinator is a project created for the A6PGP discipline of the IFSP systems analysis course.
 
