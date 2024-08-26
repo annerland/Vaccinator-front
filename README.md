@@ -1,6 +1,6 @@
-# Vaccinator
+![icon-vaccinator](https://github.com/user-attachments/assets/3c9f54f7-9250-4722-aa1f-6d0073d1c726)
 
-![Landing Page](https://github.com/user-attachments/assets/60c0a08d-aa68-4e12-b036-faeab03ad73a)
+# Vaccinator
 
 Vaccinator is a project created for the A6PGP discipline of the IFSP systems analysis course.
 
@@ -39,7 +39,10 @@ The application consists of the following features:
 - Cloudfront
 - Route53
 
-## Videos
+## Content
+
+Initial Page
+![Landing Page](https://github.com/user-attachments/assets/60c0a08d-aa68-4e12-b036-faeab03ad73a)
 
 Application video in operation (In Portuguese)
 https://www.youtube.com/watch?v=46NsOjD7Mbk
